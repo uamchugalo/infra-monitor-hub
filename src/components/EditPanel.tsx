@@ -56,11 +56,11 @@ export function EditPanel({ pc, onSave, onClose }: EditPanelProps) {
   ];
 
   return (
-    <div className="h-full flex flex-col bg-card/50 backdrop-blur-sm animate-fade-in">
+    <div className="h-full flex flex-col bg-card animate-fade-in">
       {/* Header */}
-      <div className="flex items-center justify-between p-5 border-b border-border/50">
+      <div className="flex items-center justify-between p-4 border-b border-border">
         <div className="flex items-center gap-3">
-          <div className="p-2 bg-primary/10 rounded-lg">
+          <div className="p-2 bg-primary/10 rounded-md">
             <Monitor className="w-5 h-5 text-primary" />
           </div>
           <div>
@@ -74,43 +74,43 @@ export function EditPanel({ pc, onSave, onClose }: EditPanelProps) {
           variant="ghost" 
           size="icon" 
           onClick={onClose} 
-          className="h-8 w-8 rounded-lg hover:bg-destructive/10 hover:text-destructive"
+          className="h-8 w-8 hover:bg-destructive/10 hover:text-destructive"
         >
           <X className="w-4 h-4" />
         </Button>
       </div>
 
       <ScrollArea className="flex-1">
-        <div className="p-5 space-y-6">
+        <div className="p-4 space-y-5">
           {/* Nome */}
-          <div className="space-y-2">
-            <Label className="text-xs text-muted-foreground uppercase tracking-wider">
+          <div className="space-y-1.5">
+            <Label className="text-xs font-medium text-foreground">
               Nome / Patrimônio
             </Label>
             <Input
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="font-mono bg-background/50 border-border/50 focus:border-primary/50"
+              className="font-mono"
               placeholder="PC-001"
             />
           </div>
 
           {/* MAC */}
-          <div className="space-y-2">
-            <Label className="text-xs text-muted-foreground uppercase tracking-wider">
+          <div className="space-y-1.5">
+            <Label className="text-xs font-medium text-foreground">
               Endereço MAC
             </Label>
             <Input
               value={mac}
               onChange={(e) => setMac(e.target.value.toUpperCase())}
-              className="font-mono bg-background/50 border-border/50 focus:border-primary/50"
+              className="font-mono"
               placeholder="AA:BB:CC:DD:EE:FF"
             />
           </div>
 
           {/* Status */}
-          <div className="space-y-3">
-            <Label className="text-xs text-muted-foreground uppercase tracking-wider">
+          <div className="space-y-2">
+            <Label className="text-xs font-medium text-foreground">
               Status
             </Label>
             <div className="grid grid-cols-3 gap-2">
@@ -119,10 +119,10 @@ export function EditPanel({ pc, onSave, onClose }: EditPanelProps) {
                   key={opt.value}
                   onClick={() => setStatus(opt.value)}
                   className={cn(
-                    'py-2.5 px-3 rounded-lg text-xs font-medium transition-all duration-200 border',
+                    'py-2 px-3 rounded-md text-xs font-medium transition-all border',
                     status === opt.value
-                      ? 'border-primary bg-primary/10 text-foreground'
-                      : 'border-border/50 bg-background/30 text-muted-foreground hover:bg-background/50'
+                      ? 'border-primary bg-primary/5 text-foreground'
+                      : 'border-border bg-background text-muted-foreground hover:bg-muted'
                   )}
                 >
                   <div className="flex items-center justify-center gap-2">
@@ -135,14 +135,14 @@ export function EditPanel({ pc, onSave, onClose }: EditPanelProps) {
           </div>
 
           {/* Add Log */}
-          <div className="space-y-3">
-            <Label className="text-xs text-muted-foreground uppercase tracking-wider">
+          <div className="space-y-2">
+            <Label className="text-xs font-medium text-foreground">
               Novo Registro
             </Label>
             <Textarea
               value={newLog}
               onChange={(e) => setNewLog(e.target.value)}
-              className="bg-background/50 border-border/50 resize-none text-sm focus:border-primary/50"
+              className="resize-none text-sm"
               placeholder="Ex: Troca de mouse..."
               rows={2}
             />
@@ -158,25 +158,25 @@ export function EditPanel({ pc, onSave, onClose }: EditPanelProps) {
           </div>
 
           {/* History */}
-          <div className="space-y-3">
+          <div className="space-y-2">
             <div className="flex items-center gap-2">
               <Clock className="w-3.5 h-3.5 text-muted-foreground" />
-              <Label className="text-xs text-muted-foreground uppercase tracking-wider">
+              <Label className="text-xs font-medium text-foreground">
                 Histórico ({history.length})
               </Label>
             </div>
-            <div className="bg-background/30 rounded-lg border border-border/30 overflow-hidden">
+            <div className="bg-muted/50 rounded-md border border-border overflow-hidden">
               {history.length === 0 ? (
                 <p className="text-xs text-muted-foreground p-4 text-center">
                   Nenhum registro
                 </p>
               ) : (
-                <div className="divide-y divide-border/30 max-h-48 overflow-y-auto">
+                <div className="divide-y divide-border max-h-48 overflow-y-auto">
                   {history.map((entry) => (
-                    <div key={entry.id} className="group p-3 hover:bg-muted/20 transition-colors">
+                    <div key={entry.id} className="group p-3 hover:bg-muted transition-colors">
                       <div className="flex items-start justify-between gap-2">
                         <div className="flex-1 min-w-0">
-                          <span className="text-[10px] font-mono text-primary/70">
+                          <span className="text-[10px] font-mono text-primary">
                             {entry.timestamp}
                           </span>
                           <p className="text-xs text-foreground mt-0.5">{entry.message}</p>
@@ -198,10 +198,10 @@ export function EditPanel({ pc, onSave, onClose }: EditPanelProps) {
       </ScrollArea>
 
       {/* Footer */}
-      <div className="p-5 border-t border-border/50">
+      <div className="p-4 border-t border-border">
         <Button onClick={handleSave} className="w-full">
           <Save className="w-4 h-4 mr-2" />
-          Salvar
+          Salvar Alterações
         </Button>
       </div>
     </div>

@@ -8,22 +8,19 @@ interface LabSelectorProps {
 
 export function LabSelector({ selectedLab, onSelectLab }: LabSelectorProps) {
   return (
-    <div className="flex items-center gap-1 p-1 bg-secondary/50 rounded-lg">
+    <div className="flex items-center gap-1 p-1 bg-muted rounded-md border border-border">
       {LABS.map((lab) => (
         <button
           key={lab.id}
           onClick={() => onSelectLab(lab.id)}
           className={cn(
-            'relative px-4 py-2 rounded-md text-sm font-medium transition-all duration-300',
+            'px-4 py-2 rounded text-sm font-medium transition-all duration-200',
             selectedLab === lab.id
-              ? 'text-primary-foreground'
-              : 'text-muted-foreground hover:text-foreground'
+              ? 'bg-primary text-primary-foreground shadow-sm'
+              : 'text-muted-foreground hover:text-foreground hover:bg-background'
           )}
         >
-          {selectedLab === lab.id && (
-            <span className="absolute inset-0 bg-primary rounded-md animate-scale-in" />
-          )}
-          <span className="relative z-10">{lab.name}</span>
+          {lab.name}
         </button>
       ))}
     </div>
