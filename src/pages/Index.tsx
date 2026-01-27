@@ -89,17 +89,17 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="border-b border-border/50 bg-card/30 backdrop-blur-md sticky top-0 z-20">
-        <div className="px-6 py-4">
+      <header className="border-b border-border bg-card shadow-sm sticky top-0 z-20">
+        <div className="px-6 py-3">
           <div className="flex items-center justify-between">
             {/* Logo & Lab Selector */}
             <div className="flex items-center gap-6">
               <div className="flex items-center gap-3">
-                <div className="p-2.5 bg-primary/10 rounded-xl">
-                  <Server className="w-6 h-6 text-primary" />
+                <div className="p-2 bg-primary rounded-md">
+                  <Server className="w-5 h-5 text-primary-foreground" />
                 </div>
                 <div>
-                  <h1 className="text-lg font-bold text-foreground">
+                  <h1 className="text-base font-bold text-foreground">
                     IT Dashboard
                   </h1>
                   <p className="text-xs text-muted-foreground">
@@ -108,7 +108,7 @@ const Index = () => {
                 </div>
               </div>
 
-              <div className="h-8 w-px bg-border/50" />
+              <div className="h-8 w-px bg-border" />
 
               <LabSelector 
                 selectedLab={selectedLab} 
@@ -120,13 +120,12 @@ const Index = () => {
             <div className="flex items-center gap-4">
               <StatusSummary pcs={currentLabData.pcs} />
               
-              <div className="h-8 w-px bg-border/50" />
+              <div className="h-8 w-px bg-border" />
               
               <Button 
-                variant="ghost" 
+                variant="outline" 
                 size="sm" 
                 onClick={handleResetLab}
-                className="text-muted-foreground hover:text-foreground"
               >
                 <RotateCcw className="w-4 h-4 mr-2" />
                 Reset
@@ -137,9 +136,9 @@ const Index = () => {
       </header>
 
       {/* Main Content */}
-      <div className="flex h-[calc(100vh-73px)]">
+      <div className="flex h-[calc(100vh-65px)]">
         {/* PC Grid */}
-        <main className="flex-1 overflow-auto p-6">
+        <main className="flex-1 overflow-auto p-5">
           <div 
             key={selectedLab}
             className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-8 gap-3 animate-fade-in"
@@ -147,7 +146,7 @@ const Index = () => {
             {currentLabData.pcs.map((pc, index) => (
               <div 
                 key={pc.id} 
-                style={{ animationDelay: `${index * 15}ms` }}
+                style={{ animationDelay: `${index * 10}ms` }}
                 className="animate-fade-in"
               >
                 <PCCard
@@ -161,7 +160,7 @@ const Index = () => {
         </main>
 
         {/* Right Sidebar */}
-        <aside className="w-[380px] border-l border-border/50 bg-sidebar/50 backdrop-blur-sm flex flex-col">
+        <aside className="w-[360px] border-l border-border bg-card flex flex-col shadow-sm">
           {/* Edit Panel */}
           <div className="flex-1 overflow-hidden">
             {selectedPc ? (
@@ -174,13 +173,13 @@ const Index = () => {
             ) : (
               <div className="h-full flex items-center justify-center p-6">
                 <div className="text-center animate-fade-in">
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-muted/30 flex items-center justify-center">
-                    <Server className="w-7 h-7 text-muted-foreground/50" />
+                  <div className="w-14 h-14 mx-auto mb-3 rounded-lg bg-muted flex items-center justify-center">
+                    <Server className="w-6 h-6 text-muted-foreground" />
                   </div>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm font-medium text-foreground">
                     Selecione um PC
                   </p>
-                  <p className="text-xs text-muted-foreground/60 mt-1">
+                  <p className="text-xs text-muted-foreground mt-1">
                     para editar suas configurações
                   </p>
                 </div>
@@ -189,7 +188,7 @@ const Index = () => {
           </div>
 
           {/* Lab Log */}
-          <div className="p-4 border-t border-border/50">
+          <div className="p-4 border-t border-border bg-muted/30">
             <LabLog
               logs={currentLabData.logs}
               labName={currentLab.name}

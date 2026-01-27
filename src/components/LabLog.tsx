@@ -36,10 +36,10 @@ export function LabLog({ logs, labName, onAddLog, onDeleteLog }: LabLogProps) {
   };
 
   return (
-    <div className="bg-card/30 backdrop-blur-sm rounded-xl border border-border/30 overflow-hidden">
+    <div className="bg-card rounded-md border border-border overflow-hidden">
       {/* Header */}
-      <div className="flex items-center gap-3 p-4 border-b border-border/30">
-        <div className="p-1.5 bg-primary/10 rounded-lg">
+      <div className="flex items-center gap-3 p-3 border-b border-border bg-muted/30">
+        <div className="p-1.5 bg-primary/10 rounded">
           <FileText className="w-4 h-4 text-primary" />
         </div>
         <div className="flex-1">
@@ -49,13 +49,13 @@ export function LabLog({ logs, labName, onAddLog, onDeleteLog }: LabLogProps) {
       </div>
 
       {/* Input */}
-      <div className="p-3 border-b border-border/30">
+      <div className="p-3 border-b border-border">
         <div className="flex gap-2">
           <Input
             value={newLog}
             onChange={(e) => setNewLog(e.target.value)}
             onKeyPress={handleKeyPress}
-            className="bg-background/50 border-border/50 text-sm"
+            className="text-sm"
             placeholder="Evento do laboratório..."
           />
           <Button 
@@ -76,15 +76,15 @@ export function LabLog({ logs, labName, onAddLog, onDeleteLog }: LabLogProps) {
             Nenhum evento
           </p>
         ) : (
-          <div className="divide-y divide-border/20">
+          <div className="divide-y divide-border">
             {logs.map((entry) => (
-              <div key={entry.id} className="group p-3 hover:bg-muted/10 transition-colors">
+              <div key={entry.id} className="group p-3 hover:bg-muted/50 transition-colors">
                 <div className="flex items-start justify-between gap-2">
                   <div className="flex-1 min-w-0">
-                    <span className="text-[10px] font-mono text-primary/60">
+                    <span className="text-[10px] font-mono text-primary">
                       {entry.timestamp}
                     </span>
-                    <p className="text-xs text-foreground/90 mt-0.5">{entry.message}</p>
+                    <p className="text-xs text-foreground mt-0.5">{entry.message}</p>
                   </div>
                   <button
                     onClick={() => onDeleteLog(entry.id)}
