@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { PC, PCStatus, HistoryEntry } from '@/types/pc';
 import { formatTimestamp, generateId } from '@/utils/pcData';
-import { X, Save, Plus, Clock, Trash2 } from 'lucide-react';
+import { X, Save, Plus, Clock, Trash2, Monitor } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -49,73 +49,84 @@ export function EditPanel({ pc, onSave, onClose }: EditPanelProps) {
     setHistory(history.filter(h => h.id !== id));
   };
 
-  const statusOptions: { value: PCStatus; label: string; class: string }[] = [
-    { value: 'online', label: 'Ativo', class: 'bg-status-online' },
-    { value: 'warning', label: 'Atenção', class: 'bg-status-warning' },
-    { value: 'offline', label: 'Offline', class: 'bg-status-offline' },
+  const statusOptions: { value: PCStatus; label: string; color: string }[] = [
+    { value: 'online', label: 'Ativo', color: 'bg-status-online' },
+    { value: 'warning', label: 'Atenção', color: 'bg-status-warning' },
+    { value: 'offline', label: 'Offline', color: 'bg-status-offline' },
   ];
 
   return (
-    <div className="panel-section h-full flex flex-col">
-      <div className="flex items-center justify-between p-4 border-b border-border">
-        <h2 className="font-semibold text-foreground flex items-center gap-2">
-          <span className="text-primary font-mono">#{String(pc.id).padStart(2, '0')}</span>
-          Editar PC
-        </h2>
-        <Button variant="ghost" size="icon" onClick={onClose} className="h-8 w-8">
+    <div className="h-full flex flex-col bg-card/50 backdrop-blur-sm animate-fade-in">
+      {/* Header */}
+      <div className="flex items-center justify-between p-5 border-b border-border/50">
+        <div className="flex items-center gap-3">
+          <div className="p-2 bg-primary/10 rounded-lg">
+            <Monitor className="w-5 h-5 text-primary" />
+          </div>
+          <div>
+            <h2 className="font-semibold text-foreground">
+              PC #{String(pc.id).padStart(2, '0')}
+            </h2>
+            <p className="text-xs text-muted-foreground">Editar configurações</p>
+          </div>
+        </div>
+        <Button 
+          variant="ghost" 
+          size="icon" 
+          onClick={onClose} 
+          className="h-8 w-8 rounded-lg hover:bg-destructive/10 hover:text-destructive"
+        >
           <X className="w-4 h-4" />
         </Button>
       </div>
 
-      <ScrollArea className="flex-1 p-4">
-        <div className="space-y-6">
+      <ScrollArea className="flex-1">
+        <div className="p-5 space-y-6">
           {/* Nome */}
           <div className="space-y-2">
-            <Label htmlFor="name" className="text-muted-foreground text-xs uppercase tracking-wider">
+            <Label className="text-xs text-muted-foreground uppercase tracking-wider">
               Nome / Patrimônio
             </Label>
             <Input
-              id="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="font-mono bg-input border-border"
+              className="font-mono bg-background/50 border-border/50 focus:border-primary/50"
               placeholder="PC-001"
             />
           </div>
 
           {/* MAC */}
           <div className="space-y-2">
-            <Label htmlFor="mac" className="text-muted-foreground text-xs uppercase tracking-wider">
+            <Label className="text-xs text-muted-foreground uppercase tracking-wider">
               Endereço MAC
             </Label>
             <Input
-              id="mac"
               value={mac}
               onChange={(e) => setMac(e.target.value.toUpperCase())}
-              className="font-mono bg-input border-border"
+              className="font-mono bg-background/50 border-border/50 focus:border-primary/50"
               placeholder="AA:BB:CC:DD:EE:FF"
             />
           </div>
 
           {/* Status */}
-          <div className="space-y-2">
-            <Label className="text-muted-foreground text-xs uppercase tracking-wider">
+          <div className="space-y-3">
+            <Label className="text-xs text-muted-foreground uppercase tracking-wider">
               Status
             </Label>
-            <div className="flex gap-2">
+            <div className="grid grid-cols-3 gap-2">
               {statusOptions.map((opt) => (
                 <button
                   key={opt.value}
                   onClick={() => setStatus(opt.value)}
                   className={cn(
-                    'flex-1 py-2 px-3 rounded-md text-xs font-medium transition-all border',
+                    'py-2.5 px-3 rounded-lg text-xs font-medium transition-all duration-200 border',
                     status === opt.value
-                      ? 'border-primary bg-accent text-foreground'
-                      : 'border-border bg-input text-muted-foreground hover:bg-accent hover:text-foreground'
+                      ? 'border-primary bg-primary/10 text-foreground'
+                      : 'border-border/50 bg-background/30 text-muted-foreground hover:bg-background/50'
                   )}
                 >
                   <div className="flex items-center justify-center gap-2">
-                    <div className={cn('w-2 h-2 rounded-full', opt.class)} />
+                    <div className={cn('w-2 h-2 rounded-full', opt.color)} />
                     {opt.label}
                   </div>
                 </button>
@@ -124,64 +135,73 @@ export function EditPanel({ pc, onSave, onClose }: EditPanelProps) {
           </div>
 
           {/* Add Log */}
-          <div className="space-y-2">
-            <Label className="text-muted-foreground text-xs uppercase tracking-wider">
-              Adicionar ao Histórico
+          <div className="space-y-3">
+            <Label className="text-xs text-muted-foreground uppercase tracking-wider">
+              Novo Registro
             </Label>
             <Textarea
               value={newLog}
               onChange={(e) => setNewLog(e.target.value)}
-              className="bg-input border-border resize-none text-sm"
-              placeholder="Ex: Troca de mouse, atualização de driver..."
+              className="bg-background/50 border-border/50 resize-none text-sm focus:border-primary/50"
+              placeholder="Ex: Troca de mouse..."
               rows={2}
             />
             <Button 
               onClick={handleAddLog} 
               disabled={!newLog.trim()}
-              className="w-full"
               size="sm"
+              className="w-full"
             >
               <Plus className="w-4 h-4 mr-2" />
-              Adicionar Registro
+              Adicionar
             </Button>
           </div>
 
           {/* History */}
-          <div className="space-y-2">
-            <Label className="text-muted-foreground text-xs uppercase tracking-wider flex items-center gap-2">
-              <Clock className="w-3 h-3" />
-              Histórico Individual ({history.length})
-            </Label>
-            <div className="bg-background/50 rounded-md border border-border max-h-48 overflow-y-auto scrollbar-thin">
+          <div className="space-y-3">
+            <div className="flex items-center gap-2">
+              <Clock className="w-3.5 h-3.5 text-muted-foreground" />
+              <Label className="text-xs text-muted-foreground uppercase tracking-wider">
+                Histórico ({history.length})
+              </Label>
+            </div>
+            <div className="bg-background/30 rounded-lg border border-border/30 overflow-hidden">
               {history.length === 0 ? (
-                <p className="text-xs text-muted-foreground p-3 text-center">
+                <p className="text-xs text-muted-foreground p-4 text-center">
                   Nenhum registro
                 </p>
               ) : (
-                history.map((entry) => (
-                  <div key={entry.id} className="log-entry group flex items-start justify-between gap-2">
-                    <div className="flex-1 min-w-0">
-                      <span className="log-timestamp">[{entry.timestamp}]</span>
-                      <p className="text-foreground mt-0.5 break-words">{entry.message}</p>
+                <div className="divide-y divide-border/30 max-h-48 overflow-y-auto">
+                  {history.map((entry) => (
+                    <div key={entry.id} className="group p-3 hover:bg-muted/20 transition-colors">
+                      <div className="flex items-start justify-between gap-2">
+                        <div className="flex-1 min-w-0">
+                          <span className="text-[10px] font-mono text-primary/70">
+                            {entry.timestamp}
+                          </span>
+                          <p className="text-xs text-foreground mt-0.5">{entry.message}</p>
+                        </div>
+                        <button
+                          onClick={() => handleDeleteLog(entry.id)}
+                          className="opacity-0 group-hover:opacity-100 text-destructive/70 hover:text-destructive transition-all p-1"
+                        >
+                          <Trash2 className="w-3 h-3" />
+                        </button>
+                      </div>
                     </div>
-                    <button
-                      onClick={() => handleDeleteLog(entry.id)}
-                      className="opacity-0 group-hover:opacity-100 text-destructive hover:text-destructive/80 transition-opacity p-1"
-                    >
-                      <Trash2 className="w-3 h-3" />
-                    </button>
-                  </div>
-                ))
+                  ))}
+                </div>
               )}
             </div>
           </div>
         </div>
       </ScrollArea>
 
-      <div className="p-4 border-t border-border">
+      {/* Footer */}
+      <div className="p-5 border-t border-border/50">
         <Button onClick={handleSave} className="w-full">
           <Save className="w-4 h-4 mr-2" />
-          Salvar Alterações
+          Salvar
         </Button>
       </div>
     </div>

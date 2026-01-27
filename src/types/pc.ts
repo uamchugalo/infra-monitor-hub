@@ -18,4 +18,10 @@ export interface LabLog {
   id: string;
   timestamp: string;
   message: string;
+  labId?: string;
+}
+
+export interface LabData {
+  pcs: PC[];
+  logs: LabLog[];
 }

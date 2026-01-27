@@ -1,20 +1,19 @@
 import { useState } from 'react';
 import { LabLog as LabLogType } from '@/types/pc';
 import { formatTimestamp, generateId } from '@/utils/pcData';
-import { Building2, Plus, Trash2, ChevronDown, ChevronUp } from 'lucide-react';
+import { FileText, Plus, Trash2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { ScrollArea } from '@/components/ui/scroll-area';
 
 interface LabLogProps {
   logs: LabLogType[];
+  labName: string;
   onAddLog: (log: LabLogType) => void;
   onDeleteLog: (id: string) => void;
 }
 
-export function LabLog({ logs, onAddLog, onDeleteLog }: LabLogProps) {
+export function LabLog({ logs, labName, onAddLog, onDeleteLog }: LabLogProps) {
   const [newLog, setNewLog] = useState('');
-  const [isExpanded, setIsExpanded] = useState(true);
 
   const handleAddLog = () => {
     if (!newLog.trim()) return;
@@ -37,73 +36,68 @@ export function LabLog({ logs, onAddLog, onDeleteLog }: LabLogProps) {
   };
 
   return (
-    <div className="panel-section flex flex-col h-full">
-      <button
-        onClick={() => setIsExpanded(!isExpanded)}
-        className="flex items-center justify-between p-4 border-b border-border hover:bg-accent/50 transition-colors"
-      >
-        <h2 className="font-semibold text-foreground flex items-center gap-2">
-          <Building2 className="w-4 h-4 text-primary" />
-          Log Geral do Laboratório
-          <span className="text-xs text-muted-foreground font-normal">
-            ({logs.length})
-          </span>
-        </h2>
-        {isExpanded ? (
-          <ChevronUp className="w-4 h-4 text-muted-foreground" />
+    <div className="bg-card/30 backdrop-blur-sm rounded-xl border border-border/30 overflow-hidden">
+      {/* Header */}
+      <div className="flex items-center gap-3 p-4 border-b border-border/30">
+        <div className="p-1.5 bg-primary/10 rounded-lg">
+          <FileText className="w-4 h-4 text-primary" />
+        </div>
+        <div className="flex-1">
+          <h3 className="text-sm font-medium text-foreground">Log do {labName}</h3>
+          <p className="text-[10px] text-muted-foreground">{logs.length} registros</p>
+        </div>
+      </div>
+
+      {/* Input */}
+      <div className="p-3 border-b border-border/30">
+        <div className="flex gap-2">
+          <Input
+            value={newLog}
+            onChange={(e) => setNewLog(e.target.value)}
+            onKeyPress={handleKeyPress}
+            className="bg-background/50 border-border/50 text-sm"
+            placeholder="Evento do laboratório..."
+          />
+          <Button 
+            onClick={handleAddLog} 
+            disabled={!newLog.trim()}
+            size="icon"
+            className="shrink-0"
+          >
+            <Plus className="w-4 h-4" />
+          </Button>
+        </div>
+      </div>
+
+      {/* Logs */}
+      <div className="max-h-40 overflow-y-auto">
+        {logs.length === 0 ? (
+          <p className="text-xs text-muted-foreground p-4 text-center">
+            Nenhum evento
+          </p>
         ) : (
-          <ChevronDown className="w-4 h-4 text-muted-foreground" />
-        )}
-      </button>
-
-      {isExpanded && (
-        <>
-          <div className="p-3 border-b border-border">
-            <div className="flex gap-2">
-              <Input
-                value={newLog}
-                onChange={(e) => setNewLog(e.target.value)}
-                onKeyPress={handleKeyPress}
-                className="bg-input border-border text-sm"
-                placeholder="Ex: Manutenção no ar condicionado..."
-              />
-              <Button 
-                onClick={handleAddLog} 
-                disabled={!newLog.trim()}
-                size="icon"
-                className="shrink-0"
-              >
-                <Plus className="w-4 h-4" />
-              </Button>
-            </div>
-          </div>
-
-          <ScrollArea className="flex-1 max-h-64">
-            <div className="divide-y divide-border/50">
-              {logs.length === 0 ? (
-                <p className="text-xs text-muted-foreground p-4 text-center">
-                  Nenhum evento registrado no laboratório
-                </p>
-              ) : (
-                logs.map((entry) => (
-                  <div key={entry.id} className="log-entry group flex items-start justify-between gap-2">
-                    <div className="flex-1 min-w-0">
-                      <span className="log-timestamp">[{entry.timestamp}]</span>
-                      <p className="text-foreground mt-0.5 break-words">{entry.message}</p>
-                    </div>
-                    <button
-                      onClick={() => onDeleteLog(entry.id)}
-                      className="opacity-0 group-hover:opacity-100 text-destructive hover:text-destructive/80 transition-opacity p-1"
-                    >
-                      <Trash2 className="w-3 h-3" />
-                    </button>
+          <div className="divide-y divide-border/20">
+            {logs.map((entry) => (
+              <div key={entry.id} className="group p-3 hover:bg-muted/10 transition-colors">
+                <div className="flex items-start justify-between gap-2">
+                  <div className="flex-1 min-w-0">
+                    <span className="text-[10px] font-mono text-primary/60">
+                      {entry.timestamp}
+                    </span>
+                    <p className="text-xs text-foreground/90 mt-0.5">{entry.message}</p>
                   </div>
-                ))
-              )}
-            </div>
-          </ScrollArea>
-        </>
-      )}
+                  <button
+                    onClick={() => onDeleteLog(entry.id)}
+                    className="opacity-0 group-hover:opacity-100 text-destructive/60 hover:text-destructive transition-all p-1"
+                  >
+                    <Trash2 className="w-3 h-3" />
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
