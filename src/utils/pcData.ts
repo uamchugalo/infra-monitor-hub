@@ -18,10 +18,10 @@ function getRandomStatus(): PCStatus {
   return 'offline';
 }
 
-export function generateInitialPCs(): PC[] {
+export function generateInitialPCs(labId: string): PC[] {
   return Array.from({ length: 40 }, (_, i) => ({
     id: i + 1,
-    name: `PC-${String(i + 1).padStart(3, '0')}`,
+    name: `${labId}-PC${String(i + 1).padStart(2, '0')}`,
     mac: generateMAC(),
     status: getRandomStatus(),
     history: [],
@@ -42,3 +42,12 @@ export function formatTimestamp(date: Date = new Date()): string {
 export function generateId(): string {
   return `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
 }
+
+export const LABS = [
+  { id: '109', name: 'Lab 109', description: 'Térreo - Ala Norte' },
+  { id: '110', name: 'Lab 110', description: 'Térreo - Ala Sul' },
+  { id: '308', name: 'Lab 308', description: '3º Andar - Ala Norte' },
+  { id: '309', name: 'Lab 309', description: '3º Andar - Ala Sul' },
+] as const;
+
+export type LabId = typeof LABS[number]['id'];
