@@ -17,13 +17,13 @@ export function LabLog({ logs, labName, onAddLog, onDeleteLog }: LabLogProps) {
 
   const handleAddLog = () => {
     if (!newLog.trim()) return;
-    
+
     const entry: LabLogType = {
       id: generateId(),
       timestamp: formatTimestamp(),
       message: newLog.trim(),
     };
-    
+
     onAddLog(entry);
     setNewLog('');
   };
@@ -58,8 +58,8 @@ export function LabLog({ logs, labName, onAddLog, onDeleteLog }: LabLogProps) {
             className="text-sm"
             placeholder="Evento do laboratório..."
           />
-          <Button 
-            onClick={handleAddLog} 
+          <Button
+            onClick={handleAddLog}
             disabled={!newLog.trim()}
             size="icon"
             className="shrink-0"
@@ -70,7 +70,7 @@ export function LabLog({ logs, labName, onAddLog, onDeleteLog }: LabLogProps) {
       </div>
 
       {/* Logs */}
-      <div className="max-h-40 overflow-y-auto">
+      <div className="max-h-[600px] overflow-y-auto">
         {logs.length === 0 ? (
           <p className="text-xs text-muted-foreground p-4 text-center">
             Nenhum evento

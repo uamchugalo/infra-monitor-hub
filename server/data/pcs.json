@@ -1,0 +1,1626 @@
+[
+  {
+    "id": 1,
+    "name": "IBD10901P9090",
+    "ip": "10.70.60.11",
+    "mac": "d4:5d:df:09:d5:93",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-109",
+    "switchPort": "1"
+  },
+  {
+    "id": 2,
+    "name": "IBD10902P9091",
+    "ip": "10.70.60.12",
+    "mac": "10:05:01:9c:7d:34",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-109",
+    "switchPort": "2"
+  },
+  {
+    "id": 3,
+    "name": "IBD10903P9089",
+    "ip": "10.70.60.13",
+    "mac": "d4:5d:df:09:d4:a9",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-109",
+    "switchPort": "3"
+  },
+  {
+    "id": 4,
+    "name": "IBD10904P9088",
+    "ip": "10.70.60.14",
+    "mac": "d4:5d:df:09:d4:b9",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-109",
+    "switchPort": "4"
+  },
+  {
+    "id": 5,
+    "name": "IBD10905P9087",
+    "ip": "10.70.60.15",
+    "mac": "d4:5d:df:09:d5:a4",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-109",
+    "switchPort": "5"
+  },
+  {
+    "id": 6,
+    "name": "IBD10906P9086",
+    "ip": "10.70.60.16",
+    "mac": "d4:5d:df:09:d5:9c",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-109",
+    "switchPort": "6"
+  },
+  {
+    "id": 7,
+    "name": "IBD10907P9085",
+    "ip": "10.70.60.17",
+    "mac": "d4:5d:df:09:d6:65",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-109",
+    "switchPort": "7"
+  },
+  {
+    "id": 8,
+    "name": "IBD10908P9084",
+    "ip": "10.70.60.18",
+    "mac": "d4:5d:df:09:d5:96",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-109",
+    "switchPort": "8"
+  },
+  {
+    "id": 9,
+    "name": "IBD10909P9069",
+    "ip": "10.70.60.19",
+    "mac": "10:05:01:9c:7c:a9",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-109",
+    "switchPort": "9"
+  },
+  {
+    "id": 10,
+    "name": "IBD10910P9071",
+    "ip": "10.70.60.20",
+    "mac": "10:05:01:9c:7d:87",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-109",
+    "switchPort": "10"
+  },
+  {
+    "id": 11,
+    "name": "IBD10911P9073",
+    "ip": "10.70.60.21",
+    "mac": "10:05:01:9c:7d:80",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-109",
+    "switchPort": "11"
+  },
+  {
+    "id": 12,
+    "name": "IBD10912P9075",
+    "ip": "10.70.60.22",
+    "mac": "d4:5d:df:09:d4:b8",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-109",
+    "switchPort": "12"
+  },
+  {
+    "id": 13,
+    "name": "IBD10913P9076",
+    "ip": "10.70.60.23",
+    "mac": "d4:5d:df:09:d6:88",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-109",
+    "switchPort": "13"
+  },
+  {
+    "id": 14,
+    "name": "IBD10914P9079",
+    "ip": "10.70.60.24",
+    "mac": "d4:5d:df:09:d6:6a",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-109",
+    "switchPort": "14"
+  },
+  {
+    "id": 15,
+    "name": "IBD10915P9080",
+    "ip": "10.70.60.25",
+    "mac": "d4:5d:df:09:d5:8d",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-109",
+    "switchPort": "15"
+  },
+  {
+    "id": 16,
+    "name": "IBD10916P9082",
+    "ip": "10.70.60.26",
+    "mac": "d4:5d:df:09:d4:b2",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-109",
+    "switchPort": "16"
+  },
+  {
+    "id": 17,
+    "name": "IBD10917P9083",
+    "ip": "10.70.60.27",
+    "mac": "d4:5d:df:09:d4:c7",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-109",
+    "switchPort": "17"
+  },
+  {
+    "id": 18,
+    "name": "IBD10918P9081",
+    "ip": "10.70.60.28",
+    "mac": "d4:5d:df:09:d4:ca",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-109",
+    "switchPort": "18"
+  },
+  {
+    "id": 19,
+    "name": "IBD10919P9078",
+    "ip": "10.70.60.29",
+    "mac": "d4:5d:df:09:d4:bb",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-109",
+    "switchPort": "19"
+  },
+  {
+    "id": 20,
+    "name": "IBD10920P9077",
+    "ip": "10.70.60.30",
+    "mac": "10:05:01:9c:7d:c7",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-109",
+    "switchPort": "20"
+  },
+  {
+    "id": 21,
+    "name": "IBD10921P9074",
+    "ip": "10.70.60.31",
+    "mac": "d4:5d:df:09:d6:67",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-109",
+    "switchPort": "21"
+  },
+  {
+    "id": 22,
+    "name": "IBD10922P9072",
+    "ip": "10.70.60.32",
+    "mac": "d4:5d:df:09:d4:ac",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-109",
+    "switchPort": "22"
+  },
+  {
+    "id": 23,
+    "name": "IBD10923P9070",
+    "ip": "10.70.60.33",
+    "mac": "d4:5d:df:09:d6:54",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-109",
+    "switchPort": "23"
+  },
+  {
+    "id": 24,
+    "name": "IBD10924P9068",
+    "ip": "10.70.60.34",
+    "mac": "d4:5d:df:09:d6:82",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-109",
+    "switchPort": "24"
+  },
+  {
+    "id": 25,
+    "name": "IBD10925P9066",
+    "ip": "10.70.60.35",
+    "mac": "d4:5d:df:09:d6:6d",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-109",
+    "switchPort": "25"
+  },
+  {
+    "id": 26,
+    "name": "IBD10926P",
+    "ip": "10.70.60.36",
+    "mac": "d4:5d:df:09:d4:af",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-109",
+    "switchPort": "26"
+  },
+  {
+    "id": 27,
+    "name": "IBD10927P9052",
+    "ip": "10.70.60.37",
+    "mac": "d4:5d:df:09:d5:90",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-109",
+    "switchPort": "27"
+  },
+  {
+    "id": 28,
+    "name": "IBD10928P9062",
+    "ip": "10.70.60.38",
+    "mac": "10:05:01:9c:7c:95",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-109",
+    "switchPort": "28"
+  },
+  {
+    "id": 29,
+    "name": "IBD10929P9059",
+    "ip": "10.70.60.39",
+    "mac": "d4:5d:df:09:d4:7f",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-109",
+    "switchPort": "29"
+  },
+  {
+    "id": 30,
+    "name": "IBD10930P9057",
+    "ip": "10.70.60.40",
+    "mac": "d4:5d:df:09:d1:b3",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-109",
+    "switchPort": "30"
+  },
+  {
+    "id": 31,
+    "name": "IBD10931P9053",
+    "ip": "10.70.60.41",
+    "mac": "d4:5d:df:09:d6:76",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-109",
+    "switchPort": "31"
+  },
+  {
+    "id": 32,
+    "name": "IBD10932P9055",
+    "ip": "10.70.60.42",
+    "mac": "10:05:01:9c:7e:d7",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-109",
+    "switchPort": "32"
+  },
+  {
+    "id": 33,
+    "name": "IBD10933P9054",
+    "ip": "10.70.60.43",
+    "mac": "d4:5d:df:09:d4:b3",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-109",
+    "switchPort": "33"
+  },
+  {
+    "id": 34,
+    "name": "IBD10934P9056",
+    "ip": "10.70.60.44",
+    "mac": "10:05:01:9c:7d:ca",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-109",
+    "switchPort": "34"
+  },
+  {
+    "id": 35,
+    "name": "IBD10935P9058",
+    "ip": "10.70.60.45",
+    "mac": "d4:5d:df:09:d6:59",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-109",
+    "switchPort": "35"
+  },
+  {
+    "id": 36,
+    "name": "IBD10936P9060",
+    "ip": "10.70.60.46",
+    "mac": "d4:5d:df:09:d6:78",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-109",
+    "switchPort": "36"
+  },
+  {
+    "id": 37,
+    "name": "IBD10937P9037",
+    "ip": "10.70.60.47",
+    "mac": "10:05:01:9c:7d:a3",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-109",
+    "switchPort": "37"
+  },
+  {
+    "id": 38,
+    "name": "IBD10938P9063",
+    "ip": "10.70.60.48",
+    "mac": "d4:5d:df:09:d5:8a",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-109",
+    "switchPort": "38"
+  },
+  {
+    "id": 39,
+    "name": "IBD10939P9064",
+    "ip": "10.70.60.49",
+    "mac": "d4:5d:df:09:d4:9a",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-109",
+    "switchPort": "39"
+  },
+  {
+    "id": 40,
+    "name": "IBD10940P9067",
+    "ip": "10.70.60.50",
+    "mac": "10:05:01:9c:7d:c1",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-109",
+    "switchPort": "40"
+  },
+  {
+    "id": 41,
+    "name": "IBD10900P9045",
+    "ip": "10.70.60.218",
+    "mac": "d4:5d:df:09:d5:99",
+    "status": "online",
+    "history": [],
+    "switchId": null,
+    "switchPort": null
+  },
+  {
+    "id": 1,
+    "name": "IBD11001P9251",
+    "ip": "10.70.60.51",
+    "mac": "10:62:e5:dd:e1:4f",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-110",
+    "switchPort": "1"
+  },
+  {
+    "id": 2,
+    "name": "IBD11002P9248",
+    "ip": "10.70.60.52",
+    "mac": "10:62:e5:dd:80:fa",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-110",
+    "switchPort": "2"
+  },
+  {
+    "id": 3,
+    "name": "IBD11003P9249",
+    "ip": "10.70.60.53",
+    "mac": "10:62:e5:dd:b1:67",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-110",
+    "switchPort": "3"
+  },
+  {
+    "id": 4,
+    "name": "IBD11004P9261",
+    "ip": "10.70.60.54",
+    "mac": "10:62:e5:dd:f1:20",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-110",
+    "switchPort": "4"
+  },
+  {
+    "id": 5,
+    "name": "IBD11005P9246",
+    "ip": "10.70.60.55",
+    "mac": "10:62:e5:dd:f1:3e",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-110",
+    "switchPort": "5"
+  },
+  {
+    "id": 6,
+    "name": "IBD11006P9255",
+    "ip": "10.70.60.56",
+    "mac": "10:62:e5:dd:d1:af",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-110",
+    "switchPort": "6"
+  },
+  {
+    "id": 7,
+    "name": "IBD11007P9250",
+    "ip": "10.70.60.57",
+    "mac": "10:62:e5:dd:12:51",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-110",
+    "switchPort": "7"
+  },
+  {
+    "id": 8,
+    "name": "IBD11008P9247",
+    "ip": "10.70.60.58",
+    "mac": "10:62:e5:dd:b1:fd",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-110",
+    "switchPort": "8"
+  },
+  {
+    "id": 9,
+    "name": "IBD11009P9262",
+    "ip": "10.70.60.59",
+    "mac": "10:62:e5:dd:e1:1d",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-110",
+    "switchPort": "9"
+  },
+  {
+    "id": 10,
+    "name": "IBD11010P9236",
+    "ip": "10.70.60.60",
+    "mac": "10:62:e5:dd:f1:19",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-110",
+    "switchPort": "10"
+  },
+  {
+    "id": 11,
+    "name": "IBD110119243",
+    "ip": "10.70.60.61",
+    "mac": "10:62:e5:dd:f1:7d",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-110",
+    "switchPort": "11"
+  },
+  {
+    "id": 12,
+    "name": "IBD11012P9234",
+    "ip": "10.70.60.62",
+    "mac": "10:62:e5:dd:12:ae",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-110",
+    "switchPort": "12"
+  },
+  {
+    "id": 13,
+    "name": "IBD11013P9233",
+    "ip": "10.70.60.63",
+    "mac": "10:62:e5:dd:f1:13",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-110",
+    "switchPort": "13"
+  },
+  {
+    "id": 14,
+    "name": "IBD11014P9259",
+    "ip": "10.70.60.64",
+    "mac": "10:62:e5:dd:12:ca",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-110",
+    "switchPort": "14"
+  },
+  {
+    "id": 15,
+    "name": "IBD11015P9253",
+    "ip": "10.70.60.65",
+    "mac": "10:62:e5:dd:12:5d",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-110",
+    "switchPort": "15"
+  },
+  {
+    "id": 16,
+    "name": "IBD11016P9254",
+    "ip": "10.70.60.66",
+    "mac": "10:62:e5:dd:f1:1a",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-110",
+    "switchPort": "16"
+  },
+  {
+    "id": 17,
+    "name": "IDB11017P9237X",
+    "ip": "10.70.60.67",
+    "mac": "10:62:e5:dd:12:ab",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-110",
+    "switchPort": "17"
+  },
+  {
+    "id": 18,
+    "name": "IBD11018P9263",
+    "ip": "10.70.60.68",
+    "mac": "10:62:e5:dd:12:61",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-110",
+    "switchPort": "18"
+  },
+  {
+    "id": 19,
+    "name": "IBD11019P9240",
+    "ip": "10.70.60.69",
+    "mac": "10:62:e5:dd:02:fb",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-110",
+    "switchPort": "19"
+  },
+  {
+    "id": 20,
+    "name": "IBD11020P9256",
+    "ip": "10.70.60.70",
+    "mac": "10:62:e5:dd:12:b7",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-110",
+    "switchPort": "20"
+  },
+  {
+    "id": 21,
+    "name": "IBD11021P9231",
+    "ip": "10.70.60.71",
+    "mac": "10:62:e5:dd:e1:46",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-110",
+    "switchPort": "21"
+  },
+  {
+    "id": 22,
+    "name": "IBD11022P9235",
+    "ip": "10.70.60.72",
+    "mac": "10:62:e5:dd:12:cd",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-110",
+    "switchPort": "22"
+  },
+  {
+    "id": 23,
+    "name": "IBD11023P9244",
+    "ip": "10.70.60.73",
+    "mac": "10:62:e5:dd:12:d0",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-110",
+    "switchPort": "23"
+  },
+  {
+    "id": 24,
+    "name": "IBD11024P9264",
+    "ip": "10.70.60.74",
+    "mac": "10:62:e5:dd:12:52",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-110",
+    "switchPort": "24"
+  },
+  {
+    "id": 25,
+    "name": "IBD11025P9257",
+    "ip": "10.70.60.75",
+    "mac": "10:62:e5:dd:c1:02",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-110",
+    "switchPort": "25"
+  },
+  {
+    "id": 26,
+    "name": "IBD11026P9238",
+    "ip": "10.70.60.76",
+    "mac": "10:62:e5:dd:12:0f",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-110",
+    "switchPort": "26"
+  },
+  {
+    "id": 27,
+    "name": "IBD11027P9239",
+    "ip": "10.70.60.77",
+    "mac": "10:62:e5:dd:b1:f7",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-110",
+    "switchPort": "27"
+  },
+  {
+    "id": 28,
+    "name": "IBD11028P9238",
+    "ip": "10.70.60.78",
+    "mac": "10:62:e5:dd:02:f9",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-110",
+    "switchPort": "28"
+  },
+  {
+    "id": 29,
+    "name": "IBD11029P9266",
+    "ip": "10.70.60.79",
+    "mac": "10:62:e5:dd:f1:7b",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-110",
+    "switchPort": "29"
+  },
+  {
+    "id": 30,
+    "name": "IBD11030P9260",
+    "ip": "10.70.60.80",
+    "mac": "10:62:e5:dd:f1:58",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-110",
+    "switchPort": "30"
+  },
+  {
+    "id": 31,
+    "name": "IBD11031P9229",
+    "ip": "10.70.60.81",
+    "mac": "10:62:e5:dd:12:95",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-110",
+    "switchPort": "31"
+  },
+  {
+    "id": 32,
+    "name": "IDB11032P9232",
+    "ip": "10.70.60.82",
+    "mac": "10:62:e5:dd:12:5b",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-110",
+    "switchPort": "32"
+  },
+  {
+    "id": 33,
+    "name": "IBD11033P9242",
+    "ip": "10.70.60.83",
+    "mac": "10:62:e5:dd:12:4c",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-110",
+    "switchPort": "33"
+  },
+  {
+    "id": 34,
+    "name": "IBD11034P9241",
+    "ip": "10.70.60.84",
+    "mac": "10:62:e5:dd:12:bf",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-110",
+    "switchPort": "34"
+  },
+  {
+    "id": 35,
+    "name": "IBD11035P9227",
+    "ip": "10.70.60.85",
+    "mac": "10:62:e5:dd:12:6d",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-110",
+    "switchPort": "35"
+  },
+  {
+    "id": 36,
+    "name": "IBD11036P9230",
+    "ip": "10.70.60.86",
+    "mac": "10:62:e5:dd:e1:4c",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-110",
+    "switchPort": "36"
+  },
+  {
+    "id": 37,
+    "name": "IBD11037P9252",
+    "ip": "10.70.60.87",
+    "mac": "10:62:e5:dd:e1:f3",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-110",
+    "switchPort": "37"
+  },
+  {
+    "id": 38,
+    "name": "IBD11038P9229",
+    "ip": "10.70.60.88",
+    "mac": "10:62:e5:dd:12:7e",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-110",
+    "switchPort": "38"
+  },
+  {
+    "id": 39,
+    "name": "IBD11039P9258",
+    "ip": "10.70.60.89",
+    "mac": "10:62:e5:dd:12:56",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-110",
+    "switchPort": "39"
+  },
+  {
+    "id": 40,
+    "name": "IBD11040P9265",
+    "ip": "10.70.60.90",
+    "mac": "10:62:e5:dd:12:d5",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-110",
+    "switchPort": "40"
+  },
+  {
+    "id": 41,
+    "name": "IBD11041P",
+    "ip": "10.70.60.231",
+    "mac": "",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-110",
+    "switchPort": "41"
+  },
+  {
+    "id": 42,
+    "name": "IBD11000P193863",
+    "ip": "10.70.60.219",
+    "mac": "60:c7:27:09:15:86",
+    "status": "online",
+    "history": [],
+    "switchId": null,
+    "switchPort": null
+  },
+  {
+    "id": 1,
+    "name": "IBD30801P193879",
+    "ip": "10.70.60.91",
+    "mac": "60:c7:27:09:23:47",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-308",
+    "switchPort": "1"
+  },
+  {
+    "id": 2,
+    "name": "IBD30802P193861",
+    "ip": "10.70.60.92",
+    "mac": "60:c7:27:09:23:34",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-308",
+    "switchPort": "2"
+  },
+  {
+    "id": 3,
+    "name": "IBD30803P193873",
+    "ip": "10.70.60.93",
+    "mac": "d8:cb:8a:dc:95:d1",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-308",
+    "switchPort": "3"
+  },
+  {
+    "id": 4,
+    "name": "IBD30804P196862",
+    "ip": "10.70.60.94",
+    "mac": "60:c7:27:09:15:7c",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-308",
+    "switchPort": "4"
+  },
+  {
+    "id": 5,
+    "name": "IBD30805P193874",
+    "ip": "10.70.60.95",
+    "mac": "60:c7:27:09:15:f6",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-308",
+    "switchPort": "5"
+  },
+  {
+    "id": 6,
+    "name": "IBD30806P193868",
+    "ip": "10.70.60.96",
+    "mac": "60:c7:27:09:22:e8",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-308",
+    "switchPort": "6"
+  },
+  {
+    "id": 7,
+    "name": "IBD30807P193880",
+    "ip": "10.70.60.97",
+    "mac": "60:c7:27:09:15:9c",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-308",
+    "switchPort": "7"
+  },
+  {
+    "id": 8,
+    "name": "IBD30808P193875",
+    "ip": "10.70.60.98",
+    "mac": "d8:cb:8a:dc:96:06",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-308",
+    "switchPort": "8"
+  },
+  {
+    "id": 9,
+    "name": "IBD30809P172764",
+    "ip": "10.70.60.99",
+    "mac": "5c:60:ba:b1:5a:96",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-308",
+    "switchPort": "9"
+  },
+  {
+    "id": 10,
+    "name": "IBD30810P172748",
+    "ip": "10.70.60.100",
+    "mac": "5c:60:ba:b1:3a:cb",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-308",
+    "switchPort": "10"
+  },
+  {
+    "id": 11,
+    "name": "IBD30811P193869",
+    "ip": "10.70.60.101",
+    "mac": "60:c7:27:09:15:97",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-308",
+    "switchPort": "11"
+  },
+  {
+    "id": 12,
+    "name": "IBD30812P193872",
+    "ip": "10.70.60.102",
+    "mac": "60:c7:27:09:15:b0",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-308",
+    "switchPort": "12"
+  },
+  {
+    "id": 13,
+    "name": "IBD30813P93878",
+    "ip": "10.70.60.103",
+    "mac": "60:c7:27:09:15:96",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-308",
+    "switchPort": "13"
+  },
+  {
+    "id": 14,
+    "name": "IBD30814P193871",
+    "ip": "10.70.60.104",
+    "mac": "60:c7:27:09:15:eb",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-308",
+    "switchPort": "14"
+  },
+  {
+    "id": 15,
+    "name": "IBD30815P193866",
+    "ip": "10.70.60.105",
+    "mac": "60:c7:27:09:15:a0",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-308",
+    "switchPort": "15"
+  },
+  {
+    "id": 16,
+    "name": "IBD30816P193882",
+    "ip": "10.70.60.106",
+    "mac": "60:c7:27:09:15:7b",
+    "status": "offline",
+    "history": [],
+    "switchId": "sw-308",
+    "switchPort": "16"
+  },
+  {
+    "id": 17,
+    "name": "IBD30817P193865",
+    "ip": "10.70.60.107",
+    "mac": "60:c7:27:09:15:81",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-308",
+    "switchPort": "17"
+  },
+  {
+    "id": 18,
+    "name": "IBD30818P193877",
+    "ip": "10.70.60.108",
+    "mac": "60:c7:27:09:15:c1",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-308",
+    "switchPort": "18"
+  },
+  {
+    "id": 19,
+    "name": "IBD30819P193867",
+    "ip": "10.70.60.109",
+    "mac": "60:c7:27:09:23:8e",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-308",
+    "switchPort": "19"
+  },
+  {
+    "id": 20,
+    "name": "IBD30820P193876",
+    "ip": "10.70.60.110",
+    "mac": "60:c7:27:09:15:91",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-308",
+    "switchPort": "20"
+  },
+  {
+    "id": 21,
+    "name": "IBD30821P193860",
+    "ip": "10.70.60.111",
+    "mac": "d8:cb:8a:dc:96:02",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-308",
+    "switchPort": "21"
+  },
+  {
+    "id": 22,
+    "name": "IBD30822P193883",
+    "ip": "10.70.60.112",
+    "mac": "60:c7:27:09:15:ad",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-308",
+    "switchPort": "22"
+  },
+  {
+    "id": 23,
+    "name": "IBD30823P172753",
+    "ip": "10.70.60.113",
+    "mac": "5c:60:ba:b1:4a:cd",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-308",
+    "switchPort": "23"
+  },
+  {
+    "id": 24,
+    "name": "IBD30824P172765",
+    "ip": "10.70.60.114",
+    "mac": "5c:60:ba:b1:5a:c9",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-308",
+    "switchPort": "24"
+  },
+  {
+    "id": 25,
+    "name": "IBD30825P172758",
+    "ip": "10.70.60.115",
+    "mac": "5c:60:ba:b1:5a:b5",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-308",
+    "switchPort": "25"
+  },
+  {
+    "id": 26,
+    "name": "IBD30826P172747",
+    "ip": "10.70.60.116",
+    "mac": "5c:60:ba:b1:5a:df",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-308",
+    "switchPort": "26"
+  },
+  {
+    "id": 27,
+    "name": "IBD30827P172750",
+    "ip": "10.70.60.117",
+    "mac": "5c:60:ba:b1:3a:94",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-308",
+    "switchPort": "27"
+  },
+  {
+    "id": 28,
+    "name": "IBD30828P172751",
+    "ip": "10.70.60.118",
+    "mac": "5c:60:ba:b1:5a:97",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-308",
+    "switchPort": "28"
+  },
+  {
+    "id": 29,
+    "name": "IBD30829P172761",
+    "ip": "10.70.60.119",
+    "mac": "5c:60:ba:b1:5a:cf",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-308",
+    "switchPort": "29"
+  },
+  {
+    "id": 30,
+    "name": "IBD30830P172760",
+    "ip": "10.70.60.120",
+    "mac": "5c:60:ba:b1:5a:8c",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-308",
+    "switchPort": "30"
+  },
+  {
+    "id": 31,
+    "name": "IBD30831P172754",
+    "ip": "10.70.60.121",
+    "mac": "5c:60:ba:b1:3a:c9",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-308",
+    "switchPort": "31"
+  },
+  {
+    "id": 32,
+    "name": "IBD30832P172156",
+    "ip": "10.70.60.122",
+    "mac": "5c:60:ba:b1:5a:88",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-308",
+    "switchPort": "32"
+  },
+  {
+    "id": 33,
+    "name": "IBD30833P172755",
+    "ip": "10.70.60.123",
+    "mac": "5c:60:ba:b1:5a:e2",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-308",
+    "switchPort": "33"
+  },
+  {
+    "id": 34,
+    "name": "IBD30834P172752",
+    "ip": "10.70.60.124",
+    "mac": "5c:60:ba:b1:5a:9f",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-308",
+    "switchPort": "34"
+  },
+  {
+    "id": 35,
+    "name": "IBD30835P172767",
+    "ip": "10.70.60.125",
+    "mac": "5c:60:ba:b1:5a:8f",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-308",
+    "switchPort": "35"
+  },
+  {
+    "id": 36,
+    "name": "IBD30836P172759",
+    "ip": "10.70.60.126",
+    "mac": "5c:60:ba:b1:3a:81",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-308",
+    "switchPort": "36"
+  },
+  {
+    "id": 37,
+    "name": "IBD30837P172757",
+    "ip": "10.70.60.127",
+    "mac": "5c:60:ba:b1:5a:ed",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-308",
+    "switchPort": "37"
+  },
+  {
+    "id": 38,
+    "name": "IBD30838P172763",
+    "ip": "10.70.60.128",
+    "mac": "5c:60:ba:b1:3a:1b",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-308",
+    "switchPort": "38"
+  },
+  {
+    "id": 39,
+    "name": "IBD30839P172762",
+    "ip": "10.70.60.129",
+    "mac": "5c:60:ba:b1:3a:05",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-308",
+    "switchPort": "39"
+  },
+  {
+    "id": 40,
+    "name": "IBD30840P172749",
+    "ip": "10.70.60.130",
+    "mac": "5c:60:ba:b1:4a:3b",
+    "status": "offline",
+    "history": [],
+    "switchId": "sw-308",
+    "switchPort": "40"
+  },
+  {
+    "id": 1,
+    "name": "IBD309P01179721",
+    "ip": "10.70.60.131",
+    "mac": "64:1c:67:69:5d:4a",
+    "status": "online",
+    "history": []
+  },
+  {
+    "id": 2,
+    "name": "IBD30902P179737",
+    "ip": "10.70.60.132",
+    "mac": "64:1c:67:6a:24:f1",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-309",
+    "switchPort": "2"
+  },
+  {
+    "id": 3,
+    "name": "IBD30903P179746",
+    "ip": "10.70.60.133",
+    "mac": "64:1c:67:68:e4:04",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-309",
+    "switchPort": "3"
+  },
+  {
+    "id": 4,
+    "name": "IBD30904P179733",
+    "ip": "10.70.60.134",
+    "mac": "64:1c:67:6a:55:72",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-309",
+    "switchPort": "4"
+  },
+  {
+    "id": 5,
+    "name": "IBD30905P179726",
+    "ip": "10.70.60.135",
+    "mac": "64:1c:67:6a:54:fd",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-309",
+    "switchPort": "5"
+  },
+  {
+    "id": 6,
+    "name": "IBD30906P179727",
+    "ip": "10.70.60.136",
+    "mac": "64:1c:67:68:22:f0",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-309",
+    "switchPort": "6"
+  },
+  {
+    "id": 7,
+    "name": "IBD30907P179760",
+    "ip": "10.70.60.137",
+    "mac": "64:1c:67:69:5b:7d",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-309",
+    "switchPort": "7"
+  },
+  {
+    "id": 8,
+    "name": "IBD30908P179712",
+    "ip": "10.70.60.138",
+    "mac": "64:1c:67:6a:55:19",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-309",
+    "switchPort": "8"
+  },
+  {
+    "id": 9,
+    "name": "IBD309P09179734",
+    "ip": "10.70.60.139",
+    "mac": "64:1c:67:69:5b:b4",
+    "status": "online",
+    "history": []
+  },
+  {
+    "id": 10,
+    "name": "IBD309P10179761",
+    "ip": "10.70.60.140",
+    "mac": "64:1c:67:69:4f:d3",
+    "status": "online",
+    "history": []
+  },
+  {
+    "id": 11,
+    "name": "IBD30911P179751",
+    "ip": "10.70.60.141",
+    "mac": "64:1c:67:69:5b:e0",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-309",
+    "switchPort": "11"
+  },
+  {
+    "id": 12,
+    "name": "IBD30912P179752",
+    "ip": "10.70.60.142",
+    "mac": "64:1c:67:72:99:fb",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-309",
+    "switchPort": "12"
+  },
+  {
+    "id": 13,
+    "name": "IBD30913P179729",
+    "ip": "10.70.60.143",
+    "mac": "64:1c:67:68:e3:35",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-309",
+    "switchPort": "13"
+  },
+  {
+    "id": 14,
+    "name": "IBD30914P179752",
+    "ip": "10.70.60.144",
+    "mac": "64:1c:67:6a:54:82",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-309",
+    "switchPort": "14"
+  },
+  {
+    "id": 15,
+    "name": "IBD30915P179758",
+    "ip": "10.70.60.145",
+    "mac": "64:1c:67:69:5d:17",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-309",
+    "switchPort": "15"
+  },
+  {
+    "id": 16,
+    "name": "IBD30916P179713",
+    "ip": "10.70.60.146",
+    "mac": "64:1c:67:69:47:59",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-309",
+    "switchPort": "16"
+  },
+  {
+    "id": 17,
+    "name": "IBD30917P179735",
+    "ip": "10.70.60.147",
+    "mac": "64:1c:67:68:e3:34",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-309",
+    "switchPort": "17"
+  },
+  {
+    "id": 18,
+    "name": "IBD30918P179757",
+    "ip": "10.70.60.148",
+    "mac": "64:1c:67:68:e0:cf",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-309",
+    "switchPort": "18"
+  },
+  {
+    "id": 19,
+    "name": "IBD30919179759",
+    "ip": "10.70.60.149",
+    "mac": "64:1c:67:69:4f:7b",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-309",
+    "switchPort": "19"
+  },
+  {
+    "id": 20,
+    "name": "IBD30920179718",
+    "ip": "10.70.60.150",
+    "mac": "64:1c:67:69:5c:75",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-309",
+    "switchPort": "20"
+  },
+  {
+    "id": 21,
+    "name": "IBD30921179731",
+    "ip": "10.70.60.151",
+    "mac": "64:1c:67:68:e5:11",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-309",
+    "switchPort": "21"
+  },
+  {
+    "id": 22,
+    "name": "IBD30922P179741",
+    "ip": "10.70.60.152",
+    "mac": "64:1c:67:68:dc:3c",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-309",
+    "switchPort": "22"
+  },
+  {
+    "id": 23,
+    "name": "IBD30923P179732",
+    "ip": "10.70.60.153",
+    "mac": "64:1c:67:69:5e:e9",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-309",
+    "switchPort": "23"
+  },
+  {
+    "id": 24,
+    "name": "IBD30924P179743",
+    "ip": "10.70.60.154",
+    "mac": "64:1c:67:69:46:3e",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-309",
+    "switchPort": "24"
+  },
+  {
+    "id": 25,
+    "name": "IBD30925179714",
+    "ip": "10.70.60.155",
+    "mac": "64:1c:67:68:e3:99",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-309",
+    "switchPort": "25"
+  },
+  {
+    "id": 26,
+    "name": "IBD30926179722",
+    "ip": "10.70.60.156",
+    "mac": "64:1c:67:68:23:b9",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-309",
+    "switchPort": "26"
+  },
+  {
+    "id": 27,
+    "name": "IBD30927179749",
+    "ip": "10.70.60.157",
+    "mac": "64:1c:67:6a:23:e8",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-309",
+    "switchPort": "27"
+  },
+  {
+    "id": 28,
+    "name": "IBD30928179755",
+    "ip": "10.70.60.158",
+    "mac": "64:1c:67:6a:23:e8",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-309",
+    "switchPort": "28"
+  },
+  {
+    "id": 29,
+    "name": "IBD30929P179723",
+    "ip": "10.70.60.159",
+    "mac": "64:1c:67:69:05:7a",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-309",
+    "switchPort": "29"
+  },
+  {
+    "id": 30,
+    "name": "IBD30930P179724",
+    "ip": "10.70.60.160",
+    "mac": "64:1c:67:68:22:2c",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-309",
+    "switchPort": "30"
+  },
+  {
+    "id": 31,
+    "name": "IBD30931P179756",
+    "ip": "10.70.60.161",
+    "mac": "64:1c:67:6a:2d:16",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-309",
+    "switchPort": "31"
+  },
+  {
+    "id": 32,
+    "name": "IBD30932P179742",
+    "ip": "10.70.60.162",
+    "mac": "64:1c:67:69:46:0a",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-309",
+    "switchPort": "32"
+  },
+  {
+    "id": 33,
+    "name": "IBD309P33179719",
+    "ip": "10.70.60.163",
+    "mac": "64:1c:67:6a:50:6e",
+    "status": "online",
+    "history": []
+  },
+  {
+    "id": 34,
+    "name": "IBD30934P179744",
+    "ip": "10.70.60.164",
+    "mac": "64:1c:67:69:46:2e",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-309",
+    "switchPort": "34"
+  },
+  {
+    "id": 35,
+    "name": "IBD309P35179750",
+    "ip": "10.70.60.165",
+    "mac": "64:1c:67:6a:54:a2",
+    "status": "online",
+    "history": []
+  },
+  {
+    "id": 36,
+    "name": "IBD309P36179740",
+    "ip": "10.70.60.166",
+    "mac": "64:1c:67:6a:23:b0",
+    "status": "online",
+    "history": []
+  },
+  {
+    "id": 37,
+    "name": "IBD30937P179753",
+    "ip": "10.70.60.167",
+    "mac": "64:1c:67:68:db:89",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-309",
+    "switchPort": "37"
+  },
+  {
+    "id": 38,
+    "name": "IBD309P38179745",
+    "ip": "10.70.60.168",
+    "mac": "64:1c:67:69:05:91",
+    "status": "online",
+    "history": []
+  },
+  {
+    "id": 39,
+    "name": "IBD30939P179716",
+    "ip": "10.70.60.169",
+    "mac": "64:1c:67:69:4e:e6",
+    "status": "online",
+    "history": [],
+    "switchId": "sw-309",
+    "switchPort": "39"
+  },
+  {
+    "id": 40,
+    "name": "IBD309P40179738",
+    "ip": "10.70.60.170",
+    "mac": "64:1c:67:69:5c:8c",
+    "status": "online",
+    "history": []
+  },
+  {
+    "id": 41,
+    "name": "IBD30900P193859",
+    "ip": "10.70.60.221",
+    "mac": "60:c7:27:09:15:9d",
+    "status": "online",
+    "history": [],
+    "switchId": null,
+    "switchPort": null
+  }
+]

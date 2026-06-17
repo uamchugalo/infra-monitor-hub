@@ -18,12 +18,59 @@ function getRandomStatus(): PCStatus {
   return 'offline';
 }
 
+import { LAB_109_DATA, LAB_308_DATA, LAB_110_DATA, LAB_309_DATA } from './realData';
+
 export function generateInitialPCs(labId: string): PC[] {
+  if (labId === '109') {
+    return LAB_109_DATA.map((data, i) => ({
+      id: i + 1,
+      name: data.name,
+      ip: data.ip,
+      mac: data.mac,
+      status: 'online',
+      history: [],
+    }));
+  }
+
+  if (labId === '308') {
+    return LAB_308_DATA.map((data, i) => ({
+      id: i + 1,
+      name: data.name,
+      ip: data.ip,
+      mac: data.mac,
+      status: 'online',
+      history: [],
+    }));
+  }
+
+  if (labId === '110') {
+    return LAB_110_DATA.map((data, i) => ({
+      id: i + 1,
+      name: data.name,
+      ip: data.ip,
+      mac: data.mac,
+      status: 'online',
+      history: [],
+    }));
+  }
+
+  if (labId === '309') {
+    return LAB_309_DATA.map((data, i) => ({
+      id: i + 1,
+      name: data.name,
+      ip: data.ip,
+      mac: data.mac,
+      status: 'online',
+      history: [],
+    }));
+  }
+
   return Array.from({ length: 40 }, (_, i) => ({
     id: i + 1,
     name: `${labId}-PC${String(i + 1).padStart(2, '0')}`,
+    ip: `10.70.60.${100 + i}`,
     mac: generateMAC(),
-    status: getRandomStatus(),
+    status: 'online',
     history: [],
   }));
 }

@@ -1,0 +1,296 @@
+[
+  {
+    "id": "ap-209",
+    "name": "AP - 209 (Biblioteca 01)",
+    "location": "Térreo",
+    "ip": "10.70.20.101"
+  },
+  {
+    "id": "ap-210",
+    "name": "AP - 210 (Biblioteca 02)",
+    "location": "Térreo",
+    "ip": "10.70.20.102"
+  },
+  {
+    "id": "ap-t07",
+    "name": "AP - T07",
+    "location": "Térreo",
+    "ip": "10.70.20.103"
+  },
+  {
+    "id": "ap-t08",
+    "name": "AP - T08 (Auditório)",
+    "location": "Térreo",
+    "ip": "10.70.20.104"
+  },
+  {
+    "id": "ap-t09",
+    "name": "AP - T09 (Refeitório)",
+    "location": "Térreo",
+    "ip": "10.70.20.105"
+  },
+  {
+    "id": "ap-t10",
+    "name": "AP - T10",
+    "location": "Térreo",
+    "ip": "10.70.20.106"
+  },
+  {
+    "id": "ap-t13",
+    "name": "AP - T13",
+    "location": "Térreo",
+    "ip": "10.70.20.107"
+  },
+  {
+    "id": "ap-t14",
+    "name": "AP - T14",
+    "location": "Térreo",
+    "ip": "10.70.20.100"
+  },
+  {
+    "id": "ap-101",
+    "name": "AP - 101",
+    "location": "1º Andar",
+    "ip": "10.70.20.109"
+  },
+  {
+    "id": "ap-102",
+    "name": "AP - 102",
+    "location": "1º Andar",
+    "ip": "10.70.20.110"
+  },
+  {
+    "id": "ap-103",
+    "name": "AP - 103",
+    "location": "1º Andar",
+    "ip": "10.70.20.111"
+  },
+  {
+    "id": "ap-104",
+    "name": "AP - 104",
+    "location": "1º Andar",
+    "ip": "10.70.20.112"
+  },
+  {
+    "id": "ap-105",
+    "name": "AP - 105",
+    "location": "1º Andar",
+    "ip": "10.70.20.113"
+  },
+  {
+    "id": "ap-106",
+    "name": "AP - 106",
+    "location": "1º Andar",
+    "ip": "10.70.20.114"
+  },
+  {
+    "id": "ap-107",
+    "name": "AP - 107",
+    "location": "1º Andar",
+    "ip": "10.70.20.115"
+  },
+  {
+    "id": "ap-109",
+    "name": "AP - 109",
+    "location": "1º Andar",
+    "ip": "10.70.20.116"
+  },
+  {
+    "id": "ap-110",
+    "name": "AP - 110",
+    "location": "1º Andar",
+    "ip": "10.70.20.117"
+  },
+  {
+    "id": "ap-113",
+    "name": "AP - 113",
+    "location": "1º Andar",
+    "ip": "10.70.20.118"
+  },
+  {
+    "id": "ap-115",
+    "name": "AP - 115",
+    "location": "1º Andar",
+    "ip": "10.70.20.119"
+  },
+  {
+    "id": "ap-120",
+    "name": "AP - 120",
+    "location": "1º Andar",
+    "ip": "10.70.20.120"
+  },
+  {
+    "id": "ap-124",
+    "name": "AP - 124",
+    "location": "1º Andar",
+    "ip": "10.70.20.121"
+  },
+  {
+    "id": "ap-201",
+    "name": "AP - 201",
+    "location": "2º Andar",
+    "ip": "10.70.20.122"
+  },
+  {
+    "id": "ap-202",
+    "name": "AP - 202",
+    "location": "2º Andar",
+    "ip": "10.70.20.123"
+  },
+  {
+    "id": "ap-203",
+    "name": "AP - 203",
+    "location": "2º Andar",
+    "ip": "10.70.20.124"
+  },
+  {
+    "id": "ap-204",
+    "name": "AP - 204",
+    "location": "2º Andar",
+    "ip": "10.70.20.125"
+  },
+  {
+    "id": "ap-205",
+    "name": "AP - 205",
+    "location": "2º Andar",
+    "ip": "10.70.20.126"
+  },
+  {
+    "id": "ap-206",
+    "name": "AP - 206",
+    "location": "2º Andar",
+    "ip": "10.70.20.127"
+  },
+  {
+    "id": "ap-207",
+    "name": "AP - 207",
+    "location": "2º Andar",
+    "ip": "10.70.20.128"
+  },
+  {
+    "id": "ap-208",
+    "name": "AP - 208",
+    "location": "2º Andar",
+    "ip": "10.70.20.129"
+  },
+  {
+    "id": "ap-209-sw31",
+    "name": "AP - 209 (SW31)",
+    "location": "2º Andar",
+    "ip": "10.70.20.130"
+  },
+  {
+    "id": "ap-301",
+    "name": "AP - 301",
+    "location": "3º Andar",
+    "ip": "10.70.20.132"
+  },
+  {
+    "id": "ap-302",
+    "name": "AP - 302",
+    "location": "3º Andar",
+    "ip": "10.70.20.133"
+  },
+  {
+    "id": "ap-303",
+    "name": "AP - 303",
+    "location": "3º Andar",
+    "ip": "10.70.20.134"
+  },
+  {
+    "id": "ap-304",
+    "name": "AP - 304",
+    "location": "3º Andar",
+    "ip": "10.70.20.135"
+  },
+  {
+    "id": "ap-305",
+    "name": "AP - 305",
+    "location": "3º Andar",
+    "ip": "10.70.20.136"
+  },
+  {
+    "id": "ap-306",
+    "name": "AP - 306",
+    "location": "3º Andar",
+    "ip": "10.70.20.137"
+  },
+  {
+    "id": "ap-307",
+    "name": "AP - 307",
+    "location": "3º Andar",
+    "ip": "10.70.20.138"
+  },
+  {
+    "id": "ap-308",
+    "name": "AP - 308",
+    "location": "3º Andar",
+    "ip": "10.70.20.139"
+  },
+  {
+    "id": "ap-309",
+    "name": "AP - 309",
+    "location": "3º Andar",
+    "ip": "10.70.20.140"
+  },
+  {
+    "id": "ap-401",
+    "name": "AP - 401",
+    "location": "4º Andar",
+    "ip": "10.70.20.141"
+  },
+  {
+    "id": "ap-402",
+    "name": "AP - 402",
+    "location": "4º Andar",
+    "ip": "10.70.20.142"
+  },
+  {
+    "id": "ap-403",
+    "name": "AP - 403",
+    "location": "4º Andar",
+    "ip": "10.70.20.143"
+  },
+  {
+    "id": "ap-404",
+    "name": "AP - 404",
+    "location": "4º Andar",
+    "ip": "10.70.20.144"
+  },
+  {
+    "id": "ap-405",
+    "name": "AP - 405",
+    "location": "4º Andar",
+    "ip": "10.70.20.145"
+  },
+  {
+    "id": "ap-406",
+    "name": "AP - 406",
+    "location": "4º Andar",
+    "ip": "10.70.20.146"
+  },
+  {
+    "id": "ap-407",
+    "name": "AP - 407",
+    "location": "4º Andar",
+    "ip": "10.70.20.148"
+  },
+  {
+    "id": "ap-408",
+    "name": "AP - 408",
+    "location": "4º Andar",
+    "ip": "10.70.20.149"
+  },
+  {
+    "id": "ap-409",
+    "name": "AP - 409",
+    "location": "4º Andar",
+    "ip": "10.70.20.150"
+  },
+  {
+    "id": "ap-410",
+    "name": "AP - 410",
+    "location": "4º Andar",
+    "ip": "10.70.20.151"
+  }
+]

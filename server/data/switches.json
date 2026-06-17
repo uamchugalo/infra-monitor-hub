@@ -1,0 +1,1059 @@
+[
+  {
+    "id": "sw-11",
+    "name": "SW 21",
+    "location": "Sala Técnica Térreo",
+    "totalPorts": 24,
+    "ip": "10.70.20.21",
+    "labels": [
+      {
+        "port": 1,
+        "label": "BB1",
+        "description": "Biblioteca P1"
+      },
+      {
+        "port": 2,
+        "label": "BB2",
+        "description": "Biblioteca P2"
+      },
+      {
+        "port": 3,
+        "label": "AP-T13"
+      },
+      {
+        "port": 4,
+        "label": "AP-T14"
+      },
+      {
+        "port": 7,
+        "label": "AP-T07"
+      },
+      {
+        "port": 8,
+        "label": "AP-T08"
+      },
+      {
+        "port": 9,
+        "label": "AP-T09"
+      },
+      {
+        "port": 10,
+        "label": "AP-T10"
+      },
+      {
+        "port": 11,
+        "label": "CAM108"
+      },
+      {
+        "port": 12,
+        "label": "CAM102"
+      },
+      {
+        "port": 13,
+        "label": "CAM103"
+      },
+      {
+        "port": 14,
+        "label": "CAM104"
+      },
+      {
+        "port": 15,
+        "label": "CAM105"
+      },
+      {
+        "port": 16,
+        "label": "CAM106"
+      }
+    ],
+    "type": "switch",
+    "order": 0,
+    "ports": [
+      {
+        "port": 1,
+        "name": "AP - 101",
+        "type": "AP",
+        "deviceId": "AP009",
+        "deviceIp": "10.70.20.109"
+      },
+      {
+        "port": 2,
+        "name": "AP - 101",
+        "type": "AP",
+        "deviceId": "AP009",
+        "deviceIp": "10.70.20.109"
+      },
+      {
+        "port": 9,
+        "name": "Biblioteca 01",
+        "type": "AP",
+        "deviceId": "AP001",
+        "deviceIp": "10.70.20.211"
+      }
+    ]
+  },
+  {
+    "id": "sw-12",
+    "name": "SW 12",
+    "location": "Sala Técnica Térreo",
+    "totalPorts": 24,
+    "ip": "10.70.0.12",
+    "labels": [
+      {
+        "port": 1,
+        "label": "T01-01"
+      },
+      {
+        "port": 2,
+        "label": "T01-02"
+      },
+      {
+        "port": 3,
+        "label": "T02-01"
+      },
+      {
+        "port": 4,
+        "label": "T02-02"
+      },
+      {
+        "port": 5,
+        "label": "T03-01"
+      },
+      {
+        "port": 6,
+        "label": "T03-02"
+      },
+      {
+        "port": 7,
+        "label": "T04-01",
+        "description": "CAM107"
+      },
+      {
+        "port": 8,
+        "label": "T04-02"
+      },
+      {
+        "port": 9,
+        "label": "T05-01"
+      },
+      {
+        "port": 10,
+        "label": "T05-02"
+      },
+      {
+        "port": 11,
+        "label": "T0A-01"
+      },
+      {
+        "port": 12,
+        "label": "T0A-02"
+      },
+      {
+        "port": 13,
+        "label": "T0C-0A"
+      },
+      {
+        "port": 14,
+        "label": "T0C-0B"
+      },
+      {
+        "port": 15,
+        "label": "T11-01"
+      },
+      {
+        "port": 16,
+        "label": "T11-02"
+      },
+      {
+        "port": 17,
+        "label": "T11-03"
+      },
+      {
+        "port": 18,
+        "label": "T11-04"
+      },
+      {
+        "port": 19,
+        "label": "TV01"
+      },
+      {
+        "port": 20,
+        "label": "M"
+      },
+      {
+        "port": 21,
+        "label": "TV03"
+      },
+      {
+        "port": 22,
+        "label": "TV02"
+      },
+      {
+        "port": 23,
+        "label": "SW12",
+        "description": "Uplink"
+      },
+      {
+        "port": 24,
+        "label": "SW12",
+        "description": "Uplink"
+      }
+    ],
+    "order": 1,
+    "type": "switch"
+  },
+  {
+    "id": "sw-26",
+    "name": "SW 26 (Distribuição)",
+    "location": "1º Andar",
+    "totalPorts": 24,
+    "ip": "10.70.0.26",
+    "labels": [
+      {
+        "port": 1,
+        "label": "LAG6 SW98",
+        "description": "Uplink Core"
+      },
+      {
+        "port": 2,
+        "label": "LAG6 SW98",
+        "description": "Uplink Core"
+      },
+      {
+        "port": 3,
+        "label": "LAG6 SW98",
+        "description": "Uplink Core"
+      },
+      {
+        "port": 4,
+        "label": "LAG6 SW98",
+        "description": "Uplink Core"
+      },
+      {
+        "port": 5,
+        "label": "LAG5 SW25",
+        "description": "Link"
+      },
+      {
+        "port": 6,
+        "label": "LAG5 SW25",
+        "description": "Link"
+      },
+      {
+        "port": 7,
+        "label": "LAG5 SW25",
+        "description": "Link"
+      },
+      {
+        "port": 8,
+        "label": "LAG5 SW25",
+        "description": "Link"
+      },
+      {
+        "port": 9,
+        "label": "LAG4 SW24",
+        "description": "Link"
+      },
+      {
+        "port": 10,
+        "label": "LAG4 SW24",
+        "description": "Link"
+      },
+      {
+        "port": 11,
+        "label": "LAG4 SW24",
+        "description": "Link"
+      },
+      {
+        "port": 12,
+        "label": "LAG4 SW24",
+        "description": "Link"
+      },
+      {
+        "port": 13,
+        "label": "OFF"
+      },
+      {
+        "port": 14,
+        "label": "OFF"
+      },
+      {
+        "port": 15,
+        "label": "OFF"
+      },
+      {
+        "port": 16,
+        "label": "OFF"
+      },
+      {
+        "port": 17,
+        "label": "LAG3 SW23",
+        "description": "Link"
+      },
+      {
+        "port": 18,
+        "label": "LAG3 SW23",
+        "description": "Link"
+      },
+      {
+        "port": 19,
+        "label": "LAG2 SW22",
+        "description": "Link"
+      },
+      {
+        "port": 20,
+        "label": "LAG2 SW22",
+        "description": "Link"
+      },
+      {
+        "port": 21,
+        "label": "LAG1 SW21",
+        "description": "Link"
+      },
+      {
+        "port": 22,
+        "label": "LAG1 SW21",
+        "description": "Link"
+      },
+      {
+        "port": 23,
+        "label": "LAG1 SW21",
+        "description": "Link"
+      },
+      {
+        "port": 24,
+        "label": "LAG1 SW21",
+        "description": "Link"
+      }
+    ]
+  },
+  {
+    "id": "sw-21",
+    "name": "SW 21 (APs/Cams)",
+    "location": "1º Andar",
+    "totalPorts": 24,
+    "ip": "10.70.0.21",
+    "labels": [
+      {
+        "port": 1,
+        "label": "AP-101"
+      },
+      {
+        "port": 2,
+        "label": "AP-102"
+      },
+      {
+        "port": 3,
+        "label": "AP-103"
+      },
+      {
+        "port": 4,
+        "label": "AP-104"
+      },
+      {
+        "port": 5,
+        "label": "AP-105"
+      },
+      {
+        "port": 6,
+        "label": "AP-106"
+      },
+      {
+        "port": 7,
+        "label": "AP-107"
+      },
+      {
+        "port": 8,
+        "label": "MQ"
+      },
+      {
+        "port": 9,
+        "label": "AP-109"
+      },
+      {
+        "port": 10,
+        "label": "AP-110"
+      },
+      {
+        "port": 11,
+        "label": "CAM-11",
+        "description": "OFF"
+      },
+      {
+        "port": 12,
+        "label": "CAM-12"
+      },
+      {
+        "port": 13,
+        "label": "CAM-13"
+      },
+      {
+        "port": 14,
+        "label": "CAM-14",
+        "description": "OFF"
+      },
+      {
+        "port": 15,
+        "label": "CAM-15"
+      },
+      {
+        "port": 16,
+        "label": "CAM-16"
+      },
+      {
+        "port": 17,
+        "label": "AP-113"
+      },
+      {
+        "port": 18,
+        "label": "AP-115"
+      },
+      {
+        "port": 19,
+        "label": "AP-120"
+      },
+      {
+        "port": 20,
+        "label": "AP-124"
+      },
+      {
+        "port": 21,
+        "label": "LAG1 SW26",
+        "description": "Uplink"
+      },
+      {
+        "port": 22,
+        "label": "LAG1 SW26",
+        "description": "Uplink"
+      },
+      {
+        "port": 23,
+        "label": "LAG1 SW26",
+        "description": "Uplink"
+      },
+      {
+        "port": 24,
+        "label": "LAG1 SW26",
+        "description": "Uplink"
+      }
+    ]
+  },
+  {
+    "id": "sw-22",
+    "name": "SW 22",
+    "location": "1º Andar",
+    "totalPorts": 48,
+    "ip": "10.70.0.22",
+    "labels": [
+      {
+        "port": 1,
+        "label": "111-01"
+      },
+      {
+        "port": 2,
+        "label": "111-03"
+      },
+      {
+        "port": 3,
+        "label": "111-02"
+      },
+      {
+        "port": 4,
+        "label": "111-04"
+      },
+      {
+        "port": 5,
+        "label": "112-01"
+      },
+      {
+        "port": 6,
+        "label": "112-03"
+      },
+      {
+        "port": 7,
+        "label": "112-02"
+      },
+      {
+        "port": 8,
+        "label": "112-04"
+      },
+      {
+        "port": 9,
+        "label": "113-01"
+      },
+      {
+        "port": 10,
+        "label": "113-03"
+      },
+      {
+        "port": 11,
+        "label": "113-02"
+      },
+      {
+        "port": 12,
+        "label": "113-04"
+      },
+      {
+        "port": 13,
+        "label": "114-01"
+      },
+      {
+        "port": 14,
+        "label": "114-03"
+      },
+      {
+        "port": 15,
+        "label": "114-02"
+      },
+      {
+        "port": 16,
+        "label": "114-04"
+      },
+      {
+        "port": 17,
+        "label": "115-01"
+      },
+      {
+        "port": 18,
+        "label": "115-03"
+      },
+      {
+        "port": 19,
+        "label": "115-02"
+      },
+      {
+        "port": 20,
+        "label": "115-04"
+      },
+      {
+        "port": 21,
+        "label": "116-01"
+      },
+      {
+        "port": 22,
+        "label": "116-03"
+      },
+      {
+        "port": 23,
+        "label": "116-02"
+      },
+      {
+        "port": 24,
+        "label": "116-04"
+      },
+      {
+        "port": 25,
+        "label": "117-01"
+      },
+      {
+        "port": 26,
+        "label": "117-03"
+      },
+      {
+        "port": 27,
+        "label": "117-02"
+      },
+      {
+        "port": 28,
+        "label": "117-04"
+      },
+      {
+        "port": 29,
+        "label": "118-01"
+      },
+      {
+        "port": 30,
+        "label": "118-03"
+      },
+      {
+        "port": 31,
+        "label": "118-02"
+      },
+      {
+        "port": 32,
+        "label": "118-04"
+      },
+      {
+        "port": 33,
+        "label": "119-01"
+      },
+      {
+        "port": 34,
+        "label": "119-03"
+      },
+      {
+        "port": 35,
+        "label": "119-02"
+      },
+      {
+        "port": 36,
+        "label": "119-04"
+      },
+      {
+        "port": 37,
+        "label": "120-01"
+      },
+      {
+        "port": 38,
+        "label": "120-03"
+      },
+      {
+        "port": 39,
+        "label": "120-02"
+      },
+      {
+        "port": 40,
+        "label": "120-04"
+      },
+      {
+        "port": 41,
+        "label": "121-01"
+      },
+      {
+        "port": 42,
+        "label": "121-02"
+      },
+      {
+        "port": 43,
+        "label": "100-07"
+      },
+      {
+        "port": 47,
+        "label": "LAG1 SW26",
+        "description": "Uplink"
+      },
+      {
+        "port": 48,
+        "label": "LAG1 SW26",
+        "description": "Uplink"
+      }
+    ]
+  },
+  {
+    "id": "sw-23",
+    "name": "SW 23",
+    "location": "1º Andar",
+    "totalPorts": 48,
+    "ip": "10.70.0.23",
+    "labels": [
+      {
+        "port": 1,
+        "label": "121-03"
+      },
+      {
+        "port": 2,
+        "label": "121-04"
+      },
+      {
+        "port": 3,
+        "label": "122-01"
+      },
+      {
+        "port": 42,
+        "label": "100-0B"
+      },
+      {
+        "port": 47,
+        "label": "LAG1 SW26",
+        "description": "Uplink"
+      },
+      {
+        "port": 48,
+        "label": "LAG1 SW26",
+        "description": "Uplink"
+      }
+    ]
+  },
+  {
+    "id": "sw-31",
+    "name": "SW 31",
+    "location": "2º Andar",
+    "totalPorts": 24,
+    "ip": "10.70.0.31",
+    "labels": [
+      {
+        "port": 1,
+        "label": "AP-201"
+      },
+      {
+        "port": 2,
+        "label": "AP-202"
+      },
+      {
+        "port": 3,
+        "label": "AP-203"
+      },
+      {
+        "port": 4,
+        "label": "AP-204"
+      },
+      {
+        "port": 5,
+        "label": "AP-205"
+      },
+      {
+        "port": 6,
+        "label": "AP-206"
+      },
+      {
+        "port": 7,
+        "label": "AP-207"
+      },
+      {
+        "port": 8,
+        "label": "AP-208"
+      },
+      {
+        "port": 9,
+        "label": "LAG1 SW98",
+        "description": "Uplink"
+      },
+      {
+        "port": 10,
+        "label": "LAG1 SW98",
+        "description": "Uplink"
+      },
+      {
+        "port": 11,
+        "label": "200-01",
+        "description": "OFF"
+      },
+      {
+        "port": 12,
+        "label": "CAM22"
+      },
+      {
+        "port": 13,
+        "label": "CAM23"
+      },
+      {
+        "port": 14,
+        "label": "200-04",
+        "description": "OFF"
+      },
+      {
+        "port": 15,
+        "label": "DVR I-1"
+      },
+      {
+        "port": 16,
+        "label": "DVR I-2"
+      },
+      {
+        "port": 17,
+        "label": "LAG2 SW32",
+        "description": "Link"
+      },
+      {
+        "port": 18,
+        "label": "LAG2 SW32",
+        "description": "Link"
+      },
+      {
+        "port": 19,
+        "label": "LAG2 SW32",
+        "description": "Link"
+      },
+      {
+        "port": 20,
+        "label": "AP-209"
+      },
+      {
+        "port": 21,
+        "label": "OFF"
+      },
+      {
+        "port": 22,
+        "label": "OFF"
+      },
+      {
+        "port": 23,
+        "label": "LAG2 SW32",
+        "description": "Link"
+      },
+      {
+        "port": 24,
+        "label": "LAG2 SW32",
+        "description": "Link"
+      }
+    ]
+  },
+  {
+    "id": "sw-32",
+    "name": "SW 32",
+    "location": "2º Andar",
+    "totalPorts": 24,
+    "ip": "10.70.0.32",
+    "labels": [
+      {
+        "port": 1,
+        "label": "201-01",
+        "description": "OFF"
+      },
+      {
+        "port": 14,
+        "label": "208-02",
+        "description": "OFF"
+      },
+      {
+        "port": 19,
+        "label": "300-0A"
+      },
+      {
+        "port": 20,
+        "label": "M"
+      },
+      {
+        "port": 23,
+        "label": "SW31-xx",
+        "description": "Uplink"
+      },
+      {
+        "port": 24,
+        "label": "SW31-xx",
+        "description": "Uplink"
+      }
+    ]
+  },
+  {
+    "id": "sw-41",
+    "name": "SW 41 (Distribuição)",
+    "location": "3º Andar",
+    "totalPorts": 24,
+    "ip": "10.70.0.41",
+    "labels": [
+      {
+        "port": 1,
+        "label": "306-01"
+      },
+      {
+        "port": 2,
+        "label": "306-02"
+      },
+      {
+        "port": 3,
+        "label": "306-03"
+      },
+      {
+        "port": 4,
+        "label": "306-04",
+        "description": "AP-306"
+      },
+      {
+        "port": 5,
+        "label": "306-05",
+        "description": "SW61 Link"
+      },
+      {
+        "port": 6,
+        "label": "306-06"
+      },
+      {
+        "port": 7,
+        "label": "LAG4 SW44",
+        "description": "Link"
+      },
+      {
+        "port": 8,
+        "label": "LAG4 SW44",
+        "description": "Link"
+      },
+      {
+        "port": 9,
+        "label": "LAG4 SW44",
+        "description": "Link"
+      },
+      {
+        "port": 10,
+        "label": "LAG4 SW44",
+        "description": "Link"
+      },
+      {
+        "port": 11,
+        "label": "LAG3 SW43",
+        "description": "Link"
+      },
+      {
+        "port": 12,
+        "label": "LAG3 SW43",
+        "description": "Link"
+      },
+      {
+        "port": 13,
+        "label": "LAG3 SW43",
+        "description": "Link"
+      },
+      {
+        "port": 14,
+        "label": "LAG3 SW43",
+        "description": "Link"
+      },
+      {
+        "port": 15,
+        "label": "LAG2 SW42",
+        "description": "Link"
+      },
+      {
+        "port": 16,
+        "label": "LAG2 SW42",
+        "description": "Link"
+      },
+      {
+        "port": 17,
+        "label": "LAG2 SW42",
+        "description": "Link"
+      },
+      {
+        "port": 18,
+        "label": "LAG2 SW42",
+        "description": "Link"
+      },
+      {
+        "port": 19,
+        "label": "400-0A",
+        "description": "OFF"
+      },
+      {
+        "port": 20,
+        "label": "M"
+      },
+      {
+        "port": 21,
+        "label": "LAG1"
+      },
+      {
+        "port": 24,
+        "label": "LAG1"
+      }
+    ]
+  },
+  {
+    "id": "sw-42",
+    "name": "SW 42",
+    "location": "3º Andar",
+    "totalPorts": 24,
+    "ip": "10.70.0.42",
+    "labels": [
+      {
+        "port": 1,
+        "label": "AP-301"
+      },
+      {
+        "port": 2,
+        "label": "AP-302"
+      },
+      {
+        "port": 3,
+        "label": "AP-303"
+      },
+      {
+        "port": 4,
+        "label": "AP-304"
+      },
+      {
+        "port": 5,
+        "label": "AP-305"
+      },
+      {
+        "port": 6,
+        "label": "AP-306"
+      },
+      {
+        "port": 7,
+        "label": "AP-307"
+      },
+      {
+        "port": 8,
+        "label": "AP-308"
+      },
+      {
+        "port": 9,
+        "label": "AP-309"
+      },
+      {
+        "port": 10,
+        "label": "OFF"
+      },
+      {
+        "port": 11,
+        "label": "CAM",
+        "description": "OFF"
+      },
+      {
+        "port": 12,
+        "label": "CAM32"
+      },
+      {
+        "port": 13,
+        "label": "CAM33"
+      },
+      {
+        "port": 14,
+        "label": "CAM",
+        "description": "OFF"
+      },
+      {
+        "port": 15,
+        "label": "PXE SVR"
+      },
+      {
+        "port": 16,
+        "label": "PXE SVR"
+      },
+      {
+        "port": 19,
+        "label": "305-01",
+        "description": "OFF"
+      },
+      {
+        "port": 20,
+        "label": "M"
+      },
+      {
+        "port": 21,
+        "label": "LAG1 SW41",
+        "description": "Uplink"
+      },
+      {
+        "port": 24,
+        "label": "LAG1 SW41",
+        "description": "Uplink"
+      }
+    ]
+  },
+  {
+    "id": "sw-109",
+    "name": "Switch Lab 109",
+    "location": "1º Andar",
+    "totalPorts": 48,
+    "ip": "10.70.0.109",
+    "type": "switch",
+    "ports": []
+  },
+  {
+    "id": "sw-110",
+    "name": "Switch Lab 110",
+    "location": "1º Andar",
+    "totalPorts": 48,
+    "ip": "10.70.0.110",
+    "type": "switch",
+    "ports": []
+  },
+  {
+    "id": "sw-308",
+    "name": "Switch Lab 308",
+    "location": "3º Andar",
+    "totalPorts": 48,
+    "ip": "10.70.0.308",
+    "type": "switch",
+    "ports": []
+  },
+  {
+    "id": "sw-309",
+    "name": "Switch Lab 309",
+    "location": "3º Andar",
+    "totalPorts": 48,
+    "ip": "10.70.0.309",
+    "type": "switch",
+    "ports": []
+  }
+]

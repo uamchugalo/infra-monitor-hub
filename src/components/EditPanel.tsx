@@ -1,52 +1,116 @@
 import { useState } from 'react';
 import { PC, PCStatus, HistoryEntry } from '@/types/pc';
 import { formatTimestamp, generateId } from '@/utils/pcData';
-import { X, Save, Plus, Clock, Trash2, Monitor } from 'lucide-react';
+import { X, Save, Plus, Clock, Trash2, Monitor, Power, ShieldCheck, ShieldAlert } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { Switch } from '@/components/ui/switch';
 import { cn } from '@/lib/utils';
+import { SWITCHES } from '@/utils/switchData';
 
 interface EditPanelProps {
   pc: PC;
   onSave: (pc: PC) => void;
   onClose: () => void;
+  onWake?: (mac: string, ip?: string) => void;
+  onPing?: (ip: string) => Promise<boolean>;
+  onShutdown?: (ip: string) => Promise<void>;
+  onDelete?: (id: string | number) => void;
 }
 
-export function EditPanel({ pc, onSave, onClose }: EditPanelProps) {
+export function EditPanel({ pc, onSave, onClose, onWake, onPing, onShutdown, onDelete }: EditPanelProps) {
   const [name, setName] = useState(pc.name);
+  const [ip, setIp] = useState(pc.ip || '');
   const [mac, setMac] = useState(pc.mac);
+  const [switchPort, setSwitchPort] = useState(pc.switchPort || '');
+  const [switchId, setSwitchId] = useState(pc.switchId || '');
   const [status, setStatus] = useState<PCStatus>(pc.status);
+  const [enabled, setEnabled] = useState(pc.enabled ?? true);
   const [newLog, setNewLog] = useState('');
   const [history, setHistory] = useState<HistoryEntry[]>(pc.history);
+  const [isPinging, setIsPinging] = useState(false);
+  const [isShuttingDown, setIsShuttingDown] = useState(false);
 
   const handleSave = () => {
     onSave({
       ...pc,
       name,
+      ip,
       mac,
+      switchPort,
+      switchId,
       status,
+      enabled,
       history,
     });
   };
 
   const handleAddLog = () => {
     if (!newLog.trim()) return;
-    
+
     const entry: HistoryEntry = {
       id: generateId(),
       timestamp: formatTimestamp(),
       message: newLog.trim(),
     };
-    
-    setHistory([entry, ...history]);
+
+    const newHistory = [entry, ...history];
+    setHistory(newHistory);
+    // Persist immediately
+    onSave({
+      ...pc,
+      name,
+      ip,
+      mac,
+      switchPort,
+      switchId,
+      status,
+      enabled,
+      history: newHistory
+    });
     setNewLog('');
   };
 
   const handleDeleteLog = (id: string) => {
-    setHistory(history.filter(h => h.id !== id));
+    const newHistory = history.filter(h => h.id !== id);
+    setHistory(newHistory);
+    // Persist immediately
+    onSave({
+      ...pc,
+      name,
+      ip,
+      mac,
+      switchPort,
+      switchId,
+      status,
+      enabled,
+      history: newHistory
+    });
+  };
+
+  const handlePing = async () => {
+    if (!onPing || !ip) return;
+    setIsPinging(true);
+    try {
+      await onPing(ip);
+    } finally {
+      setIsPinging(false);
+    }
+  };
+
+  const handleShutdown = async () => {
+    if (!onShutdown || !ip) return;
+    if (!confirm(`Tem certeza que deseja DESLIGAR o ${name}?`)) return;
+
+    setIsShuttingDown(true);
+    try {
+      await onShutdown(ip);
+    } finally {
+      setIsShuttingDown(false);
+    }
   };
 
   const statusOptions: { value: PCStatus; label: string; color: string }[] = [
@@ -57,7 +121,6 @@ export function EditPanel({ pc, onSave, onClose }: EditPanelProps) {
 
   return (
     <div className="h-full flex flex-col bg-card animate-fade-in">
-      {/* Header */}
       <div className="flex items-center justify-between p-4 border-b border-border">
         <div className="flex items-center gap-3">
           <div className="p-2 bg-primary/10 rounded-md">
@@ -70,10 +133,10 @@ export function EditPanel({ pc, onSave, onClose }: EditPanelProps) {
             <p className="text-xs text-muted-foreground">Editar configurações</p>
           </div>
         </div>
-        <Button 
-          variant="ghost" 
-          size="icon" 
-          onClick={onClose} 
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={onClose}
           className="h-8 w-8 hover:bg-destructive/10 hover:text-destructive"
         >
           <X className="w-4 h-4" />
@@ -82,6 +145,26 @@ export function EditPanel({ pc, onSave, onClose }: EditPanelProps) {
 
       <ScrollArea className="flex-1">
         <div className="p-4 space-y-5">
+          {/* Monitoring Toggle */}
+          <div className={cn(
+            "flex items-center justify-between p-3 rounded-lg border transition-all duration-300",
+            enabled ? "bg-green-50/50 border-green-200" : "bg-orange-50/50 border-orange-200"
+          )}>
+            <div className="space-y-0.5">
+              <div className="flex items-center gap-2">
+                {enabled ? <ShieldCheck className="w-4 h-4 text-green-600" /> : <ShieldAlert className="w-4 h-4 text-orange-600" />}
+                <Label className="text-sm font-semibold text-foreground">Conectado / Ativo</Label>
+              </div>
+              <p className="text-[10px] text-muted-foreground">
+                {enabled ? 'Dispositivo visível no dashboard geral.' : 'Dispositivo marcado como Desconectado.'}
+              </p>
+            </div>
+            <Switch
+              checked={enabled}
+              onCheckedChange={setEnabled}
+            />
+          </div>
+
           {/* Nome */}
           <div className="space-y-1.5">
             <Label className="text-xs font-medium text-foreground">
@@ -92,6 +175,19 @@ export function EditPanel({ pc, onSave, onClose }: EditPanelProps) {
               onChange={(e) => setName(e.target.value)}
               className="font-mono"
               placeholder="PC-001"
+            />
+          </div>
+
+          {/* IP */}
+          <div className="space-y-1.5">
+            <Label className="text-xs font-medium text-foreground">
+              Endereço IP
+            </Label>
+            <Input
+              value={ip}
+              onChange={(e) => setIp(e.target.value)}
+              className="font-mono"
+              placeholder="192.168.1.100"
             />
           </div>
 
@@ -108,6 +204,34 @@ export function EditPanel({ pc, onSave, onClose }: EditPanelProps) {
             />
           </div>
 
+          {/* Switch Connection Grid */}
+          <div className="grid grid-cols-2 gap-3">
+            <div className="space-y-1.5 col-span-2">
+              <Label className="text-xs font-medium text-foreground">Switch Conectado</Label>
+              <select
+                className="flex h-9 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                value={switchId}
+                onChange={(e) => setSwitchId(e.target.value)}
+              >
+                <option value="">Selecione um Switch...</option>
+                {SWITCHES.map(sw => (
+                  <option key={sw.id} value={sw.id}>{sw.name} ({sw.location})</option>
+                ))}
+              </select>
+            </div>
+
+            <div className="space-y-1.5 col-span-2">
+              <Label className="text-xs font-medium text-foreground">
+                Porta
+              </Label>
+              <Input
+                value={switchPort}
+                onChange={(e) => setSwitchPort(e.target.value)}
+                placeholder="Porta (Ex: 24)"
+              />
+            </div>
+          </div>
+
           {/* Status */}
           <div className="space-y-2">
             <Label className="text-xs font-medium text-foreground">
@@ -117,7 +241,10 @@ export function EditPanel({ pc, onSave, onClose }: EditPanelProps) {
               {statusOptions.map((opt) => (
                 <button
                   key={opt.value}
-                  onClick={() => setStatus(opt.value)}
+                  onClick={() => {
+                    setStatus(opt.value);
+                    onSave({ ...pc, name, ip, mac, switchPort, switchId, status: opt.value, history });
+                  }}
                   className={cn(
                     'py-2 px-3 rounded-md text-xs font-medium transition-all border',
                     status === opt.value
@@ -146,8 +273,8 @@ export function EditPanel({ pc, onSave, onClose }: EditPanelProps) {
               placeholder="Ex: Troca de mouse..."
               rows={2}
             />
-            <Button 
-              onClick={handleAddLog} 
+            <Button
+              onClick={handleAddLog}
               disabled={!newLog.trim()}
               size="sm"
               className="w-full"
@@ -171,7 +298,7 @@ export function EditPanel({ pc, onSave, onClose }: EditPanelProps) {
                   Nenhum registro
                 </p>
               ) : (
-                <div className="divide-y divide-border max-h-48 overflow-y-auto">
+                <div className="divide-y divide-border">
                   {history.map((entry) => (
                     <div key={entry.id} className="group p-3 hover:bg-muted transition-colors">
                       <div className="flex items-start justify-between gap-2">
@@ -198,7 +325,58 @@ export function EditPanel({ pc, onSave, onClose }: EditPanelProps) {
       </ScrollArea>
 
       {/* Footer */}
-      <div className="p-4 border-t border-border">
+      <div className="p-4 border-t border-border space-y-2">
+        {onDelete && (
+          <Button
+            variant="destructive"
+            onClick={() => {
+              if (confirm('Tem certeza que deseja excluir este PC?')) {
+                onDelete(pc.id);
+              }
+            }}
+            className="w-full"
+          >
+            <Trash2 className="w-4 h-4 mr-2" />
+            Excluir PC
+          </Button>
+        )}
+        <div className="grid grid-cols-2 gap-2">
+          {onWake && (
+            <Button
+              variant="outline"
+              onClick={() => onWake(mac, ip)}
+              disabled={!mac}
+              className="w-full"
+            >
+              <Monitor className="w-4 h-4 mr-2" />
+              WoL
+            </Button>
+          )}
+          {onPing && (
+            <Button
+              variant="outline"
+              onClick={handlePing}
+              disabled={!ip || isPinging}
+              className="w-full"
+            >
+              <div className={cn("w-2 h-2 rounded-full mr-2", isPinging ? "bg-yellow-500 animate-pulse" : "bg-green-500")} />
+              {isPinging ? 'Ping...' : 'Ping'}
+            </Button>
+          )}
+        </div>
+
+        {onShutdown && (
+          <Button
+            variant="destructive"
+            onClick={handleShutdown}
+            disabled={!ip || isShuttingDown}
+            className="w-full"
+          >
+            <Power className="w-4 h-4 mr-2" />
+            {isShuttingDown ? 'Enviando...' : 'Desligar Remotamente'}
+          </Button>
+        )}
+
         <Button onClick={handleSave} className="w-full">
           <Save className="w-4 h-4 mr-2" />
           Salvar Alterações

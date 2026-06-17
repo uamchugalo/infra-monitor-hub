@@ -1,0 +1,128 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Switch {
+  id         String       @id
+  name       String
+  ip         String       @unique
+  model      String?
+  location   String
+  totalPorts Int
+  order      Int?
+  enabled    Boolean      @default(true)
+  ports      SwitchPort[]
+  updatedAt  DateTime     @updatedAt
+}
+
+model SwitchPort {
+  id        Int     @id @default(autoincrement())
+  switchId  String
+  port      Int
+  name      String?
+  type      String?
+  deviceId  String?
+  deviceIp  String?
+  switch    Switch  @relation(fields: [switchId], references: [id], onDelete: Cascade)
+
+  @@unique([switchId, port])
+}
+
+model PatchPanel {
+  id         String           @id
+  name       String
+  location   String
+  totalPorts Int
+  order      Int?
+  ports      PatchPanelPort[]
+}
+
+model PatchPanelPort {
+  id           Int        @id @default(autoincrement())
+  patchPanelId String
+  port         Int
+  description  String?
+  patchPanel   PatchPanel @relation(fields: [patchPanelId], references: [id], onDelete: Cascade)
+
+  @@unique([patchPanelId, port])
+}
+
+model AccessPoint {
+  id         String           @id
+  name       String
+  ip         String           @unique
+  location   String
+  status     String?          // Online/Offline
+  switchId   String?
+  switchPort String?
+  enabled    Boolean          @default(true)
+  history    AccessPointLog[]
+}
+
+model Camera {
+  id         String      @id
+  name       String
+  ip         String      @unique
+  location   String
+  mac        String?
+  serial     String?
+  status     String?
+  switchId   String?
+  switchPort String?
+  enabled    Boolean     @default(true)
+  history    CameraLog[]
+}
+
+model AccessPointLog {
+  id        String      @id @default(uuid())
+  apId      String
+  timestamp DateTime    @default(now())
+  status    String
+  ap        AccessPoint @relation(fields: [apId], references: [id], onDelete: Cascade)
+}
+
+model CameraLog {
+  id        String   @id @default(uuid())
+  cameraId  String
+  timestamp DateTime @default(now())
+  status    String
+  camera    Camera   @relation(fields: [cameraId], references: [id], onDelete: Cascade)
+}
+
+model PC {
+  id         String   @id
+  name       String? // Hostname
+  ip         String
+  mac        String   @unique
+  location   String?  // labId
+  type       String?
+  switchId   String?
+  switchPort String?
+  lastSeen   DateTime?
+  status     String?  // status string
+  enabled    Boolean  @default(true)
+  history    PCLog[]
+}
+
+model PCLog {
+  id        String   @id
+  pcId      String
+  timestamp String
+  message   String
+  pc        PC       @relation(fields: [pcId], references: [id], onDelete: Cascade)
+}
+
+model LabLog {
+  id        String   @id
+  labId     String
+  timestamp String
+  message   String
+}

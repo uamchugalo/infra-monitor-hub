@@ -7,10 +7,14 @@ export interface HistoryEntry {
 }
 
 export interface PC {
-  id: number;
+  id: string | number;
   name: string;
+  ip?: string;
   mac: string;
+  switchId?: string;
+  switchPort?: string;
   status: PCStatus;
+  enabled?: boolean;
   history: HistoryEntry[];
 }
 

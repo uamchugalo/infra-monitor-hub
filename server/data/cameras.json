@@ -1,0 +1,180 @@
+[
+  {
+    "location": "Térreo",
+    "id": "CAM106",
+    "ip": "10.70.40.106",
+    "serial": "",
+    "mac": "24-fd-0d-65-0d-62",
+    "name": "Biblioteca"
+  },
+  {
+    "location": "Térreo",
+    "id": "CAM107",
+    "ip": "10.70.40.107",
+    "serial": "-",
+    "mac": "24:fd:0d:7b:11:4f",
+    "name": "Sala 104"
+  },
+  {
+    "location": "Térreo",
+    "id": "CAM108",
+    "ip": "10.70.40.108",
+    "serial": "4VEI0803487BO",
+    "mac": "24:fd:0d:7b:11:4c",
+    "name": "Cantina"
+  },
+  {
+    "location": "1° Andar",
+    "id": "CAM102",
+    "ip": "10.70.40.102",
+    "serial": "4VEH5101549CT",
+    "mac": "24-fd-0d-62-14-6b",
+    "name": "Laboratório 1A"
+  },
+  {
+    "location": "1° Andar",
+    "id": "CAM103",
+    "ip": "10.70.40.103",
+    "serial": "4VEI0203475X0",
+    "mac": "24-fd-0d-65-5a-8d",
+    "name": "Salas 1A"
+  },
+  {
+    "location": "Térreo",
+    "id": "CAM104",
+    "ip": "10.70.40.104",
+    "serial": "4VEI02034873W",
+    "mac": "24-fd-0d-65-5a-73",
+    "name": "Corredor Térreo (T09)"
+  },
+  {
+    "location": "1° Andar",
+    "id": "CAM105",
+    "ip": "10.70.40.105",
+    "serial": "4VEI0203479LK",
+    "mac": "24-fd-0d-65-5a-8e",
+    "name": "Ponto 1A"
+  },
+  {
+    "location": "1° Andar",
+    "id": "CAM11",
+    "ip": "10.70.40.11",
+    "serial": "",
+    "mac": "",
+    "name": "CAM - 11",
+    "status": "offline"
+  },
+  {
+    "location": "1° Andar",
+    "id": "CAM12",
+    "ip": "10.70.40.12",
+    "serial": "4VEI02034815L",
+    "mac": "24-fd-0d-65-5a-89",
+    "name": "Laboratório 2A (CAM-12)"
+  },
+  {
+    "location": "1° Andar",
+    "id": "CAM13",
+    "ip": "10.70.40.13",
+    "serial": "4VEI0203477FQ",
+    "mac": "24-fd-0d-65-5a-8c",
+    "name": "Salas 2A (CAM-13)"
+  },
+  {
+    "location": "1° Andar",
+    "id": "CAM14",
+    "ip": "10.70.40.14",
+    "serial": "",
+    "mac": "",
+    "name": "CAM - 14",
+    "status": "offline"
+  },
+  {
+    "location": "1° Andar",
+    "id": "CAM15",
+    "ip": "10.70.40.15",
+    "serial": "4VEI02034761R",
+    "mac": "24-fd-0d-65-5a-8a",
+    "name": "Corredor 2A (CAM-15)"
+  },
+  {
+    "location": "1° Andar",
+    "id": "CAM16",
+    "ip": "10.70.40.16",
+    "serial": "4VEI0203483OO",
+    "mac": "24-fd-0d-65-5a-87",
+    "name": "Esquerdo 2A (CAM-16)"
+  },
+  {
+    "location": "3° Andar",
+    "id": "CAM32",
+    "ip": "10.70.40.32",
+    "serial": "4VEH5101553OZ",
+    "mac": "24-fd-0d-62-14-64",
+    "name": "Laboratório 4A (CAM-32)"
+  },
+  {
+    "location": "3° Andar",
+    "id": "CAM33",
+    "ip": "10.70.40.33",
+    "serial": "4VEI080037549",
+    "mac": "24:fd:0d:7b:04:79",
+    "name": "Salas 4A (CAM-33)"
+  },
+  {
+    "location": "4° Andar",
+    "id": "CAM42",
+    "ip": "10.70.40.42",
+    "serial": "4VEI0203484D2",
+    "mac": "24-fd-0d-65-5a-84",
+    "name": "Laboratório 5A (CAM-42)"
+  },
+  {
+    "location": "4° Andar",
+    "id": "CAM43",
+    "ip": "10.70.40.43",
+    "serial": "4VEI0203482VF",
+    "mac": "24-fd-0d-65-5a-86",
+    "name": "Salas 5A (CAM-43)"
+  },
+  {
+    "location": "Outros",
+    "id": "CAM171",
+    "ip": "10.70.40.171",
+    "serial": "",
+    "mac": "24-fd-0d-7b-04-77",
+    "name": "Portaria Carros"
+  },
+  {
+    "location": "Outros",
+    "id": "CAM172",
+    "ip": "10.70.40.172",
+    "serial": "Portaria_Aluno",
+    "mac": "24-fd-0d-7b-04-74",
+    "name": "Portaria Alunos"
+  },
+  {
+    "location": "Outros",
+    "id": "CAM180",
+    "ip": "10.70.40.180",
+    "serial": "4VEH5101548UW",
+    "mac": "24:fd:0d:62:14:68",
+    "name": "Painéis Solares"
+  },
+  {
+    "location": "Outros",
+    "id": "CAM181",
+    "ip": "10.70.40.181",
+    "serial": "4VEI0800331A6",
+    "mac": "24:fd:0d:7b:04:7e",
+    "name": "Entrada Ginásio"
+  },
+  {
+    "location": "Outros",
+    "id": "CAM182",
+    "ip": "10.70.40.182",
+    "serial": "4VEI0800336CT",
+    "mac": "24:fd:0d:7b:04:83",
+    "name": "Ginásio"
+  }
+]
