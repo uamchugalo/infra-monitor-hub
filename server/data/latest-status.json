@@ -1,32 +1,122 @@
 {
-  "id": "monitor-1771875000183",
+  "id": "monitor-1789742520126",
   "type": "CONTINUOUS_MONITORING",
-  "timestamp": "2026-02-23T19:30:00.184Z",
+  "timestamp": "2026-09-18T14:42:00.126Z",
   "automated": true,
   "total": 72,
-  "online_after_wake": 66,
+  "online_after_wake": 51,
   "failures": [
     {
-      "name": "4A_Lab",
-      "ip": "10.70.40.32",
+      "name": "Paineis_Solares",
+      "ip": "10.70.40.180",
       "type": "CAMERA",
       "reason": "No Ping Response"
     },
     {
-      "name": "4A_Salas",
-      "ip": "10.70.40.33",
-      "type": "CAMERA",
+      "name": "Biblioteca 01",
+      "ip": "10.70.20.211",
+      "type": "AP",
       "reason": "No Ping Response"
     },
     {
-      "name": "Sala 110",
-      "ip": "10.70.20.106",
+      "name": "Biblioteca 02",
+      "ip": "10.70.20.120",
+      "type": "AP",
+      "reason": "No Ping Response"
+    },
+    {
+      "name": "Portaria",
+      "ip": "10.70.20.212",
       "type": "AP",
       "reason": "No Ping Response"
     },
     {
       "name": "Sala 109",
       "ip": "10.70.20.109",
+      "type": "AP",
+      "reason": "No Ping Response"
+    },
+    {
+      "name": "Sala 203",
+      "ip": "10.70.20.221",
+      "type": "AP",
+      "reason": "No Ping Response"
+    },
+    {
+      "name": "Sala 115",
+      "ip": "10.70.20.115",
+      "type": "AP",
+      "reason": "No Ping Response"
+    },
+    {
+      "name": "Sala 206",
+      "ip": "10.70.20.219",
+      "type": "AP",
+      "reason": "No Ping Response"
+    },
+    {
+      "name": "Sala 208",
+      "ip": "10.70.20.222",
+      "type": "AP",
+      "reason": "No Ping Response"
+    },
+    {
+      "name": "Sala 305",
+      "ip": "10.70.20.141",
+      "type": "AP",
+      "reason": "No Ping Response"
+    },
+    {
+      "name": "Sala 302",
+      "ip": "10.70.20.140",
+      "type": "AP",
+      "reason": "No Ping Response"
+    },
+    {
+      "name": "Sala 403",
+      "ip": "10.70.20.250",
+      "type": "AP",
+      "reason": "No Ping Response"
+    },
+    {
+      "name": "Sala 402",
+      "ip": "10.70.20.218",
+      "type": "AP",
+      "reason": "No Ping Response"
+    },
+    {
+      "name": "Sala 405",
+      "ip": "10.70.20.119",
+      "type": "AP",
+      "reason": "No Ping Response"
+    },
+    {
+      "name": "Sala 408",
+      "ip": "10.70.20.229",
+      "type": "AP",
+      "reason": "No Ping Response"
+    },
+    {
+      "name": "Sala T07",
+      "ip": "10.70.20.103",
+      "type": "AP",
+      "reason": "No Ping Response"
+    },
+    {
+      "name": "Sala 410",
+      "ip": "10.70.20.217",
+      "type": "AP",
+      "reason": "No Ping Response"
+    },
+    {
+      "name": "Sala T08",
+      "ip": "10.70.20.104",
+      "type": "AP",
+      "reason": "No Ping Response"
+    },
+    {
+      "name": "Sala T14",
+      "ip": "10.70.20.214",
       "type": "AP",
       "reason": "No Ping Response"
     }
@@ -45,146 +135,62 @@
       "status": "DISABLED"
     },
     {
-      "name": "Sala 206",
-      "ip": "10.70.20.219",
-      "type": "AP",
-      "status": "SUCCESS"
-    },
-    {
-      "name": "Sala 207",
-      "ip": "10.70.20.128",
-      "type": "AP",
-      "status": "SUCCESS"
-    },
-    {
-      "name": "Sala 201",
-      "ip": "10.70.20.205",
-      "type": "AP",
-      "status": "SUCCESS"
-    },
-    {
-      "name": "Sala 204",
-      "ip": "10.70.20.225",
-      "type": "AP",
-      "status": "SUCCESS"
-    },
-    {
-      "name": "Sala 203",
-      "ip": "10.70.20.221",
-      "type": "AP",
-      "status": "SUCCESS"
-    },
-    {
-      "name": "Sala 124",
-      "ip": "10.70.20.101",
-      "type": "AP",
-      "status": "SUCCESS"
-    },
-    {
-      "name": "Sala 202",
-      "ip": "10.70.20.124",
-      "type": "AP",
-      "status": "SUCCESS"
-    },
-    {
-      "name": "Sala 205",
-      "ip": "10.70.20.223",
-      "type": "AP",
-      "status": "SUCCESS"
-    },
-    {
-      "name": "Sala 113",
-      "ip": "10.70.20.125",
-      "type": "AP",
-      "status": "SUCCESS"
-    },
-    {
-      "name": "Sala 120",
-      "ip": "10.70.20.112",
-      "type": "AP",
-      "status": "SUCCESS"
-    },
-    {
-      "name": "Sala 115",
-      "ip": "10.70.20.115",
-      "type": "AP",
-      "status": "SUCCESS"
-    },
-    {
-      "name": "Sala 107",
-      "ip": "10.70.20.143",
-      "type": "AP",
-      "status": "SUCCESS"
-    },
-    {
-      "name": "Sala 106",
-      "ip": "10.70.20.114",
-      "type": "AP",
-      "status": "SUCCESS"
-    },
-    {
-      "name": "Sala 104",
-      "ip": "10.70.20.110",
-      "type": "AP",
-      "status": "SUCCESS"
-    },
-    {
-      "name": "Sala 105",
-      "ip": "10.70.20.144",
-      "type": "AP",
-      "status": "SUCCESS"
-    },
-    {
-      "name": "Sala 101",
-      "ip": "10.70.20.107",
-      "type": "AP",
-      "status": "SUCCESS"
-    },
-    {
-      "name": "Sala 103",
-      "ip": "10.70.20.127",
-      "type": "AP",
-      "status": "SUCCESS"
-    },
-    {
-      "name": "Portaria",
-      "ip": "10.70.20.212",
-      "type": "AP",
-      "status": "SUCCESS"
-    },
-    {
-      "name": "Biblioteca 02",
-      "ip": "10.70.20.120",
-      "type": "AP",
-      "status": "SUCCESS"
-    },
-    {
-      "name": "Biblioteca 01",
-      "ip": "10.70.20.211",
-      "type": "AP",
-      "status": "SUCCESS"
-    },
-    {
-      "name": "AP - 209",
-      "ip": "10.70.20.137",
-      "type": "AP",
-      "status": "SUCCESS"
-    },
-    {
-      "name": "AP - 102",
-      "ip": "10.70.20.111",
-      "type": "AP",
-      "status": "SUCCESS"
-    },
-    {
-      "name": "Portaria_Alunos",
-      "ip": "10.70.40.172",
+      "name": "2A_Esquerdo",
+      "ip": "10.70.40.16",
       "type": "CAMERA",
       "status": "SUCCESS"
     },
     {
-      "name": "1A _Lab CAM 102",
-      "ip": "10.70.40.102",
+      "name": "2A_Corredor",
+      "ip": "10.70.40.15",
+      "type": "CAMERA",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "2A_Salas",
+      "ip": "10.70.40.13",
+      "type": "CAMERA",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "2A_Lab",
+      "ip": "10.70.40.12",
+      "type": "CAMERA",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "CAM 108 - Cantina",
+      "ip": "10.70.40.108",
+      "type": "CAMERA",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "CAM 107 - Sala 104",
+      "ip": "10.70.40.107",
+      "type": "CAMERA",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "1A_Biblioteca",
+      "ip": "10.70.40.106",
+      "type": "CAMERA",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "1A_Ponto",
+      "ip": "10.70.40.105",
+      "type": "CAMERA",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "1A_Salas",
+      "ip": "10.70.40.103",
+      "type": "CAMERA",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "3A_Lab",
+      "ip": "10.70.40.22",
       "type": "CAMERA",
       "status": "SUCCESS"
     },
@@ -195,8 +201,8 @@
       "status": "SUCCESS"
     },
     {
-      "name": "Paineis_Solares",
-      "ip": "10.70.40.180",
+      "name": "Portaria_Alunos",
+      "ip": "10.70.40.172",
       "type": "CAMERA",
       "status": "SUCCESS"
     },
@@ -219,166 +225,154 @@
       "status": "SUCCESS"
     },
     {
+      "name": "4A_Salas",
+      "ip": "10.70.40.33",
+      "type": "CAMERA",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "4A_Lab",
+      "ip": "10.70.40.32",
+      "type": "CAMERA",
+      "status": "SUCCESS"
+    },
+    {
       "name": "3A_Salas",
       "ip": "10.70.40.23",
       "type": "CAMERA",
       "status": "SUCCESS"
     },
     {
-      "name": "3A_Lab",
-      "ip": "10.70.40.22",
+      "name": "1A _Lab CAM 102",
+      "ip": "10.70.40.102",
       "type": "CAMERA",
       "status": "SUCCESS"
     },
     {
-      "name": "2A_Esquerdo",
-      "ip": "10.70.40.16",
+      "name": "Paineis_Solares",
+      "ip": "10.70.40.180",
       "type": "CAMERA",
-      "status": "SUCCESS"
+      "status": "FAILED"
     },
     {
-      "name": "2A_Corredor",
-      "ip": "10.70.40.15",
-      "type": "CAMERA",
-      "status": "SUCCESS"
-    },
-    {
-      "name": "2A_Salas",
-      "ip": "10.70.40.13",
-      "type": "CAMERA",
-      "status": "SUCCESS"
-    },
-    {
-      "name": "CAM 108 - Cantina",
-      "ip": "10.70.40.108",
-      "type": "CAMERA",
-      "status": "SUCCESS"
-    },
-    {
-      "name": "2A_Lab",
-      "ip": "10.70.40.12",
-      "type": "CAMERA",
-      "status": "SUCCESS"
-    },
-    {
-      "name": "CAM 107 - Sala 104",
-      "ip": "10.70.40.107",
-      "type": "CAMERA",
-      "status": "SUCCESS"
-    },
-    {
-      "name": "1A_Ponto",
-      "ip": "10.70.40.105",
-      "type": "CAMERA",
-      "status": "SUCCESS"
-    },
-    {
-      "name": "1A_Salas",
-      "ip": "10.70.40.103",
-      "type": "CAMERA",
-      "status": "SUCCESS"
-    },
-    {
-      "name": "1A_Biblioteca",
-      "ip": "10.70.40.106",
-      "type": "CAMERA",
-      "status": "SUCCESS"
-    },
-    {
-      "name": "Sala 208",
-      "ip": "10.70.20.222",
+      "name": "Sala 105",
+      "ip": "10.70.20.144",
       "type": "AP",
       "status": "SUCCESS"
     },
     {
-      "name": "Sala T07",
-      "ip": "10.70.20.103",
+      "name": "Sala 104",
+      "ip": "10.70.20.110",
       "type": "AP",
       "status": "SUCCESS"
     },
     {
-      "name": "Sala 410",
-      "ip": "10.70.20.217",
+      "name": "Sala 103",
+      "ip": "10.70.20.127",
       "type": "AP",
       "status": "SUCCESS"
     },
     {
-      "name": "Sala 409",
-      "ip": "10.70.20.131",
+      "name": "Sala 101",
+      "ip": "10.70.20.107",
       "type": "AP",
       "status": "SUCCESS"
     },
     {
-      "name": "Sala 408",
-      "ip": "10.70.20.229",
+      "name": "AP - 209",
+      "ip": "10.70.20.137",
       "type": "AP",
       "status": "SUCCESS"
     },
     {
-      "name": "Sala 407",
-      "ip": "10.70.20.133",
+      "name": "AP - 102",
+      "ip": "10.70.20.111",
       "type": "AP",
       "status": "SUCCESS"
     },
     {
-      "name": "Sala 406",
-      "ip": "10.70.20.129",
+      "name": "Sala 106",
+      "ip": "10.70.20.114",
       "type": "AP",
       "status": "SUCCESS"
     },
     {
-      "name": "Sala 405",
-      "ip": "10.70.20.119",
+      "name": "Biblioteca 01",
+      "ip": "10.70.20.211",
+      "type": "AP",
+      "status": "FAILED"
+    },
+    {
+      "name": "Biblioteca 02",
+      "ip": "10.70.20.120",
+      "type": "AP",
+      "status": "FAILED"
+    },
+    {
+      "name": "Portaria",
+      "ip": "10.70.20.212",
+      "type": "AP",
+      "status": "FAILED"
+    },
+    {
+      "name": "Sala 202",
+      "ip": "10.70.20.124",
       "type": "AP",
       "status": "SUCCESS"
     },
     {
-      "name": "Sala 404",
-      "ip": "10.70.20.132",
+      "name": "Sala 201",
+      "ip": "10.70.20.205",
       "type": "AP",
       "status": "SUCCESS"
     },
     {
-      "name": "Sala 402",
-      "ip": "10.70.20.218",
+      "name": "Sala 124",
+      "ip": "10.70.20.101",
       "type": "AP",
       "status": "SUCCESS"
     },
     {
-      "name": "Sala 403",
-      "ip": "10.70.20.250",
+      "name": "Sala 120",
+      "ip": "10.70.20.112",
       "type": "AP",
       "status": "SUCCESS"
     },
     {
-      "name": "Sala 401",
-      "ip": "10.70.20.207",
+      "name": "Sala 113",
+      "ip": "10.70.20.125",
       "type": "AP",
       "status": "SUCCESS"
     },
     {
-      "name": "Sala 309",
-      "ip": "10.70.20.138",
+      "name": "Sala 110",
+      "ip": "10.70.20.106",
       "type": "AP",
       "status": "SUCCESS"
     },
     {
-      "name": "Sala 307",
-      "ip": "10.70.20.142",
+      "name": "Sala 107",
+      "ip": "10.70.20.143",
       "type": "AP",
       "status": "SUCCESS"
     },
     {
-      "name": "Sala 308",
-      "ip": "10.70.20.136",
+      "name": "Sala 109",
+      "ip": "10.70.20.109",
       "type": "AP",
-      "status": "SUCCESS"
+      "status": "FAILED"
     },
     {
-      "name": "Sala 305",
-      "ip": "10.70.20.141",
+      "name": "Sala 203",
+      "ip": "10.70.20.221",
       "type": "AP",
-      "status": "SUCCESS"
+      "status": "FAILED"
+    },
+    {
+      "name": "Sala 115",
+      "ip": "10.70.20.115",
+      "type": "AP",
+      "status": "FAILED"
     },
     {
       "name": "Sala 304",
@@ -399,26 +393,110 @@
       "status": "SUCCESS"
     },
     {
+      "name": "Sala 207",
+      "ip": "10.70.20.128",
+      "type": "AP",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "Sala 205",
+      "ip": "10.70.20.223",
+      "type": "AP",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "Sala 204",
+      "ip": "10.70.20.225",
+      "type": "AP",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "Sala 206",
+      "ip": "10.70.20.219",
+      "type": "AP",
+      "status": "FAILED"
+    },
+    {
+      "name": "Sala 208",
+      "ip": "10.70.20.222",
+      "type": "AP",
+      "status": "FAILED"
+    },
+    {
+      "name": "Sala 305",
+      "ip": "10.70.20.141",
+      "type": "AP",
+      "status": "FAILED"
+    },
+    {
       "name": "Sala 302",
       "ip": "10.70.20.140",
       "type": "AP",
-      "status": "SUCCESS"
+      "status": "FAILED"
     },
     {
-      "name": "Sala T09",
-      "ip": "10.70.20.116",
+      "name": "Sala 406",
+      "ip": "10.70.20.129",
       "type": "AP",
       "status": "SUCCESS"
     },
     {
-      "name": "Sala T08",
-      "ip": "10.70.20.104",
+      "name": "Sala 404",
+      "ip": "10.70.20.132",
       "type": "AP",
       "status": "SUCCESS"
     },
     {
-      "name": "Sala 501 - STI",
-      "ip": "10.70.20.121",
+      "name": "Sala 401",
+      "ip": "10.70.20.207",
+      "type": "AP",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "Sala 309",
+      "ip": "10.70.20.138",
+      "type": "AP",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "Sala 308",
+      "ip": "10.70.20.136",
+      "type": "AP",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "Sala 307",
+      "ip": "10.70.20.142",
+      "type": "AP",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "Sala 407",
+      "ip": "10.70.20.133",
+      "type": "AP",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "Sala 403",
+      "ip": "10.70.20.250",
+      "type": "AP",
+      "status": "FAILED"
+    },
+    {
+      "name": "Sala 402",
+      "ip": "10.70.20.218",
+      "type": "AP",
+      "status": "FAILED"
+    },
+    {
+      "name": "Sala 405",
+      "ip": "10.70.20.119",
+      "type": "AP",
+      "status": "FAILED"
+    },
+    {
+      "name": "Sala T13",
+      "ip": "10.70.20.213",
       "type": "AP",
       "status": "SUCCESS"
     },
@@ -429,38 +507,50 @@
       "status": "SUCCESS"
     },
     {
-      "name": "Sala T13",
-      "ip": "10.70.20.213",
+      "name": "Sala T09",
+      "ip": "10.70.20.116",
       "type": "AP",
       "status": "SUCCESS"
+    },
+    {
+      "name": "Sala 501 - STI",
+      "ip": "10.70.20.121",
+      "type": "AP",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "Sala 409",
+      "ip": "10.70.20.131",
+      "type": "AP",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "Sala 408",
+      "ip": "10.70.20.229",
+      "type": "AP",
+      "status": "FAILED"
+    },
+    {
+      "name": "Sala T07",
+      "ip": "10.70.20.103",
+      "type": "AP",
+      "status": "FAILED"
+    },
+    {
+      "name": "Sala 410",
+      "ip": "10.70.20.217",
+      "type": "AP",
+      "status": "FAILED"
+    },
+    {
+      "name": "Sala T08",
+      "ip": "10.70.20.104",
+      "type": "AP",
+      "status": "FAILED"
     },
     {
       "name": "Sala T14",
       "ip": "10.70.20.214",
-      "type": "AP",
-      "status": "SUCCESS"
-    },
-    {
-      "name": "4A_Lab",
-      "ip": "10.70.40.32",
-      "type": "CAMERA",
-      "status": "FAILED"
-    },
-    {
-      "name": "4A_Salas",
-      "ip": "10.70.40.33",
-      "type": "CAMERA",
-      "status": "FAILED"
-    },
-    {
-      "name": "Sala 110",
-      "ip": "10.70.20.106",
-      "type": "AP",
-      "status": "FAILED"
-    },
-    {
-      "name": "Sala 109",
-      "ip": "10.70.20.109",
       "type": "AP",
       "status": "FAILED"
     }

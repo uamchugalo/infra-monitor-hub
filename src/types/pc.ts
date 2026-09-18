@@ -1,4 +1,4 @@
-export type PCStatus = 'online' | 'warning' | 'offline';
+export type PCStatus = "online" | "warning" | "offline";
 
 export interface HistoryEntry {
   id: string;

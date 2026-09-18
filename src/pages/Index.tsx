@@ -1,21 +1,30 @@
-import { useState, useEffect } from 'react';
-import { PC, LabLog as LabLogType, LabData } from '@/types/pc';
-import { generateInitialPCs, LABS, LabId } from '@/utils/pcData';
-import { useLocalStorage } from '@/hooks/useLocalStorage';
-import { PCCard } from '@/components/PCCard';
-import { EditPanel } from '@/components/EditPanel';
-import { LabLog } from '@/components/LabLog';
-import { StatusSummary } from '@/components/StatusSummary';
-import { LabSelector } from '@/components/LabSelector';
-import { ReportsModal } from '@/components/ReportsModal';
-import { Server, RotateCcw, Video, Activity, Power, Router, Plus, Network } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { toast } from 'sonner';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import { PC, LabLog as LabLogType, LabData } from "@/types/pc";
+import { generateInitialPCs, LABS, LabId } from "@/utils/pcData";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
+import { PCCard } from "@/components/PCCard";
+import { EditPanel } from "@/components/EditPanel";
+import { LabLog } from "@/components/LabLog";
+import { StatusSummary } from "@/components/StatusSummary";
+import { LabSelector } from "@/components/LabSelector";
+import { ReportsModal } from "@/components/ReportsModal";
+import {
+  Server,
+  RotateCcw,
+  Video,
+  Activity,
+  Power,
+  Router,
+  Plus,
+  Network,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
+import { useNavigate } from "react-router-dom";
 
 const initializeLabData = (): Record<LabId, LabData> => {
   const data: Record<string, LabData> = {};
-  LABS.forEach(lab => {
+  LABS.forEach((lab) => {
     data[lab.id] = {
       pcs: generateInitialPCs(lab.id),
       logs: [],
@@ -26,13 +35,19 @@ const initializeLabData = (): Record<LabId, LabData> => {
 
 const Index = () => {
   const navigate = useNavigate();
-  const [labsData, setLabsData] = useLocalStorage<Record<LabId, LabData>>('labs-data', initializeLabData());
-  const [selectedLab, setSelectedLab] = useState<LabId>('109');
-  const [selectedPcId, setSelectedPcId] = useState<string | number | null>(null);
+  const [labsData, setLabsData] = useLocalStorage<Record<LabId, LabData>>(
+    "labs-data",
+    initializeLabData(),
+  );
+  const [selectedLab, setSelectedLab] = useState<LabId>("109");
+  const [selectedPcId, setSelectedPcId] = useState<string | number | null>(
+    null,
+  );
 
   const currentLabData = labsData[selectedLab];
-  const currentLab = LABS.find(l => l.id === selectedLab)!;
-  const selectedPc = currentLabData.pcs.find(p => p.id === selectedPcId) || null;
+  const currentLab = LABS.find((l) => l.id === selectedLab)!;
+  const selectedPc =
+    currentLabData.pcs.find((p) => p.id === selectedPcId) || null;
 
   const handleSelectLab = (labId: LabId) => {
     setSelectedLab(labId);
@@ -48,10 +63,12 @@ const Index = () => {
       ...labsData,
       [selectedLab]: {
         ...currentLabData,
-        pcs: currentLabData.pcs.map(p => p.id === updatedPc.id ? updatedPc : p),
+        pcs: currentLabData.pcs.map((p) =>
+          p.id === updatedPc.id ? updatedPc : p,
+        ),
       },
     });
-    toast.success(`PC #${String(updatedPc.id).padStart(2, '0')} salvo`);
+    toast.success(`PC #${String(updatedPc.id).padStart(2, "0")} salvo`);
   };
 
   const handleAddLabLog = (log: LabLogType) => {
@@ -62,7 +79,7 @@ const Index = () => {
         logs: [log, ...currentLabData.logs],
       },
     });
-    toast.success('Evento registrado');
+    toast.success("Evento registrado");
   };
 
   const handleDeleteLabLog = (id: string) => {
@@ -70,7 +87,7 @@ const Index = () => {
       ...labsData,
       [selectedLab]: {
         ...currentLabData,
-        logs: currentLabData.logs.filter(l => l.id !== id),
+        logs: currentLabData.logs.filter((l) => l.id !== id),
       },
     });
   };
@@ -89,40 +106,41 @@ const Index = () => {
     }
   };
 
-
-
   // Carregar dados persistidos do servidor ao iniciar
   useEffect(() => {
     const loadServerData = async () => {
       try {
         // Carrega PCs
-        const pcResponse = await fetch('/api/pcs');
+        const pcResponse = await fetch("/api/pcs");
         if (pcResponse.ok) {
-          const serverPcs: (PC & { location?: string })[] = await pcResponse.json();
+          const serverPcs: (PC & { location?: string })[] =
+            await pcResponse.json();
           if (serverPcs.length > 0) {
-            setLabsData(prevData => {
+            setLabsData((prevData) => {
               const newData = { ...prevData };
-              (Object.keys(newData) as LabId[]).forEach(labId => {
+              (Object.keys(newData) as LabId[]).forEach((labId) => {
                 // Filter PCs belonging to this lab from server data
-                const labServerPcs = serverPcs.filter(sp => sp.location === labId);
+                const labServerPcs = serverPcs.filter(
+                  (sp) => sp.location === labId,
+                );
 
                 if (labServerPcs.length > 0) {
                   // USE SERVER DATA AS SOURCE OF TRUTH
                   // This adopts server IDs (e.g. "109-PC01") and status
-                  newData[labId].pcs = labServerPcs.map(sp => ({
+                  newData[labId].pcs = labServerPcs.map((sp) => ({
                     id: sp.id,
                     name: sp.name,
                     ip: sp.ip,
                     mac: sp.mac,
-                    status: sp.status as any || 'online',
+                    status: (sp.status as any) || "online",
                     history: sp.history || [],
                     switchId: sp.switchId,
-                    switchPort: sp.switchPort
+                    switchPort: sp.switchPort,
                   }));
                 } else {
                   // Fallback to local mock data ONLY if server has nothing for this lab
                   // (But try to preserve existing local state if it exists?)
-                  // For now, leave as is, or maybe do nothing. 
+                  // For now, leave as is, or maybe do nothing.
                   // Existing logic kept local PCs. Let's keep existing logic if NO server data found for this lab.
                 }
               });
@@ -132,22 +150,24 @@ const Index = () => {
         }
 
         // Carrega Lab Logs
-        const logResponse = await fetch('/api/lab-logs');
+        const logResponse = await fetch("/api/lab-logs");
         if (logResponse.ok) {
           const serverLogs: LabLogType[] = await logResponse.json();
           if (serverLogs.length > 0) {
-            setLabsData(prevData => {
+            setLabsData((prevData) => {
               const newData = { ...prevData };
-              (Object.keys(newData) as LabId[]).forEach(labId => {
-                newData[labId].logs = serverLogs.filter(l => l.labId === labId);
+              (Object.keys(newData) as LabId[]).forEach((labId) => {
+                newData[labId].logs = serverLogs.filter(
+                  (l) => l.labId === labId,
+                );
               });
               return newData;
             });
           }
         }
-        console.log('Dados restaurados do servidor!');
+        console.log("Dados restaurados do servidor!");
       } catch (error) {
-        console.error('Erro ao carregar dados:', error);
+        console.error("Erro ao carregar dados:", error);
       }
     };
 
@@ -158,32 +178,37 @@ const Index = () => {
   useEffect(() => {
     const syncData = async () => {
       try {
-        const allPcs = Object.values(labsData).flatMap(lab => lab.pcs.map(p => ({
-          ...p,
-          location: Object.keys(labsData).find(key => labsData[key].pcs.includes(p)) || ''
-        })));
+        const allPcs = Object.values(labsData).flatMap((lab) =>
+          lab.pcs.map((p) => ({
+            ...p,
+            location:
+              Object.keys(labsData).find((key) =>
+                labsData[key].pcs.includes(p),
+              ) || "",
+          })),
+        );
 
         const allLogs = Object.entries(labsData).flatMap(([labId, data]) =>
-          data.logs.map(l => ({ ...l, labId }))
+          data.logs.map((l) => ({ ...l, labId })),
         );
 
         // Sync PCs
-        await fetch('/api/sync-pcs', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+        await fetch("/api/sync-pcs", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ pcs: allPcs }),
         });
 
         // Sync Lab Logs
-        await fetch('/api/sync-lab-logs', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+        await fetch("/api/sync-lab-logs", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ logs: allLogs }),
         });
 
-        console.log('Sincronização com servidor realizada');
+        console.log("Sincronização com servidor realizada");
       } catch (error) {
-        console.error('Erro ao sincronizar:', error);
+        console.error("Erro ao sincronizar:", error);
       }
     };
 
@@ -217,7 +242,7 @@ const Index = () => {
                 <Button
                   variant="ghost"
                   size="sm"
-                  onClick={() => navigate('/')}
+                  onClick={() => navigate("/")}
                   className="text-muted-foreground hover:text-foreground"
                 >
                   <Server className="w-4 h-4 mr-2" />
@@ -234,7 +259,7 @@ const Index = () => {
                 <Button
                   variant="ghost"
                   size="sm"
-                  onClick={() => navigate('/cameras')}
+                  onClick={() => navigate("/cameras")}
                   className="text-muted-foreground hover:text-foreground"
                 >
                   <Video className="w-4 h-4 mr-2" />
@@ -243,7 +268,7 @@ const Index = () => {
                 <Button
                   variant="ghost"
                   size="sm"
-                  onClick={() => navigate('/aps')}
+                  onClick={() => navigate("/aps")}
                   className="text-muted-foreground hover:text-foreground"
                 >
                   <Router className="w-4 h-4 mr-2" />
@@ -252,13 +277,12 @@ const Index = () => {
                 <Button
                   variant="ghost"
                   size="sm"
-                  onClick={() => navigate('/technical-rooms')}
+                  onClick={() => navigate("/technical-rooms")}
                   className="text-muted-foreground hover:text-foreground"
                 >
                   <Server className="w-4 h-4 mr-2" />
                   Switches
                 </Button>
-
               </div>
 
               <div className="h-8 w-px bg-border" />
@@ -281,20 +305,24 @@ const Index = () => {
                 variant="outline"
                 size="sm"
                 onClick={async () => {
-                  if (confirm(`Tem certeza que deseja ligar TODOS os ${currentLabData.pcs.length} computadores do ${currentLab.name}?`)) {
-                    toast.info('Iniciando sequência de Wake-on-LAN...');
+                  if (
+                    confirm(
+                      `Tem certeza que deseja ligar TODOS os ${currentLabData.pcs.length} computadores do ${currentLab.name}?`,
+                    )
+                  ) {
+                    toast.info("Iniciando sequência de Wake-on-LAN...");
                     let count = 0;
                     for (const pc of currentLabData.pcs) {
                       if (pc.mac) {
                         // Envia sem esperar resposta para ser rápido
-                        fetch('/api/wake', {
-                          method: 'POST',
-                          headers: { 'Content-Type': 'application/json' },
+                        fetch("/api/wake", {
+                          method: "POST",
+                          headers: { "Content-Type": "application/json" },
                           body: JSON.stringify({ mac: pc.mac }),
                         }).catch(console.error);
                         count++;
                         // Pequeno delay para não congestionar a rede
-                        await new Promise(r => setTimeout(r, 50));
+                        await new Promise((r) => setTimeout(r, 50));
                       }
                     }
                     toast.success(`Comando enviado para ${count} máquinas!`);
@@ -309,20 +337,26 @@ const Index = () => {
                 variant="destructive"
                 size="sm"
                 onClick={async () => {
-                  if (confirm(`ATENÇÃO: Isso irá enviar comando de DESLIGAR para TODOS os ${currentLabData.pcs.length} computadores do ${currentLab.name}. Deseja continuar?`)) {
-                    toast.info('Enviando comandos de desligamento...');
+                  if (
+                    confirm(
+                      `ATENÇÃO: Isso irá enviar comando de DESLIGAR para TODOS os ${currentLabData.pcs.length} computadores do ${currentLab.name}. Deseja continuar?`,
+                    )
+                  ) {
+                    toast.info("Enviando comandos de desligamento...");
                     let count = 0;
                     for (const pc of currentLabData.pcs) {
                       if (pc.ip) {
                         try {
-                          fetch('/api/shutdown', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
+                          fetch("/api/shutdown", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
                             body: JSON.stringify({ ip: pc.ip }),
                           }).catch(console.error);
                           count++;
-                          await new Promise(r => setTimeout(r, 50));
-                        } catch (e) { console.error(e) }
+                          await new Promise((r) => setTimeout(r, 50));
+                        } catch (e) {
+                          console.error(e);
+                        }
                       }
                     }
                     toast.success(`Comando enviado para ${count} máquinas!`);
@@ -337,7 +371,9 @@ const Index = () => {
                 variant="outline"
                 size="sm"
                 onClick={async () => {
-                  toast.info('Iniciando verificação de status (Relatório apenas)...');
+                  toast.info(
+                    "Iniciando verificação de status (Relatório apenas)...",
+                  );
                   // Não atualizamos o status visual dos PCs, apenas geramos o relatório
                   // O usuário quer controle MANUAL dos status (luzes)
 
@@ -350,19 +386,28 @@ const Index = () => {
                     total: pcsToCheck.length,
                     online_after_wake: 0,
                     failures: [] as any[],
-                    details: [] as any[]
+                    details: [] as any[],
                   };
 
                   const promises = pcsToCheck.map(async (pc) => {
                     if (!pc.ip) {
-                      report.failures.push({ name: pc.name, ip: 'N/A', mac: pc.mac, reason: 'No IP Configured' });
-                      report.details.push({ name: pc.name, ip: 'N/A', status: 'FAILED' });
+                      report.failures.push({
+                        name: pc.name,
+                        ip: "N/A",
+                        mac: pc.mac,
+                        reason: "No IP Configured",
+                      });
+                      report.details.push({
+                        name: pc.name,
+                        ip: "N/A",
+                        status: "FAILED",
+                      });
                       return;
                     }
                     try {
-                      const response = await fetch('/api/ping', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
+                      const response = await fetch("/api/ping", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({ ip: pc.ip }),
                       });
                       const data = await response.json();
@@ -370,15 +415,37 @@ const Index = () => {
                       if (data.alive) {
                         onlineCount++;
                         report.online_after_wake++;
-                        report.details.push({ name: pc.name, ip: pc.ip, status: 'SUCCESS' });
+                        report.details.push({
+                          name: pc.name,
+                          ip: pc.ip,
+                          status: "SUCCESS",
+                        });
                         // NÃO ATUALIZA STATUS VISUAL (MANUAL APENAS)
                       } else {
-                        report.failures.push({ name: pc.name, ip: pc.ip, mac: pc.mac, reason: 'No Ping Response' });
-                        report.details.push({ name: pc.name, ip: pc.ip, status: 'FAILED' });
+                        report.failures.push({
+                          name: pc.name,
+                          ip: pc.ip,
+                          mac: pc.mac,
+                          reason: "No Ping Response",
+                        });
+                        report.details.push({
+                          name: pc.name,
+                          ip: pc.ip,
+                          status: "FAILED",
+                        });
                       }
                     } catch (e) {
-                      report.failures.push({ name: pc.name, ip: pc.ip, mac: pc.mac, reason: 'Network Error' });
-                      report.details.push({ name: pc.name, ip: pc.ip, status: 'FAILED' });
+                      report.failures.push({
+                        name: pc.name,
+                        ip: pc.ip,
+                        mac: pc.mac,
+                        reason: "Network Error",
+                      });
+                      report.details.push({
+                        name: pc.name,
+                        ip: pc.ip,
+                        status: "FAILED",
+                      });
                     }
                   });
 
@@ -388,23 +455,23 @@ const Index = () => {
 
                   // Salvar relatório
                   try {
-                    await fetch('/api/reports', {
-                      method: 'POST',
-                      headers: { 'Content-Type': 'application/json' },
+                    await fetch("/api/reports", {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
                       body: JSON.stringify(report),
                     });
-                    toast.success(`Relatório salvo! ${onlineCount} PCs responderam ao ping.`);
+                    toast.success(
+                      `Relatório salvo! ${onlineCount} PCs responderam ao ping.`,
+                    );
                   } catch (error) {
-                    console.error('Erro ao salvar relatório:', error);
-                    toast.error('Erro ao salvar relatório');
+                    console.error("Erro ao salvar relatório:", error);
+                    toast.error("Erro ao salvar relatório");
                   }
                 }}
               >
                 <Activity className="w-4 h-4 mr-2" />
                 Verificar
               </Button>
-
-
             </div>
           </div>
         </div>
@@ -438,23 +505,23 @@ const Index = () => {
                 variant="outline"
                 className="w-full h-full min-h-[140px] flex flex-col gap-2 border-dashed border-2 hover:border-primary/50 hover:bg-primary/5"
                 onClick={() => {
-                  const newId = `${currentLab.id}-PC${String(currentLabData.pcs.length + 1).padStart(2, '0')}`;
+                  const newId = `${currentLab.id}-PC${String(currentLabData.pcs.length + 1).padStart(2, "0")}`;
                   const newPc: PC = {
                     id: newId,
                     name: newId,
-                    ip: '',
-                    mac: '',
-                    status: 'offline',
+                    ip: "",
+                    mac: "",
+                    status: "offline",
                     history: [],
-                    switchId: '',
-                    switchPort: ''
+                    switchId: "",
+                    switchPort: "",
                   };
                   setLabsData({
                     ...labsData,
                     [selectedLab]: {
                       ...currentLabData,
-                      pcs: [...currentLabData.pcs, newPc]
-                    }
+                      pcs: [...currentLabData.pcs, newPc],
+                    },
                   });
                   toast.success(`PC ${newId} adicionado!`);
                 }}
@@ -462,7 +529,9 @@ const Index = () => {
                 <div className="p-3 bg-muted rounded-full">
                   <Plus className="w-6 h-6 text-muted-foreground" />
                 </div>
-                <span className="text-sm font-medium text-muted-foreground">Adicionar PC</span>
+                <span className="text-sm font-medium text-muted-foreground">
+                  Adicionar PC
+                </span>
               </Button>
             </div>
           </div>
@@ -480,37 +549,39 @@ const Index = () => {
                 onClose={() => setSelectedPcId(null)}
                 onWake={async (mac, ip) => {
                   try {
-                    const response = await fetch('/api/wake', {
-                      method: 'POST',
+                    const response = await fetch("/api/wake", {
+                      method: "POST",
                       headers: {
-                        'Content-Type': 'application/json',
+                        "Content-Type": "application/json",
                       },
                       body: JSON.stringify({ mac, ip }),
                     });
 
                     if (!response.ok) {
                       const errorData = await response.json();
-                      throw new Error(errorData.error || 'Falha ao enviar comando');
+                      throw new Error(
+                        errorData.error || "Falha ao enviar comando",
+                      );
                     }
 
                     toast.success(`Comando Wake-on-LAN enviado para ${mac}`);
                   } catch (error) {
-                    console.error('WoL Error:', error);
-                    toast.error('Erro ao enviar comando Wake-on-LAN');
+                    console.error("WoL Error:", error);
+                    toast.error("Erro ao enviar comando Wake-on-LAN");
                   }
                 }}
                 onPing={async (ip) => {
                   try {
-                    const response = await fetch('/api/ping', {
-                      method: 'POST',
+                    const response = await fetch("/api/ping", {
+                      method: "POST",
                       headers: {
-                        'Content-Type': 'application/json',
+                        "Content-Type": "application/json",
                       },
                       body: JSON.stringify({ ip }),
                     });
 
                     if (!response.ok) {
-                      throw new Error('Falha ao pingar');
+                      throw new Error("Falha ao pingar");
                     }
 
                     const data = await response.json();
@@ -518,42 +589,42 @@ const Index = () => {
                       toast.success(`Ping OK: ${data.time}ms`);
                       return true;
                     } else {
-                      toast.error('Host inacessível');
+                      toast.error("Host inacessível");
                       return false;
                     }
                   } catch (error) {
-                    console.error('Ping Error:', error);
-                    toast.error('Erro ao realizar ping');
+                    console.error("Ping Error:", error);
+                    toast.error("Erro ao realizar ping");
                     return false;
                   }
                 }}
                 onShutdown={async (ip) => {
                   try {
-                    const response = await fetch('/api/shutdown', {
-                      method: 'POST',
-                      headers: { 'Content-Type': 'application/json' },
+                    const response = await fetch("/api/shutdown", {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
                       body: JSON.stringify({ ip }),
                     });
 
-                    if (!response.ok) throw new Error('Falha no comando');
+                    if (!response.ok) throw new Error("Falha no comando");
 
                     toast.success(`Comando DESLIGAR enviado para ${ip}`);
                   } catch (error) {
-                    console.error('Shutdown Error:', error);
-                    toast.error('Erro ao enviar comando de desligamento');
+                    console.error("Shutdown Error:", error);
+                    toast.error("Erro ao enviar comando de desligamento");
                   }
                 }}
                 onDelete={(id) => {
-                  const newPcs = currentLabData.pcs.filter(p => p.id !== id);
+                  const newPcs = currentLabData.pcs.filter((p) => p.id !== id);
                   setLabsData({
                     ...labsData,
                     [selectedLab]: {
                       ...currentLabData,
-                      pcs: newPcs
-                    }
+                      pcs: newPcs,
+                    },
                   });
                   setSelectedPcId(null);
-                  toast.success('PC removido');
+                  toast.success("PC removido");
                 }}
               />
             ) : (

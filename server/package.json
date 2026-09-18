@@ -1,23 +1,25 @@
 {
-    "name": "infra-monitor-server",
-    "version": "1.0.0",
-    "description": "Backend server for Infra Monitor Hub",
-    "main": "index.js",
-    "type": "module",
-    "scripts": {
-        "start": "node index.js",
-        "dev": "node --watch index.js"
-    },
-    "dependencies": {
-        "@types/node-cron": "^3.0.11",
-        "cors": "^2.8.5",
-        "express": "^4.18.2",
-        "node-cron": "^4.2.1",
-        "ping": "^1.0.0",
-        "wake_on_lan": "^1.0.0"
-    },
-    "devDependencies": {
-        "@prisma/client": "^5.22.0",
-        "prisma": "^5.22.0"
-    }
+  "name": "infra-monitor-server",
+  "version": "1.0.0",
+  "description": "Backend server for Infra Monitor Hub",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js"
+  },
+  "dependencies": {
+    "@types/node-cron": "^3.0.11",
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.3",
+    "node-cron": "^4.2.1",
+    "ping": "^1.0.0",
+    "wake_on_lan": "^1.0.0"
+  },
+  "devDependencies": {
+    "@prisma/client": "^5.22.0",
+    "prisma": "^5.22.0"
+  }
 }

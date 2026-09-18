@@ -1,9 +1,9 @@
-import { useState } from 'react';
-import { LabLog as LabLogType } from '@/types/pc';
-import { formatTimestamp, generateId } from '@/utils/pcData';
-import { FileText, Plus, Trash2 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+import { useState } from "react";
+import { LabLog as LabLogType } from "@/types/pc";
+import { formatTimestamp, generateId } from "@/utils/pcData";
+import { FileText, Plus, Trash2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 interface LabLogProps {
   logs: LabLogType[];
@@ -13,7 +13,7 @@ interface LabLogProps {
 }
 
 export function LabLog({ logs, labName, onAddLog, onDeleteLog }: LabLogProps) {
-  const [newLog, setNewLog] = useState('');
+  const [newLog, setNewLog] = useState("");
 
   const handleAddLog = () => {
     if (!newLog.trim()) return;
@@ -25,11 +25,11 @@ export function LabLog({ logs, labName, onAddLog, onDeleteLog }: LabLogProps) {
     };
 
     onAddLog(entry);
-    setNewLog('');
+    setNewLog("");
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
+    if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       handleAddLog();
     }
@@ -43,8 +43,12 @@ export function LabLog({ logs, labName, onAddLog, onDeleteLog }: LabLogProps) {
           <FileText className="w-4 h-4 text-primary" />
         </div>
         <div className="flex-1">
-          <h3 className="text-sm font-medium text-foreground">Log do {labName}</h3>
-          <p className="text-[10px] text-muted-foreground">{logs.length} registros</p>
+          <h3 className="text-sm font-medium text-foreground">
+            Log do {labName}
+          </h3>
+          <p className="text-[10px] text-muted-foreground">
+            {logs.length} registros
+          </p>
         </div>
       </div>
 
@@ -78,13 +82,18 @@ export function LabLog({ logs, labName, onAddLog, onDeleteLog }: LabLogProps) {
         ) : (
           <div className="divide-y divide-border">
             {logs.map((entry) => (
-              <div key={entry.id} className="group p-3 hover:bg-muted/50 transition-colors">
+              <div
+                key={entry.id}
+                className="group p-3 hover:bg-muted/50 transition-colors"
+              >
                 <div className="flex items-start justify-between gap-2">
                   <div className="flex-1 min-w-0">
                     <span className="text-[10px] font-mono text-primary">
                       {entry.timestamp}
                     </span>
-                    <p className="text-xs text-foreground mt-0.5">{entry.message}</p>
+                    <p className="text-xs text-foreground mt-0.5">
+                      {entry.message}
+                    </p>
                   </div>
                   <button
                     onClick={() => onDeleteLog(entry.id)}

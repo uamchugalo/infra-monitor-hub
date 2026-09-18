@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
@@ -25,46 +25,46 @@ Entrada_Carros_Ginasio,CAM181,10.70.40.181,24:fd:0d:7b:04:7e
 Ginásio,CAM182,10.70.40.182,24:fd:0d:7b:04:83`;
 
 async function main() {
-    console.log("Iniciando importação de câmeras...");
-    const lines = camerasData.split('\n');
-    let count = 0;
+  console.log("Iniciando importação de câmeras...");
+  const lines = camerasData.split("\n");
+  let count = 0;
 
-    for (const line of lines) {
-        if (!line.trim()) continue;
-        const [rawLocation, id, ip, mac] = line.split(',');
+  for (const line of lines) {
+    if (!line.trim()) continue;
+    const [rawLocation, id, ip, mac] = line.split(",");
 
-        // Limpeza básica
-        const name = rawLocation.trim();
-        const location = name.split(' - ')[1] || name; // Tenta extrair local se houver "CAM XXX - Sala YYY"
+    // Limpeza básica
+    const name = rawLocation.trim();
+    const location = name.split(" - ")[1] || name; // Tenta extrair local se houver "CAM XXX - Sala YYY"
 
-        try {
-            await prisma.camera.upsert({
-                where: { id: id.trim() },
-                update: {
-                    name: name,
-                    ip: ip.trim(),
-                    mac: mac.trim().replace(/-/g, ':').toUpperCase(),
-                    location: location,
-                },
-                create: {
-                    id: id.trim(),
-                    name: name,
-                    ip: ip.trim(),
-                    mac: mac.trim().replace(/-/g, ':').toUpperCase(),
-                    location: location,
-                    status: 'online' // Padrão inicial
-                }
-            });
-            console.log(`Câmera ${id} (${name}) importada/atualizada.`);
-            count++;
-        } catch (error) {
-            console.error(`Erro ao importar ${id}:`, error.message);
-        }
+    try {
+      await prisma.camera.upsert({
+        where: { id: id.trim() },
+        update: {
+          name: name,
+          ip: ip.trim(),
+          mac: mac.trim().replace(/-/g, ":").toUpperCase(),
+          location: location,
+        },
+        create: {
+          id: id.trim(),
+          name: name,
+          ip: ip.trim(),
+          mac: mac.trim().replace(/-/g, ":").toUpperCase(),
+          location: location,
+          status: "online", // Padrão inicial
+        },
+      });
+      console.log(`Câmera ${id} (${name}) importada/atualizada.`);
+      count++;
+    } catch (error) {
+      console.error(`Erro ao importar ${id}:`, error.message);
     }
+  }
 
-    console.log(`\nSucesso! ${count} câmeras processadas.`);
+  console.log(`\nSucesso! ${count} câmeras processadas.`);
 }
 
 main()
-    .catch(e => console.error(e))
-    .finally(async () => await prisma.$disconnect());
+  .catch((e) => console.error(e))
+  .finally(async () => await prisma.$disconnect());

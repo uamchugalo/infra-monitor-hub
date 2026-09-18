@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
@@ -55,61 +55,61 @@ Sala T13,10.70.20.213
 Sala T14,10.70.20.214`;
 
 function getFloor(name) {
-    if (name.includes('Portaria') || name.includes('Galpão')) return 'Térreo';
+  if (name.includes("Portaria") || name.includes("Galpão")) return "Térreo";
 
-    // Procura por números de sala ou AP
-    const match = name.match(/\b([T1-5])\d+\b/i) || name.match(/\b(\d)\d+\b/);
-    if (!match) return 'Térreo';
+  // Procura por números de sala ou AP
+  const match = name.match(/\b([T1-5])\d+\b/i) || name.match(/\b(\d)\d+\b/);
+  if (!match) return "Térreo";
 
-    const identifier = match[1].toUpperCase();
-    if (identifier === 'T') return 'Térreo';
-    if (identifier === '1') return '1° Andar';
-    if (identifier === '2') return '2° Andar';
-    if (identifier === '3') return '3° Andar';
-    if (identifier === '4') return '4° Andar';
-    if (identifier === '5') return '5° Andar';
+  const identifier = match[1].toUpperCase();
+  if (identifier === "T") return "Térreo";
+  if (identifier === "1") return "1° Andar";
+  if (identifier === "2") return "2° Andar";
+  if (identifier === "3") return "3° Andar";
+  if (identifier === "4") return "4° Andar";
+  if (identifier === "5") return "5° Andar";
 
-    return 'Térreo';
+  return "Térreo";
 }
 
 async function main() {
-    console.log("Iniciando importação de Access Points...");
-    const lines = apsData.split('\n');
-    let count = 0;
+  console.log("Iniciando importação de Access Points...");
+  const lines = apsData.split("\n");
+  let count = 0;
 
-    for (const line of lines) {
-        if (!line.trim()) continue;
-        const [name, ip] = line.split(',');
+  for (const line of lines) {
+    if (!line.trim()) continue;
+    const [name, ip] = line.split(",");
 
-        const cleanName = name.trim();
-        const cleanIp = ip.trim();
-        const id = `AP-${cleanIp.split('.').pop()}-${Date.now().toString().slice(-4)}`;
-        const location = getFloor(cleanName);
+    const cleanName = name.trim();
+    const cleanIp = ip.trim();
+    const id = `AP-${cleanIp.split(".").pop()}-${Date.now().toString().slice(-4)}`;
+    const location = getFloor(cleanName);
 
-        try {
-            await prisma.accessPoint.upsert({
-                where: { ip: cleanIp },
-                update: {
-                    name: cleanName,
-                    location: location,
-                },
-                create: {
-                    id: id,
-                    name: cleanName,
-                    ip: cleanIp,
-                    location: location,
-                }
-            });
-            console.log(`AP ${cleanName} (${location}) importado/atualizado.`);
-            count++;
-        } catch (error) {
-            console.error(`Erro ao importar ${cleanName}:`, error.message);
-        }
+    try {
+      await prisma.accessPoint.upsert({
+        where: { ip: cleanIp },
+        update: {
+          name: cleanName,
+          location: location,
+        },
+        create: {
+          id: id,
+          name: cleanName,
+          ip: cleanIp,
+          location: location,
+        },
+      });
+      console.log(`AP ${cleanName} (${location}) importado/atualizado.`);
+      count++;
+    } catch (error) {
+      console.error(`Erro ao importar ${cleanName}:`, error.message);
     }
+  }
 
-    console.log(`\nSucesso! ${count} Access Points processados.`);
+  console.log(`\nSucesso! ${count} Access Points processados.`);
 }
 
 main()
-    .catch(e => console.error(e))
-    .finally(async () => await prisma.$disconnect());
+  .catch((e) => console.error(e))
+  .finally(async () => await prisma.$disconnect());
