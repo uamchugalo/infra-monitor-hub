@@ -19,7 +19,13 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = 3000;
-const prisma = new PrismaClient();
+const prisma = new PrismaClient({
+  datasources: {
+    db: {
+      url: "file:./dev.db",
+    },
+  },
+});
 
 app.use(cors());
 app.use(express.json());
