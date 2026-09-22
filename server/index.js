@@ -884,6 +884,17 @@ app.get("/api/inventory", async (req, res) => {
   }
 });
 
+app.post("/api/inventory", async (req, res) => {
+  try {
+    const newItem = await prisma.inventoryItem.create({
+      data: req.body,
+    });
+    res.json(newItem);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(
     `Server running on http://localhost:${PORT} with SQLite Database`,

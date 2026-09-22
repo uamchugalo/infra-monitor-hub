@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Package, Activity, Search, RefreshCw } from "lucide-react";
+import { Package, Activity, Search, RefreshCw, Plus, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -11,6 +11,14 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogFooter,
+} from "@/components/ui/dialog";
 import { toast } from "sonner";
 
 interface InventoryItem {
@@ -33,6 +41,22 @@ const Inventory = () => {
   const [items, setItems] = useState<InventoryItem[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(true);
+  
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState<Partial<InventoryItem>>({
+    name: "",
+    ip: "",
+    location: "",
+    patrimony: "",
+    serialNumber: "",
+    manufacturer: "",
+    model: "",
+    macAddress: "",
+    consolePort: "",
+    sfp: "",
+    general: "",
+  });
 
   const fetchInventory = async () => {
     setLoading(true);
@@ -48,6 +72,38 @@ const Inventory = () => {
       toast.error("Falha de conexão com o servidor.");
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleCreate = async () => {
+    if (!formData.name && !formData.ip) {
+      toast.error("O item precisa ter pelo menos nome ou IP.");
+      return;
+    }
+    
+    setIsSubmitting(true);
+    try {
+      const res = await fetch("/api/inventory", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData)
+      });
+      
+      if (res.ok) {
+        toast.success("Item adicionado com sucesso!");
+        setIsAddModalOpen(false);
+        setFormData({
+          name: "", ip: "", location: "", patrimony: "", serialNumber: "",
+          manufacturer: "", model: "", macAddress: "", consolePort: "", sfp: "", general: ""
+        });
+        fetchInventory();
+      } else {
+        toast.error("Erro ao criar item.");
+      }
+    } catch (error) {
+      toast.error("Erro de conexão.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -115,6 +171,72 @@ const Inventory = () => {
                 />
                 Atualizar
               </Button>
+              <Dialog open={isAddModalOpen} onOpenChange={setIsAddModalOpen}>
+                <DialogTrigger asChild>
+                  <Button size="sm" className="bg-indigo-600 hover:bg-indigo-700 text-white">
+                    <Plus className="w-4 h-4 mr-2" />
+                    Novo Item
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[600px] max-h-[80vh] overflow-y-auto">
+                  <DialogHeader>
+                    <DialogTitle>Adicionar Equipamento</DialogTitle>
+                  </DialogHeader>
+                  <div className="grid grid-cols-2 gap-4 py-4">
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium">Nome / Hostname</label>
+                      <Input value={formData.name || ""} onChange={(e) => setFormData({...formData, name: e.target.value})} />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium">IP</label>
+                      <Input value={formData.ip || ""} onChange={(e) => setFormData({...formData, ip: e.target.value})} />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium">Localização</label>
+                      <Input value={formData.location || ""} onChange={(e) => setFormData({...formData, location: e.target.value})} />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium">Patrimônio</label>
+                      <Input value={formData.patrimony || ""} onChange={(e) => setFormData({...formData, patrimony: e.target.value})} />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium">Nº de Série</label>
+                      <Input value={formData.serialNumber || ""} onChange={(e) => setFormData({...formData, serialNumber: e.target.value})} />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium">Fabricante</label>
+                      <Input value={formData.manufacturer || ""} onChange={(e) => setFormData({...formData, manufacturer: e.target.value})} />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium">Modelo</label>
+                      <Input value={formData.model || ""} onChange={(e) => setFormData({...formData, model: e.target.value})} />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium">Endereço MAC</label>
+                      <Input value={formData.macAddress || ""} onChange={(e) => setFormData({...formData, macAddress: e.target.value})} />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium">Porta Console</label>
+                      <Input value={formData.consolePort || ""} onChange={(e) => setFormData({...formData, consolePort: e.target.value})} />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium">SFP</label>
+                      <Input value={formData.sfp || ""} onChange={(e) => setFormData({...formData, sfp: e.target.value})} />
+                    </div>
+                    <div className="space-y-2 col-span-2">
+                      <label className="text-sm font-medium">Observações Gerais</label>
+                      <Input value={formData.general || ""} onChange={(e) => setFormData({...formData, general: e.target.value})} />
+                    </div>
+                  </div>
+                  <DialogFooter>
+                    <Button variant="outline" onClick={() => setIsAddModalOpen(false)}>Cancelar</Button>
+                    <Button onClick={handleCreate} disabled={isSubmitting} className="bg-indigo-600 hover:bg-indigo-700">
+                      {isSubmitting ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <Plus className="w-4 h-4 mr-2" />}
+                      Salvar Item
+                    </Button>
+                  </DialogFooter>
+                </DialogContent>
+              </Dialog>
             </div>
           </div>
         </div>
