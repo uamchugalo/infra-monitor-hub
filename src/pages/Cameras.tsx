@@ -486,13 +486,34 @@ const Cameras = () => {
 
   const camsByLocation = LOCATIONS.reduce(
     (acc, loc) => {
-      acc[loc] = cameras.filter((c) => c.location === loc);
+      acc[loc] = [];
       return acc;
     },
     {} as Record<string, Camera[]>,
   );
 
-  const unmapped = cameras.filter((c) => !LOCATIONS.includes(c.location));
+  const unmapped: Camera[] = [];
+
+  cameras.forEach((c) => {
+    // If the camera is linked to a switch, try to use the switch's location
+    const sw = switches.find((s) => s.id === c.switchId);
+    let targetLocation = c.location;
+
+    if (sw && sw.location) {
+      // Normalize location strings (e.g., 1º vs 1°)
+      const normalizedSwLoc = sw.location.replace("º", "°");
+      if (LOCATIONS.includes(normalizedSwLoc)) {
+        targetLocation = normalizedSwLoc;
+      }
+    }
+
+    if (LOCATIONS.includes(targetLocation)) {
+      camsByLocation[targetLocation].push(c);
+    } else {
+      unmapped.push(c);
+    }
+  });
+
   if (unmapped.length > 0) camsByLocation["Outros"] = unmapped;
 
   const displayLocations =

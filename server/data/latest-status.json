@@ -1,7 +1,7 @@
 {
-  "id": "monitor-1790362980073",
+  "id": "monitor-1790363160070",
   "type": "CONTINUOUS_MONITORING",
-  "timestamp": "2026-09-25T19:03:00.073Z",
+  "timestamp": "2026-09-25T19:06:00.070Z",
   "automated": true,
   "total": 48,
   "online_after_wake": 33,
@@ -79,14 +79,14 @@
       "reason": "No Ping Response"
     },
     {
-      "name": "CAM187 : Est II",
-      "ip": "10.70.40.187",
+      "name": "CAM188 : Est III",
+      "ip": "10.70.40.188",
       "type": "CAMERA",
       "reason": "No Ping Response"
     },
     {
-      "name": "CAM188 : Est III",
-      "ip": "10.70.40.188",
+      "name": "CAM187 : Est II",
+      "ip": "10.70.40.187",
       "type": "CAMERA",
       "reason": "No Ping Response"
     },
@@ -369,14 +369,14 @@
       "status": "FAILED"
     },
     {
-      "name": "CAM187 : Est II",
-      "ip": "10.70.40.187",
+      "name": "CAM188 : Est III",
+      "ip": "10.70.40.188",
       "type": "CAMERA",
       "status": "FAILED"
     },
     {
-      "name": "CAM188 : Est III",
-      "ip": "10.70.40.188",
+      "name": "CAM187 : Est II",
+      "ip": "10.70.40.187",
       "type": "CAMERA",
       "status": "FAILED"
     },
