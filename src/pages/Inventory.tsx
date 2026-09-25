@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Package, Activity, Search, RefreshCw, Plus, Loader2 } from "lucide-react";
+import { Package, Activity, Search, RefreshCw, Plus, Loader2, Edit2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -75,7 +75,7 @@ const Inventory = () => {
     }
   };
 
-  const handleCreate = async () => {
+  const handleCreateOrEdit = async () => {
     if (!formData.name && !formData.ip) {
       toast.error("O item precisa ter pelo menos nome ou IP.");
       return;
@@ -83,14 +83,18 @@ const Inventory = () => {
     
     setIsSubmitting(true);
     try {
-      const res = await fetch("/api/inventory", {
-        method: "POST",
+      const isEditing = !!formData.id;
+      const url = isEditing ? `/api/inventory/${formData.id}` : "/api/inventory";
+      const method = isEditing ? "PUT" : "POST";
+      
+      const res = await fetch(url, {
+        method,
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData)
       });
       
       if (res.ok) {
-        toast.success("Item adicionado com sucesso!");
+        toast.success(`Item ${isEditing ? 'atualizado' : 'adicionado'} com sucesso!`);
         setIsAddModalOpen(false);
         setFormData({
           name: "", ip: "", location: "", patrimony: "", serialNumber: "",
@@ -98,13 +102,26 @@ const Inventory = () => {
         });
         fetchInventory();
       } else {
-        toast.error("Erro ao criar item.");
+        toast.error(`Erro ao ${isEditing ? 'atualizar' : 'criar'} item.`);
       }
     } catch (error) {
       toast.error("Erro de conexão.");
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  const handleEditClick = (item: InventoryItem) => {
+    setFormData(item);
+    setIsAddModalOpen(true);
+  };
+
+  const handleNewClick = () => {
+    setFormData({
+      name: "", ip: "", location: "", patrimony: "", serialNumber: "",
+      manufacturer: "", model: "", macAddress: "", consolePort: "", sfp: "", general: ""
+    });
+    setIsAddModalOpen(true);
   };
 
   useEffect(() => {
@@ -173,14 +190,14 @@ const Inventory = () => {
               </Button>
               <Dialog open={isAddModalOpen} onOpenChange={setIsAddModalOpen}>
                 <DialogTrigger asChild>
-                  <Button size="sm" className="bg-indigo-600 hover:bg-indigo-700 text-white">
+                  <Button size="sm" onClick={handleNewClick} className="bg-indigo-600 hover:bg-indigo-700 text-white">
                     <Plus className="w-4 h-4 mr-2" />
                     Novo Item
                   </Button>
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[600px] max-h-[80vh] overflow-y-auto">
                   <DialogHeader>
-                    <DialogTitle>Adicionar Equipamento</DialogTitle>
+                    <DialogTitle>{formData.id ? "Editar Equipamento" : "Adicionar Equipamento"}</DialogTitle>
                   </DialogHeader>
                   <div className="grid grid-cols-2 gap-4 py-4">
                     <div className="space-y-2">
@@ -230,7 +247,7 @@ const Inventory = () => {
                   </div>
                   <DialogFooter>
                     <Button variant="outline" onClick={() => setIsAddModalOpen(false)}>Cancelar</Button>
-                    <Button onClick={handleCreate} disabled={isSubmitting} className="bg-indigo-600 hover:bg-indigo-700">
+                    <Button onClick={handleCreateOrEdit} disabled={isSubmitting} className="bg-indigo-600 hover:bg-indigo-700">
                       {isSubmitting ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <Plus className="w-4 h-4 mr-2" />}
                       Salvar Item
                     </Button>
@@ -281,6 +298,9 @@ const Inventory = () => {
                   <TableHead className="whitespace-nowrap font-bold">
                     Geral
                   </TableHead>
+                  <TableHead className="whitespace-nowrap font-bold text-center">
+                    Ações
+                  </TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -296,7 +316,7 @@ const Inventory = () => {
                 ) : filteredItems.length === 0 ? (
                   <TableRow>
                     <TableCell
-                      colSpan={11}
+                      colSpan={12}
                       className="text-center py-10 text-muted-foreground"
                     >
                       Nenhum item encontrado.
@@ -340,6 +360,16 @@ const Inventory = () => {
                         title={item.general || ""}
                       >
                         {item.general || "-"}
+                      </TableCell>
+                      <TableCell className="text-center">
+                        <Button 
+                          variant="ghost" 
+                          size="icon" 
+                          onClick={() => handleEditClick(item)}
+                          className="h-8 w-8 text-indigo-600 hover:text-indigo-900 hover:bg-indigo-50"
+                        >
+                          <Edit2 className="h-4 w-4" />
+                        </Button>
                       </TableCell>
                     </TableRow>
                   ))
