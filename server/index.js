@@ -878,7 +878,63 @@ app.get("/api/inventory", async (req, res) => {
     const items = await prisma.inventoryItem.findMany({
       orderBy: { name: "asc" },
     });
-    res.json(items);
+    
+    const aps = await prisma.accessPoint.findMany();
+    const cams = await prisma.camera.findMany();
+    const pcs = await prisma.pC.findMany();
+    const switches = await prisma.switch.findMany();
+    const ports = await prisma.switchPort.findMany();
+    
+    const deviceByIp = new Map();
+    const deviceByMac = new Map();
+    const switchMap = new Map(switches.map(s => [s.id, s.name]));
+
+    const registerDevice = (d) => {
+      if (d.ip) deviceByIp.set(d.ip, d);
+      if (d.mac) deviceByMac.set(d.mac, d);
+    };
+
+    aps.forEach(registerDevice);
+    cams.forEach(registerDevice);
+    pcs.forEach(registerDevice);
+
+    const enhancedItems = items.map(item => {
+      let isConnected = false;
+      let pingStatus = "-";
+      let connectedSwitch = "-";
+      let connectedPort = "-";
+
+      const matchedDevice = (item.ip && deviceByIp.get(item.ip)) || (item.macAddress && deviceByMac.get(item.macAddress));
+      
+      if (matchedDevice) {
+        if (matchedDevice.status) pingStatus = matchedDevice.status;
+        
+        if (matchedDevice.switchId) {
+           isConnected = true;
+           connectedSwitch = switchMap.get(matchedDevice.switchId) || matchedDevice.switchId;
+           connectedPort = matchedDevice.switchPort || "-";
+        }
+      }
+
+      if (!isConnected && item.ip) {
+        const port = ports.find(p => p.deviceIp === item.ip);
+        if (port) {
+           isConnected = true;
+           connectedSwitch = switchMap.get(port.switchId) || port.switchId;
+           connectedPort = String(port.port);
+        }
+      }
+
+      return {
+        ...item,
+        status: isConnected ? "Em Uso" : "Em Estoque",
+        pingStatus,
+        connectedSwitch,
+        connectedPort
+      };
+    });
+
+    res.json(enhancedItems);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

@@ -140,6 +140,7 @@ model InventoryItem {
   consolePort  String?
   sfp          String?
   general      String?
+  status       String @default("Em Estoque")
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 }

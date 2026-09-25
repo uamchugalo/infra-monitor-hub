@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { Package, Activity, Search, RefreshCw, Plus, Loader2, Edit2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import {
   Table,
   TableBody,
@@ -34,6 +36,10 @@ interface InventoryItem {
   consolePort: string | null;
   sfp: string | null;
   general: string | null;
+  status: string;
+  pingStatus?: string;
+  connectedSwitch?: string;
+  connectedPort?: string;
 }
 
 const Inventory = () => {
@@ -44,6 +50,7 @@ const Inventory = () => {
   
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [activeTab, setActiveTab] = useState("Em Uso");
   const [formData, setFormData] = useState<Partial<InventoryItem>>({
     name: "",
     ip: "",
@@ -56,6 +63,7 @@ const Inventory = () => {
     consolePort: "",
     sfp: "",
     general: "",
+    status: "Em Estoque",
   });
 
   const fetchInventory = async () => {
@@ -98,7 +106,7 @@ const Inventory = () => {
         setIsAddModalOpen(false);
         setFormData({
           name: "", ip: "", location: "", patrimony: "", serialNumber: "",
-          manufacturer: "", model: "", macAddress: "", consolePort: "", sfp: "", general: ""
+          manufacturer: "", model: "", macAddress: "", consolePort: "", sfp: "", general: "", status: "Em Estoque"
         });
         fetchInventory();
       } else {
@@ -119,7 +127,7 @@ const Inventory = () => {
   const handleNewClick = () => {
     setFormData({
       name: "", ip: "", location: "", patrimony: "", serialNumber: "",
-      manufacturer: "", model: "", macAddress: "", consolePort: "", sfp: "", general: ""
+      manufacturer: "", model: "", macAddress: "", consolePort: "", sfp: "", general: "", status: "Em Estoque"
     });
     setIsAddModalOpen(true);
   };
@@ -129,6 +137,7 @@ const Inventory = () => {
   }, []);
 
   const filteredItems = items.filter((item) => {
+    if (item.status !== activeTab) return false;
     if (!searchTerm) return true;
     const lowerSearch = searchTerm.toLowerCase();
     return Object.values(item).some(
@@ -240,6 +249,7 @@ const Inventory = () => {
                       <label className="text-sm font-medium">SFP</label>
                       <Input value={formData.sfp || ""} onChange={(e) => setFormData({...formData, sfp: e.target.value})} />
                     </div>
+
                     <div className="space-y-2 col-span-2">
                       <label className="text-sm font-medium">Observações Gerais</label>
                       <Input value={formData.general || ""} onChange={(e) => setFormData({...formData, general: e.target.value})} />
@@ -260,6 +270,14 @@ const Inventory = () => {
       </header>
 
       <main className="flex-1 max-w-[1400px] mx-auto w-full p-6">
+        <div className="mb-4">
+          <Tabs value={activeTab} onValueChange={setActiveTab}>
+            <TabsList>
+              <TabsTrigger value="Em Uso">Em Uso</TabsTrigger>
+              <TabsTrigger value="Em Estoque">Em Estoque</TabsTrigger>
+            </TabsList>
+          </Tabs>
+        </div>
         <div className="bg-white rounded-xl border shadow-sm overflow-hidden">
           <div className="overflow-x-auto">
             <Table>
@@ -270,6 +288,15 @@ const Inventory = () => {
                   </TableHead>
                   <TableHead className="whitespace-nowrap font-bold">
                     IP
+                  </TableHead>
+                  <TableHead className="whitespace-nowrap font-bold">
+                    Status (Ping)
+                  </TableHead>
+                  <TableHead className="whitespace-nowrap font-bold">
+                    Switch
+                  </TableHead>
+                  <TableHead className="whitespace-nowrap font-bold">
+                    Porta (SW)
                   </TableHead>
                   <TableHead className="whitespace-nowrap font-bold">
                     Localização
@@ -316,7 +343,7 @@ const Inventory = () => {
                 ) : filteredItems.length === 0 ? (
                   <TableRow>
                     <TableCell
-                      colSpan={12}
+                      colSpan={15}
                       className="text-center py-10 text-muted-foreground"
                     >
                       Nenhum item encontrado.
@@ -330,6 +357,27 @@ const Inventory = () => {
                       </TableCell>
                       <TableCell className="text-zinc-500 whitespace-nowrap">
                         {item.ip || "-"}
+                      </TableCell>
+                      <TableCell className="whitespace-nowrap">
+                        {item.pingStatus?.toLowerCase() === "online" ? (
+                          <span className="inline-flex items-center gap-1.5 px-2 py-1 rounded-md text-xs font-medium bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-600/20">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                            Online
+                          </span>
+                        ) : item.pingStatus?.toLowerCase() === "offline" ? (
+                          <span className="inline-flex items-center gap-1.5 px-2 py-1 rounded-md text-xs font-medium bg-rose-50 text-rose-700 ring-1 ring-inset ring-rose-600/10">
+                            <span className="w-1.5 h-1.5 rounded-full bg-rose-500" />
+                            Offline
+                          </span>
+                        ) : (
+                          <span className="text-zinc-400">-</span>
+                        )}
+                      </TableCell>
+                      <TableCell className="text-zinc-500 whitespace-nowrap">
+                        {item.connectedSwitch || "-"}
+                      </TableCell>
+                      <TableCell className="text-zinc-500 whitespace-nowrap">
+                        {item.connectedPort || "-"}
                       </TableCell>
                       <TableCell className="whitespace-nowrap">
                         {item.location || "-"}
