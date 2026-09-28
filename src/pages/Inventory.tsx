@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Package, Activity, Search, RefreshCw, Plus, Loader2, Edit2 } from "lucide-react";
+import { Package, Activity, Search, RefreshCw, Plus, Loader2, Edit2, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -22,6 +22,7 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 import { toast } from "sonner";
+import { Header } from "@/components/Header";
 
 interface InventoryItem {
   id: string;
@@ -136,6 +137,24 @@ const Inventory = () => {
     fetchInventory();
   }, []);
 
+  const handleDeleteClick = async (id: string) => {
+    if (!confirm("Tem certeza que deseja excluir este item? Essa ação também apagará o dispositivo do sistema se ele estiver cadastrado.")) return;
+    
+    try {
+      const response = await fetch(`/api/inventory/${id}`, {
+        method: "DELETE",
+      });
+      if (response.ok) {
+        toast.success("Item excluído com sucesso!");
+        fetchInventory(); // Reload list
+      } else {
+        toast.error("Erro ao excluir item.");
+      }
+    } catch (error) {
+      toast.error("Erro na comunicação com o servidor.");
+    }
+  };
+
   const filteredItems = items.filter((item) => {
     if (item.status !== activeTab) return false;
     if (!searchTerm) return true;
@@ -147,127 +166,95 @@ const Inventory = () => {
 
   return (
     <div className="min-h-screen bg-[#f8fafc] flex flex-col">
-      <header className="border-b border-border bg-card shadow-sm sticky top-0 z-20">
-        <div className="px-6 py-3">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-6">
-              <div className="flex items-center gap-3">
-                <div className="p-2 bg-indigo-600 rounded-md shadow-sm">
-                  <Package className="w-5 h-5 text-white" />
-                </div>
-                <div>
-                  <h1 className="text-base font-bold text-foreground">
-                    Inventário
-                  </h1>
-                  <p className="text-[10px] text-muted-foreground font-semibold uppercase tracking-wider">
-                    Gestão de Equipamentos
-                  </p>
-                </div>
-              </div>
-              <div className="h-8 w-px bg-border" />
-              <div className="flex bg-muted/50 p-1 rounded-lg">
-                <Button variant="ghost" size="sm" onClick={() => navigate("/")}>
-                  <Activity className="w-4 h-4 mr-2" />
-                  Início
-                </Button>
-                <Button variant="secondary" size="sm">
-                  <Package className="w-4 h-4 mr-2" />
-                  Inventário
-                </Button>
-              </div>
-            </div>
-            <div className="flex items-center gap-4">
-              <div className="relative w-64">
-                <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
-                <Input
-                  placeholder="Pesquisar qualquer coisa..."
-                  className="pl-9 h-9 text-sm"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                />
-              </div>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={fetchInventory}
-                disabled={loading}
-              >
-                <RefreshCw
-                  className={`w-4 h-4 mr-2 ${loading ? "animate-spin" : ""}`}
-                />
-                Atualizar
-              </Button>
-              <Dialog open={isAddModalOpen} onOpenChange={setIsAddModalOpen}>
-                <DialogTrigger asChild>
-                  <Button size="sm" onClick={handleNewClick} className="bg-indigo-600 hover:bg-indigo-700 text-white">
-                    <Plus className="w-4 h-4 mr-2" />
-                    Novo Item
-                  </Button>
-                </DialogTrigger>
-                <DialogContent className="sm:max-w-[600px] max-h-[80vh] overflow-y-auto">
-                  <DialogHeader>
-                    <DialogTitle>{formData.id ? "Editar Equipamento" : "Adicionar Equipamento"}</DialogTitle>
-                  </DialogHeader>
-                  <div className="grid grid-cols-2 gap-4 py-4">
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium">Nome / Hostname</label>
-                      <Input value={formData.name || ""} onChange={(e) => setFormData({...formData, name: e.target.value})} />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium">IP</label>
-                      <Input value={formData.ip || ""} onChange={(e) => setFormData({...formData, ip: e.target.value})} />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium">Localização</label>
-                      <Input value={formData.location || ""} onChange={(e) => setFormData({...formData, location: e.target.value})} />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium">Patrimônio</label>
-                      <Input value={formData.patrimony || ""} onChange={(e) => setFormData({...formData, patrimony: e.target.value})} />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium">Nº de Série</label>
-                      <Input value={formData.serialNumber || ""} onChange={(e) => setFormData({...formData, serialNumber: e.target.value})} />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium">Fabricante</label>
-                      <Input value={formData.manufacturer || ""} onChange={(e) => setFormData({...formData, manufacturer: e.target.value})} />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium">Modelo</label>
-                      <Input value={formData.model || ""} onChange={(e) => setFormData({...formData, model: e.target.value})} />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium">Endereço MAC</label>
-                      <Input value={formData.macAddress || ""} onChange={(e) => setFormData({...formData, macAddress: e.target.value})} />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium">Porta Console</label>
-                      <Input value={formData.consolePort || ""} onChange={(e) => setFormData({...formData, consolePort: e.target.value})} />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium">SFP</label>
-                      <Input value={formData.sfp || ""} onChange={(e) => setFormData({...formData, sfp: e.target.value})} />
-                    </div>
-
-                    <div className="space-y-2 col-span-2">
-                      <label className="text-sm font-medium">Observações Gerais</label>
-                      <Input value={formData.general || ""} onChange={(e) => setFormData({...formData, general: e.target.value})} />
-                    </div>
-                  </div>
-                  <DialogFooter>
-                    <Button variant="outline" onClick={() => setIsAddModalOpen(false)}>Cancelar</Button>
-                    <Button onClick={handleCreateOrEdit} disabled={isSubmitting} className="bg-indigo-600 hover:bg-indigo-700">
-                      {isSubmitting ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <Plus className="w-4 h-4 mr-2" />}
-                      Salvar Item
-                    </Button>
-                  </DialogFooter>
-                </DialogContent>
-              </Dialog>
-            </div>
-          </div>
+      <Header activeTab="inventory">
+        <div className="relative w-64">
+          <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
+          <Input
+            placeholder="Pesquisar qualquer coisa..."
+            className="pl-9 h-9 text-sm"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
         </div>
-      </header>
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={fetchInventory}
+          disabled={loading}
+        >
+          <RefreshCw
+            className={`w-4 h-4 mr-2 ${loading ? "animate-spin" : ""}`}
+          />
+          Atualizar
+        </Button>
+        <Dialog open={isAddModalOpen} onOpenChange={setIsAddModalOpen}>
+          <DialogTrigger asChild>
+            <Button size="sm" onClick={handleNewClick} className="bg-indigo-600 hover:bg-indigo-700 text-white">
+              <Plus className="w-4 h-4 mr-2" />
+              Novo Item
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="sm:max-w-[600px] max-h-[80vh] overflow-y-auto">
+            <DialogHeader>
+              <DialogTitle>{formData.id ? "Editar Equipamento" : "Adicionar Equipamento"}</DialogTitle>
+            </DialogHeader>
+            <div className="grid grid-cols-2 gap-4 py-4">
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Nome / Hostname</label>
+                <Input value={formData.name || ""} onChange={(e) => setFormData({...formData, name: e.target.value})} />
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium">IP</label>
+                <Input value={formData.ip || ""} onChange={(e) => setFormData({...formData, ip: e.target.value})} />
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Localização</label>
+                <Input value={formData.location || ""} onChange={(e) => setFormData({...formData, location: e.target.value})} />
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Patrimônio</label>
+                <Input value={formData.patrimony || ""} onChange={(e) => setFormData({...formData, patrimony: e.target.value})} />
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Nº de Série</label>
+                <Input value={formData.serialNumber || ""} onChange={(e) => setFormData({...formData, serialNumber: e.target.value})} />
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Fabricante</label>
+                <Input value={formData.manufacturer || ""} onChange={(e) => setFormData({...formData, manufacturer: e.target.value})} />
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Modelo</label>
+                <Input value={formData.model || ""} onChange={(e) => setFormData({...formData, model: e.target.value})} />
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Endereço MAC</label>
+                <Input value={formData.macAddress || ""} onChange={(e) => setFormData({...formData, macAddress: e.target.value})} />
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Porta Console</label>
+                <Input value={formData.consolePort || ""} onChange={(e) => setFormData({...formData, consolePort: e.target.value})} />
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium">SFP</label>
+                <Input value={formData.sfp || ""} onChange={(e) => setFormData({...formData, sfp: e.target.value})} />
+              </div>
+
+              <div className="space-y-2 col-span-2">
+                <label className="text-sm font-medium">Observações Gerais</label>
+                <Input value={formData.general || ""} onChange={(e) => setFormData({...formData, general: e.target.value})} />
+              </div>
+            </div>
+            <DialogFooter>
+              <Button variant="outline" onClick={() => setIsAddModalOpen(false)}>Cancelar</Button>
+              <Button onClick={handleCreateOrEdit} disabled={isSubmitting} className="bg-indigo-600 hover:bg-indigo-700 text-white">
+                {isSubmitting ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <Plus className="w-4 h-4 mr-2" />}
+                Salvar Item
+              </Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+      </Header>
 
       <main className="flex-1 max-w-[1400px] mx-auto w-full p-6">
         <div className="mb-4">
@@ -410,14 +397,26 @@ const Inventory = () => {
                         {item.general || "-"}
                       </TableCell>
                       <TableCell className="text-center">
-                        <Button 
-                          variant="ghost" 
-                          size="icon" 
-                          onClick={() => handleEditClick(item)}
-                          className="h-8 w-8 text-indigo-600 hover:text-indigo-900 hover:bg-indigo-50"
-                        >
-                          <Edit2 className="h-4 w-4" />
-                        </Button>
+                        <div className="flex items-center justify-center gap-2">
+                          <Button 
+                            variant="ghost" 
+                            size="icon" 
+                            onClick={() => handleEditClick(item)}
+                            className="h-8 w-8 text-indigo-600 hover:text-indigo-900 hover:bg-indigo-50"
+                            title="Editar"
+                          >
+                            <Edit2 className="h-4 w-4" />
+                          </Button>
+                          <Button 
+                            variant="ghost" 
+                            size="icon" 
+                            onClick={() => handleDeleteClick(item.id)}
+                            className="h-8 w-8 text-red-600 hover:text-red-900 hover:bg-red-50"
+                            title="Excluir"
+                          >
+                            <Trash2 className="h-4 w-4" />
+                          </Button>
+                        </div>
                       </TableCell>
                     </TableRow>
                   ))

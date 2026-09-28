@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { LogoutButton } from "@/components/LogoutButton";
+import { Header } from "@/components/Header";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -78,50 +79,19 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-[#f8fafc] flex flex-col">
       {/* Header Sincronizado */}
-      <header className="border-b border-border bg-card shadow-sm sticky top-0 z-20">
-        <div className="px-6 py-3">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-6">
-              <div className="flex items-center gap-3">
-                <div className="p-2 bg-emerald-600 rounded-md shadow-sm">
-                  <Activity className="w-5 h-5 text-white" />
-                </div>
-                <div>
-                  <h1 className="text-base font-bold text-foreground">
-                    IT Dashboard
-                  </h1>
-                  <p className="text-[10px] text-muted-foreground font-semibold uppercase tracking-wider">
-                    Painel de Infraestrutura
-                  </p>
-                </div>
-              </div>
-              <div className="h-8 w-px bg-border" />
-              <div className="flex bg-muted/50 p-1 rounded-lg">
-                <Button
-                  variant="secondary"
-                  size="sm"
-                  className="bg-background shadow-sm"
-                >
-                  <Activity className="w-4 h-4 mr-2" />
-                  Início
-                </Button>
-              </div>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-100">
-                <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                <span className="text-[10px] font-bold text-emerald-700 uppercase">
-                  Sistemas Online
-                </span>
-              </div>
-              <Button variant="ghost" size="icon" onClick={() => navigate('/users')} className="text-muted-foreground ml-2">
-                <Settings className="w-4 h-4" />
-              </Button>
-              <LogoutButton />
-            </div>
-          </div>
+      {/* Header Sincronizado */}
+      <Header activeTab="home">
+        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-100">
+          <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+          <span className="text-[10px] font-bold text-emerald-700 uppercase">
+            Sistemas Online
+          </span>
         </div>
-      </header>
+        <Button variant="ghost" size="icon" onClick={() => navigate('/users')} className="text-muted-foreground ml-2">
+          <Settings className="w-4 h-4" />
+        </Button>
+        <LogoutButton />
+      </Header>
 
       {/* Content Section */}
       <main className="flex-1 max-w-6xl mx-auto w-full p-8 md:p-12 lg:p-16">

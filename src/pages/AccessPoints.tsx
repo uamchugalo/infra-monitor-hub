@@ -20,6 +20,7 @@ import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 import { ReportsModal } from "@/components/ReportsModal";
 import { DeviceEditPanel } from "@/components/DeviceEditPanel";
+import { Header } from "@/components/Header";
 import {
   Dialog,
   DialogContent,
@@ -484,85 +485,30 @@ const AccessPoints = () => {
 
   return (
     <div className="h-screen overflow-hidden bg-background flex flex-col">
-      <header className="border-b border-border bg-card shadow-sm sticky top-0 z-20 shrink-0">
-        <div className="px-6 py-3 flex justify-between items-center">
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-primary rounded-md">
-                <Router className="w-5 h-5 text-primary-foreground" />
-              </div>
-              <div>
-                <h1 className="text-base font-bold text-foreground">
-                  Access Points
-                </h1>
-                <p className="text-xs text-muted-foreground">
-                  {aps.length} dispositivos
-                </p>
-              </div>
-            </div>
-            <div className="h-8 w-px bg-border" />
-            <div className="flex bg-muted/50 p-1 rounded-lg">
-              <Button variant="ghost" size="sm" onClick={() => navigate("/")}>
-                <Server className="w-4 h-4 mr-2" />
-                Início
-              </Button>
-              {/*<Button variant="ghost" size="sm" onClick={() => navigate('/labs')}><Server className="w-4 h-4 mr-2" />Labs</Button>*/}
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => navigate("/cameras")}
-              >
-                <Video className="w-4 h-4 mr-2" />
-                Câmeras
-              </Button>
-              <Button variant="secondary" size="sm">
-                <Router className="w-4 h-4 mr-2" />
-                APs
-              </Button>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => navigate("/technical-rooms")}
-              >
-                <Server className="w-4 h-4 mr-2" />
-                Switches
-              </Button>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => navigate("/inventory")}
-              >
-                <Package className="w-4 h-4 mr-2" />
-                Inventário
-              </Button>
-            </div>
-          </div>
-          <div className="flex gap-4">
-            <Button
-              onClick={() => setIsCreating(true)}
-              size="sm"
-              className="bg-green-600 hover:bg-green-700"
-            >
-              <Plus className="w-4 h-4 mr-2" /> Novo AP
-            </Button>
-            <ReportsModal />
-            {selectedIds.length > 0 && (
-              <Button
-                onClick={handleDeleteSelected}
-                variant="destructive"
-                size="sm"
-              >
-                <Trash2 className="w-4 h-4 mr-2" /> Excluir (
-                {selectedIds.length})
-              </Button>
-            )}
-            <Button onClick={handlePingAll} variant="outline" size="sm">
-              <Activity className="w-4 h-4 mr-2" />
-              Verificar Todos
-            </Button>
-          </div>
-        </div>
-      </header>
+      <Header activeTab="aps">
+        <Button
+          onClick={() => setIsCreating(true)}
+          size="sm"
+          className="bg-green-600 hover:bg-green-700"
+        >
+          <Plus className="w-4 h-4 mr-2" /> Novo AP
+        </Button>
+        <ReportsModal />
+        {selectedIds.length > 0 && (
+          <Button
+            onClick={handleDeleteSelected}
+            variant="destructive"
+            size="sm"
+          >
+            <Trash2 className="w-4 h-4 mr-2" /> Excluir (
+            {selectedIds.length})
+          </Button>
+        )}
+        <Button onClick={handlePingAll} variant="outline" size="sm">
+          <Activity className="w-4 h-4 mr-2" />
+          Verificar Todos
+        </Button>
+      </Header>
 
       <div className="flex flex-1 overflow-hidden">
         <DndContext

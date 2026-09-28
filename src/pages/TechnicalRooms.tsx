@@ -60,6 +60,7 @@ import { AccessPoint, ACCESS_POINTS } from "@/utils/apData";
 
 import { DeviceEditPanel } from "@/components/DeviceEditPanel";
 import { EditPanel } from "@/components/EditPanel";
+import { Header } from "@/components/Header";
 
 // Patch Panel Type Definition
 type PatchPanelPort = {
@@ -1061,94 +1062,27 @@ export default function TechnicalRooms() {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       {/* ... Header ... */}
-      <header className="border-b border-border bg-card shadow-sm sticky top-0 z-20 shrink-0">
-        <div className="px-6 py-3 flex justify-between items-center">
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-primary rounded-md">
-                <Server className="w-5 h-5 text-primary-foreground" />
-              </div>
-              <div>
-                <h1 className="text-base font-bold text-foreground">
-                  Gestão de Infraestrutura
-                </h1>
-                <p className="text-xs text-muted-foreground">
-                  {switches.length} Switches • {patchPanels.length} Patch Panels
-                </p>
-              </div>
-            </div>
-            <div className="h-8 w-px bg-border" />
-            <div className="flex bg-muted/50 p-1 rounded-lg">
-              <Button variant="ghost" size="sm" onClick={() => navigate("/")}>
-                <Laptop className="w-4 h-4 mr-2" />
-                Início
-              </Button>
-              {/*<Button variant="ghost" size="sm" onClick={() => navigate('/labs')}><Laptop className="w-4 h-4 mr-2" />Labs</Button>*/}
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => navigate("/cameras")}
-              >
-                <CameraIcon className="w-4 h-4 mr-2" />
-                Câmeras
-              </Button>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => navigate("/aps")}
-              >
-                <Wifi className="w-4 h-4 mr-2" />
-                APs
-              </Button>
-              <Button
-                variant="secondary"
-                size="sm"
-                className="bg-primary/10 text-primary border-primary/20"
-              >
-                <Server className="w-4 h-4 mr-2" />
-                Switches
-              </Button>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => navigate("/inventory")}
-              >
-                <Package className="w-4 h-4 mr-2" />
-                Inventário
-              </Button>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => navigate("/topology")}
-                className="text-emerald-600 hover:text-emerald-700 hover:bg-emerald-50"
-              >
-                <MapIcon className="w-4 h-4 mr-2" />
-                Topologia
-              </Button>
-            </div>
-          </div>
-
-          <div className="flex gap-2">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => navigate("/topology")}
-              className="border-emerald-200 text-emerald-700 hover:bg-emerald-50"
-            >
-              <MapIcon className="w-4 h-4 mr-2" />
-              Ver Topologia
-            </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => setIsManagingLocations(true)}
-            >
-              <Settings className="w-4 h-4 mr-2" />
-              Gerenciar Salas
-            </Button>
-          </div>
+      <Header activeTab="switches">
+        <div className="flex gap-2">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => navigate("/topology")}
+            className="border-emerald-200 text-emerald-700 hover:bg-emerald-50"
+          >
+            <MapIcon className="w-4 h-4 mr-2" />
+            Ver Topologia
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => setIsManagingLocations(true)}
+          >
+            <Settings className="w-4 h-4 mr-2" />
+            Gerenciar Salas
+          </Button>
         </div>
-      </header>
+      </Header>
 
       {/* MANAGE LOCATIONS DIALOG */}
       <Dialog open={isManagingLocations} onOpenChange={setIsManagingLocations}>

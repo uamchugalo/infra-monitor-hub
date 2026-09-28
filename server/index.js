@@ -963,6 +963,31 @@ app.put("/api/inventory/:id", async (req, res) => {
   }
 });
 
+app.delete("/api/inventory/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const item = await prisma.inventoryItem.findUnique({ where: { id } });
+    
+    if (item) {
+      if (item.ip) {
+        await prisma.camera.deleteMany({ where: { ip: item.ip } });
+        await prisma.accessPoint.deleteMany({ where: { ip: item.ip } });
+        await prisma.pC.deleteMany({ where: { ip: item.ip } });
+      }
+      if (item.macAddress) {
+        await prisma.camera.deleteMany({ where: { mac: item.macAddress } });
+        await prisma.pC.deleteMany({ where: { mac: item.macAddress } });
+      }
+      await prisma.inventoryItem.delete({ where: { id } });
+    }
+    
+    res.json({ success: true });
+  } catch (error) {
+    console.error("Error deleting inventory item:", error);
+    res.status(500).json({ error: "Erro ao excluir" });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(
     `Server running on http://localhost:${PORT} with SQLite Database`,
