@@ -1,7 +1,7 @@
 {
-  "id": "monitor-1790612280045",
+  "id": "monitor-1790612640105",
   "type": "CONTINUOUS_MONITORING",
-  "timestamp": "2026-09-28T16:18:00.045Z",
+  "timestamp": "2026-09-28T16:24:00.105Z",
   "automated": true,
   "total": 48,
   "online_after_wake": 33,
@@ -37,12 +37,6 @@
       "reason": "No Ping Response"
     },
     {
-      "name": "CAM52",
-      "ip": "10.70.40.52",
-      "type": "CAMERA",
-      "reason": "No Ping Response"
-    },
-    {
       "name": "CAM53",
       "ip": "10.70.40.53",
       "type": "CAMERA",
@@ -55,8 +49,8 @@
       "reason": "No Ping Response"
     },
     {
-      "name": "CAM54",
-      "ip": "10.70.40.54",
+      "name": "CAM52",
+      "ip": "10.70.40.52",
       "type": "CAMERA",
       "reason": "No Ping Response"
     },
@@ -67,14 +61,20 @@
       "reason": "No Ping Response"
     },
     {
-      "name": "CAM181 - Placas",
-      "ip": "10.70.40.181",
+      "name": "CAM54",
+      "ip": "10.70.40.54",
       "type": "CAMERA",
       "reason": "No Ping Response"
     },
     {
-      "name": "CAM187 : Est II",
-      "ip": "10.70.40.187",
+      "name": "CAM186 : Est I",
+      "ip": "10.70.40.186",
+      "type": "CAMERA",
+      "reason": "No Ping Response"
+    },
+    {
+      "name": "CAM181 - Placas",
+      "ip": "10.70.40.181",
       "type": "CAMERA",
       "reason": "No Ping Response"
     },
@@ -85,8 +85,8 @@
       "reason": "No Ping Response"
     },
     {
-      "name": "CAM186 : Est I",
-      "ip": "10.70.40.186",
+      "name": "CAM187 : Est II",
+      "ip": "10.70.40.187",
       "type": "CAMERA",
       "reason": "No Ping Response"
     },
@@ -309,12 +309,6 @@
       "status": "SUCCESS"
     },
     {
-      "name": "CAM52",
-      "ip": "10.70.40.52",
-      "type": "CAMERA",
-      "status": "FAILED"
-    },
-    {
       "name": "CAM53",
       "ip": "10.70.40.53",
       "type": "CAMERA",
@@ -327,14 +321,20 @@
       "status": "FAILED"
     },
     {
-      "name": "CAM54",
-      "ip": "10.70.40.54",
+      "name": "CAM52",
+      "ip": "10.70.40.52",
       "type": "CAMERA",
       "status": "FAILED"
     },
     {
       "name": "CAM55",
       "ip": "10.70.40.55",
+      "type": "CAMERA",
+      "status": "FAILED"
+    },
+    {
+      "name": "CAM54",
+      "ip": "10.70.40.54",
       "type": "CAMERA",
       "status": "FAILED"
     },
@@ -357,14 +357,14 @@
       "status": "SUCCESS"
     },
     {
-      "name": "CAM181 - Placas",
-      "ip": "10.70.40.181",
+      "name": "CAM186 : Est I",
+      "ip": "10.70.40.186",
       "type": "CAMERA",
       "status": "FAILED"
     },
     {
-      "name": "CAM187 : Est II",
-      "ip": "10.70.40.187",
+      "name": "CAM181 - Placas",
+      "ip": "10.70.40.181",
       "type": "CAMERA",
       "status": "FAILED"
     },
@@ -375,8 +375,8 @@
       "status": "FAILED"
     },
     {
-      "name": "CAM186 : Est I",
-      "ip": "10.70.40.186",
+      "name": "CAM187 : Est II",
+      "ip": "10.70.40.187",
       "type": "CAMERA",
       "status": "FAILED"
     },

@@ -268,18 +268,7 @@ const Cameras = () => {
   const [switches, setSwitches] = useState<any[]>([]);
 
   // Compute LOCATIONS
-  const dynamicLocations = Array.from(
-    new Set([
-      ...cameras.map((c) => c.location),
-      ...switches.map((s) => s.location),
-    ])
-  ).filter(Boolean);
-
-  const uniqueLocations = Array.from(
-    new Set([...customLocations, ...dynamicLocations]),
-  );
-
-  const LOCATIONS = uniqueLocations.sort((a, b) => {
+  const LOCATIONS = [...customLocations].sort((a, b) => {
     const indexA = customLocations.indexOf(a);
     const indexB = customLocations.indexOf(b);
 
