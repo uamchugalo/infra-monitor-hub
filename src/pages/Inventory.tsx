@@ -49,6 +49,7 @@ const Inventory = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("Todos");
   const [loading, setLoading] = useState(true);
+  const [mappedDevices, setMappedDevices] = useState<any[]>([]);
   
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -78,6 +79,15 @@ const Inventory = () => {
       } else {
         toast.error("Erro ao buscar inventário.");
       }
+
+      const devRes = await Promise.all([
+        fetch("/api/switches").then(r => r.ok ? r.json() : []),
+        fetch("/api/aps").then(r => r.ok ? r.json() : []),
+        fetch("/api/cameras").then(r => r.ok ? r.json() : []),
+        fetch("/api/pcs").then(r => r.ok ? r.json() : []),
+      ]);
+      setMappedDevices(devRes.flat());
+
     } catch (error) {
       toast.error("Falha de conexão com o servidor.");
     } finally {
@@ -234,7 +244,34 @@ const Inventory = () => {
             <DialogHeader>
               <DialogTitle>{formData.id ? "Editar Equipamento" : "Adicionar Equipamento"}</DialogTitle>
             </DialogHeader>
-            <div className="grid grid-cols-2 gap-4 py-4">
+            <div className="space-y-4 py-4">
+              {formData.status === "Em Estoque" && (
+                <div className="p-3 bg-indigo-50 border border-indigo-100 rounded-md space-y-2">
+                  <label className="text-sm font-medium text-indigo-900">Vincular a equipamento configurado no Mapa (Opcional)</label>
+                  <select 
+                    className="w-full h-9 rounded-md border text-sm px-3 bg-white"
+                    onChange={(e) => {
+                      const dev = mappedDevices.find(d => d.id === e.target.value);
+                      if (dev) {
+                        setFormData({
+                          ...formData,
+                          name: dev.name,
+                          ip: dev.ip || formData.ip,
+                          location: dev.location || formData.location,
+                          status: "Em Uso"
+                        });
+                      }
+                    }}
+                    defaultValue=""
+                  >
+                    <option value="" disabled hidden>Selecione um equipamento do mapa...</option>
+                    {mappedDevices.map(d => (
+                      <option key={d.id} value={d.id}>{d.name} {d.ip ? `(${d.ip})` : ''}</option>
+                    ))}
+                  </select>
+                </div>
+              )}
+              <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
                 <label className="text-sm font-medium">Nome / Hostname</label>
                 <Input value={formData.name || ""} onChange={(e) => setFormData({...formData, name: e.target.value})} />
@@ -279,6 +316,7 @@ const Inventory = () => {
               <div className="space-y-2 col-span-2">
                 <label className="text-sm font-medium">Observações Gerais</label>
                 <Input value={formData.general || ""} onChange={(e) => setFormData({...formData, general: e.target.value})} />
+              </div>
               </div>
             </div>
             <DialogFooter>
