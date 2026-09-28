@@ -385,6 +385,7 @@ export default function TechnicalRooms() {
   const [pcs, setPcs] = useState<PC[]>([]);
   const [cameras, setCameras] = useState<Camera[]>([]);
   const [aps, setAps] = useState<AccessPoint[]>([]);
+  const [inventoryItems, setInventoryItems] = useState<any[]>([]);
 
   // Editing State
   const [editingDevice, setEditingDevice] = useState<{
@@ -1479,12 +1480,40 @@ export default function TechnicalRooms() {
           {/* ... (Create Switch Form) ... */}
           <div className="space-y-4 py-4">
             <div className="space-y-2">
-              <Label>Nome (Ex: Switch Principal)</Label>
+              <Label>Nome ou Equipamento do Inventário</Label>
+              <select
+                className="w-full h-10 px-3 rounded-md border text-sm"
+                value={newSwitch.name}
+                onChange={(e) => {
+                  const val = e.target.value;
+                  const invItem = inventoryItems.find(i => i.name === val);
+                  if (invItem) {
+                    setNewSwitch({ ...newSwitch, name: invItem.name, ip: invItem.ip || "10.70.0.X" });
+                  } else {
+                    setNewSwitch({ ...newSwitch, name: val });
+                  }
+                }}
+              >
+                <option value="" disabled hidden>Selecione ou digite um nome</option>
+                {newSwitch.name && !inventoryItems.some(i => i.name === newSwitch.name) && (
+                  <option value={newSwitch.name}>{newSwitch.name}</option>
+                )}
+                <optgroup label="Disponíveis no Inventário">
+                  {inventoryItems
+                    .filter(i => (i.name?.startsWith('SW') || i.model?.toLowerCase().includes('switch')) && !switches.some(s => s.name === i.name))
+                    .sort((a,b) => (a.name||"").localeCompare(b.name||""))
+                    .map(i => (
+                      <option key={i.id} value={i.name}>{i.name} ({i.ip || "Sem IP"})</option>
+                    ))}
+                </optgroup>
+              </select>
               <Input
+                placeholder="Ou digite o nome manualmente..."
                 value={newSwitch.name}
                 onChange={(e) =>
                   setNewSwitch({ ...newSwitch, name: e.target.value })
                 }
+                className="mt-2"
               />
             </div>
             <div className="space-y-2">
