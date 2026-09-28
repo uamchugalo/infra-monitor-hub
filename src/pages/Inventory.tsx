@@ -47,6 +47,7 @@ const Inventory = () => {
   const navigate = useNavigate();
   const [items, setItems] = useState<InventoryItem[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [categoryFilter, setCategoryFilter] = useState("Todos");
   const [loading, setLoading] = useState(true);
   
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
@@ -157,6 +158,28 @@ const Inventory = () => {
 
   const filteredItems = items.filter((item) => {
     if (item.status !== activeTab) return false;
+    
+    // Category Filter Logic
+    if (categoryFilter !== "Todos") {
+      const name = (item.name || "").toLowerCase();
+      const model = (item.model || "").toLowerCase();
+      
+      let isMatch = false;
+      if (categoryFilter === "APs") isMatch = name.includes("ap ") || name.startsWith("ap-") || name.startsWith("ap") || model.includes("access point");
+      else if (categoryFilter === "Câmeras") isMatch = name.includes("cam") || model.includes("câmera") || model.includes("camera");
+      else if (categoryFilter === "Switches") isMatch = name.includes("sw") || model.includes("switch");
+      else if (categoryFilter === "Computadores") isMatch = name.includes("pc") || name.includes("desktop") || name.includes("notebook") || model.includes("computador");
+      else if (categoryFilter === "Outros") {
+        const isAp = name.includes("ap ") || name.startsWith("ap-") || name.startsWith("ap") || model.includes("access point");
+        const isCam = name.includes("cam") || model.includes("câmera") || model.includes("camera");
+        const isSw = name.includes("sw") || model.includes("switch");
+        const isPc = name.includes("pc") || name.includes("desktop") || name.includes("notebook") || model.includes("computador");
+        isMatch = !isAp && !isCam && !isSw && !isPc;
+      }
+      
+      if (!isMatch) return false;
+    }
+
     if (!searchTerm) return true;
     const lowerSearch = searchTerm.toLowerCase();
     return Object.values(item).some(
@@ -176,6 +199,19 @@ const Inventory = () => {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
+        <Select value={categoryFilter} onValueChange={setCategoryFilter}>
+          <SelectTrigger className="w-[180px] h-9 text-sm">
+            <SelectValue placeholder="Categoria" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="Todos">Todas as Categorias</SelectItem>
+            <SelectItem value="APs">Access Points</SelectItem>
+            <SelectItem value="Câmeras">Câmeras</SelectItem>
+            <SelectItem value="Switches">Switches</SelectItem>
+            <SelectItem value="Computadores">Computadores</SelectItem>
+            <SelectItem value="Outros">Outros</SelectItem>
+          </SelectContent>
+        </Select>
         <Button
           variant="outline"
           size="sm"

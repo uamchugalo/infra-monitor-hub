@@ -1,20 +1,20 @@
 {
-  "id": "monitor-1790614440039",
+  "id": "monitor-1790623800024",
   "type": "CONTINUOUS_MONITORING",
-  "timestamp": "2026-09-28T16:54:00.039Z",
+  "timestamp": "2026-09-28T19:30:00.024Z",
   "automated": true,
-  "total": 93,
-  "online_after_wake": 70,
+  "total": 110,
+  "online_after_wake": 87,
   "failures": [
     {
-      "name": "CAM101",
-      "ip": "10.70.40.101",
+      "name": "CAM100",
+      "ip": "10.70.40.100",
       "type": "CAMERA",
       "reason": "No Ping Response"
     },
     {
-      "name": "CAM100",
-      "ip": "10.70.40.100",
+      "name": "CAM101",
+      "ip": "10.70.40.101",
       "type": "CAMERA",
       "reason": "No Ping Response"
     },
@@ -43,14 +43,14 @@
       "reason": "No Ping Response"
     },
     {
-      "name": "CAM51",
-      "ip": "10.70.40.51",
+      "name": "CAM53",
+      "ip": "10.70.40.53",
       "type": "CAMERA",
       "reason": "No Ping Response"
     },
     {
-      "name": "CAM53",
-      "ip": "10.70.40.53",
+      "name": "CAM51",
+      "ip": "10.70.40.51",
       "type": "CAMERA",
       "reason": "No Ping Response"
     },
@@ -67,8 +67,8 @@
       "reason": "No Ping Response"
     },
     {
-      "name": "CAM186 : Est I",
-      "ip": "10.70.40.186",
+      "name": "CAM181 - Placas",
+      "ip": "10.70.40.181",
       "type": "CAMERA",
       "reason": "No Ping Response"
     },
@@ -79,26 +79,26 @@
       "reason": "No Ping Response"
     },
     {
-      "name": "CAM181 - Placas",
-      "ip": "10.70.40.181",
-      "type": "CAMERA",
-      "reason": "No Ping Response"
-    },
-    {
-      "name": "CAM188 : Est III",
-      "ip": "10.70.40.188",
-      "type": "CAMERA",
-      "reason": "No Ping Response"
-    },
-    {
       "name": "AP - T01",
       "ip": "10.70.20.201",
       "type": "AP",
       "reason": "No Ping Response"
     },
     {
+      "name": "CAM186 : Est I",
+      "ip": "10.70.40.186",
+      "type": "CAMERA",
+      "reason": "No Ping Response"
+    },
+    {
       "name": "CAM185 : Est IV",
       "ip": "10.70.40.185",
+      "type": "CAMERA",
+      "reason": "No Ping Response"
+    },
+    {
+      "name": "CAM188 : Est III",
+      "ip": "10.70.40.188",
       "type": "CAMERA",
       "reason": "No Ping Response"
     },
@@ -115,14 +115,14 @@
       "reason": "No Ping Response"
     },
     {
-      "name": "AP - T04",
-      "ip": "10.70.20.204",
+      "name": "AP - T06",
+      "ip": "10.70.20.206",
       "type": "AP",
       "reason": "No Ping Response"
     },
     {
-      "name": "AP - T06",
-      "ip": "10.70.20.206",
+      "name": "AP - T04",
+      "ip": "10.70.20.204",
       "type": "AP",
       "reason": "No Ping Response"
     },
@@ -195,14 +195,14 @@
       "status": "SUCCESS"
     },
     {
-      "name": "CAM101",
-      "ip": "10.70.40.101",
+      "name": "CAM100",
+      "ip": "10.70.40.100",
       "type": "CAMERA",
       "status": "FAILED"
     },
     {
-      "name": "CAM100",
-      "ip": "10.70.40.100",
+      "name": "CAM101",
+      "ip": "10.70.40.101",
       "type": "CAMERA",
       "status": "FAILED"
     },
@@ -363,14 +363,14 @@
       "status": "FAILED"
     },
     {
-      "name": "CAM51",
-      "ip": "10.70.40.51",
+      "name": "CAM53",
+      "ip": "10.70.40.53",
       "type": "CAMERA",
       "status": "FAILED"
     },
     {
-      "name": "CAM53",
-      "ip": "10.70.40.53",
+      "name": "CAM51",
+      "ip": "10.70.40.51",
       "type": "CAMERA",
       "status": "FAILED"
     },
@@ -411,8 +411,8 @@
       "status": "SUCCESS"
     },
     {
-      "name": "CAM186 : Est I",
-      "ip": "10.70.40.186",
+      "name": "CAM181 - Placas",
+      "ip": "10.70.40.181",
       "type": "CAMERA",
       "status": "FAILED"
     },
@@ -423,26 +423,26 @@
       "status": "FAILED"
     },
     {
-      "name": "CAM181 - Placas",
-      "ip": "10.70.40.181",
-      "type": "CAMERA",
-      "status": "FAILED"
-    },
-    {
-      "name": "CAM188 : Est III",
-      "ip": "10.70.40.188",
-      "type": "CAMERA",
-      "status": "FAILED"
-    },
-    {
       "name": "AP - T01",
       "ip": "10.70.20.201",
       "type": "AP",
       "status": "FAILED"
     },
     {
+      "name": "CAM186 : Est I",
+      "ip": "10.70.40.186",
+      "type": "CAMERA",
+      "status": "FAILED"
+    },
+    {
       "name": "CAM185 : Est IV",
       "ip": "10.70.40.185",
+      "type": "CAMERA",
+      "status": "FAILED"
+    },
+    {
+      "name": "CAM188 : Est III",
+      "ip": "10.70.40.188",
       "type": "CAMERA",
       "status": "FAILED"
     },
@@ -495,14 +495,14 @@
       "status": "FAILED"
     },
     {
-      "name": "AP - T04",
-      "ip": "10.70.20.204",
+      "name": "AP - T06",
+      "ip": "10.70.20.206",
       "type": "AP",
       "status": "FAILED"
     },
     {
-      "name": "AP - T06",
-      "ip": "10.70.20.206",
+      "name": "AP - T04",
+      "ip": "10.70.20.204",
       "type": "AP",
       "status": "FAILED"
     },
@@ -687,6 +687,48 @@
       "status": "SUCCESS"
     },
     {
+      "name": "AP - 407",
+      "ip": "10.70.20.147",
+      "type": "AP",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "AP - 406",
+      "ip": "10.70.20.146",
+      "type": "AP",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "AP - 405",
+      "ip": "10.70.20.145",
+      "type": "AP",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "AP - 404",
+      "ip": "10.70.20.144",
+      "type": "AP",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "AP - 403",
+      "ip": "10.70.20.143",
+      "type": "AP",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "AP - 402",
+      "ip": "10.70.20.142",
+      "type": "AP",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "AP - 205",
+      "ip": "10.70.20.125",
+      "type": "AP",
+      "status": "SUCCESS"
+    },
+    {
       "name": "AP - 204",
       "ip": "10.70.20.124",
       "type": "AP",
@@ -699,8 +741,68 @@
       "status": "SUCCESS"
     },
     {
-      "name": "AP - 205",
-      "ip": "10.70.20.125",
+      "name": "AP - 408",
+      "ip": "10.70.20.148",
+      "type": "AP",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "AP -Ginásio II",
+      "ip": "10.70.20.192",
+      "type": "AP",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "AP -Ginásio I",
+      "ip": "10.70.20.191",
+      "type": "AP",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "AP - Galpão",
+      "ip": "10.70.20.182",
+      "type": "AP",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "AP -Galpão - Gab.",
+      "ip": "10.70.20.181",
+      "type": "AP",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "AP - 302",
+      "ip": "10.70.20.132",
+      "type": "AP",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "AP - Portaria",
+      "ip": "10.70.20.171",
+      "type": "AP",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "AP - 5 Andar",
+      "ip": "10.70.20.151",
+      "type": "AP",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "AP - 410",
+      "ip": "10.70.20.150",
+      "type": "AP",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "AP - 409",
+      "ip": "10.70.20.149",
+      "type": "AP",
+      "status": "SUCCESS"
+    },
+    {
+      "name": "AP -Ginásio III",
+      "ip": "10.70.20.193",
       "type": "AP",
       "status": "SUCCESS"
     }

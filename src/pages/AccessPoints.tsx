@@ -481,13 +481,34 @@ const AccessPoints = () => {
 
   const apsByLocation = LOCATIONS.reduce(
     (acc, loc) => {
-      acc[loc] = aps.filter((ap) => ap.location === loc);
+      acc[loc] = [];
       return acc;
     },
     {} as Record<string, AccessPoint[]>,
   );
 
-  const unmapped = aps.filter((ap) => !LOCATIONS.includes(ap.location));
+  const unmapped: AccessPoint[] = [];
+
+  aps.forEach((a) => {
+    // If the AP is linked to a switch, try to use the switch's location
+    const sw = switches.find((s) => s.id === a.switchId);
+    let targetLocation = a.location;
+
+    if (sw && sw.location) {
+      // Normalize location strings (e.g., 1º vs 1°)
+      const normalizedSwLoc = sw.location.replace("º", "°");
+      if (LOCATIONS.includes(normalizedSwLoc)) {
+        targetLocation = normalizedSwLoc;
+      }
+    }
+
+    if (LOCATIONS.includes(targetLocation)) {
+      apsByLocation[targetLocation].push(a);
+    } else {
+      unmapped.push(a);
+    }
+  });
+
   if (unmapped.length > 0) apsByLocation["Outros"] = unmapped;
 
   const displayLocations =
