@@ -107,10 +107,15 @@ const Inventory = () => {
       const url = isEditing ? `/api/inventory/${formData.id}` : "/api/inventory";
       const method = isEditing ? "PUT" : "POST";
       
+      const payload = { ...formData };
+      delete payload.pingStatus;
+      delete payload.connectedSwitch;
+      delete payload.connectedPort;
+      
       const res = await fetch(url, {
         method,
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(payload)
       });
       
       if (res.ok) {
