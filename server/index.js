@@ -924,10 +924,18 @@ app.get("/api/inventory", async (req, res) => {
            connectedPort = String(port.port);
         }
       }
+      
+      const isSwitch = switches.some(s => s.name === item.name || (s.ip && s.ip === item.ip));
+      if (isSwitch) {
+        isConnected = true;
+      }
+
+      // Also respect manual DB status if it was set explicitly to "Em Uso"
+      const finalStatus = (isConnected || item.status === "Em Uso") ? "Em Uso" : "Em Estoque";
 
       return {
         ...item,
-        status: isConnected ? "Em Uso" : "Em Estoque",
+        status: finalStatus,
         pingStatus,
         connectedSwitch,
         connectedPort
