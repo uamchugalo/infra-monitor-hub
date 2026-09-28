@@ -21,6 +21,7 @@ import { useNavigate } from "react-router-dom";
 import { ReportsModal } from "@/components/ReportsModal";
 import { DeviceEditPanel } from "@/components/DeviceEditPanel";
 import { Header } from "@/components/Header";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 import {
   Dialog,
   DialogContent,
@@ -239,17 +240,13 @@ const LocationGroup = ({
   );
 };
 
-const LOCATIONS = [
-  "Térreo",
-  "1° Andar",
-  "Gabinetes",
-  "2° Andar",
-  "3° Andar",
-  "4° Andar",
-];
-
 const AccessPoints = () => {
   const navigate = useNavigate();
+  const [customLocations] = useLocalStorage<string[]>(
+    "technical-rooms-list",
+    ["Térreo", "1º Andar", "Gabinetes", "2º Andar", "3º Andar", "4º Andar"]
+  );
+
   const [aps, setAps] = useState<(AccessPoint & { enabled?: boolean })[]>([]);
   const [pinging, setPinging] = useState<Record<string, boolean>>({});
   const [status, setStatus] = useState<
@@ -261,8 +258,32 @@ const AccessPoints = () => {
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [activeId, setActiveId] = useState<string | null>(null);
   const [isCreating, setIsCreating] = useState(false);
-  const [newAP, setNewAP] = useState({ name: "", ip: "", location: "Térreo" });
   const [switches, setSwitches] = useState<any[]>([]);
+
+  // Compute LOCATIONS
+  const dynamicLocations = Array.from(
+    new Set([
+      ...aps.map((c) => c.location),
+      ...switches.map((s) => s.location),
+    ])
+  ).filter(Boolean);
+
+  const uniqueLocations = Array.from(
+    new Set([...customLocations, ...dynamicLocations]),
+  );
+
+  const LOCATIONS = uniqueLocations.sort((a, b) => {
+    const indexA = customLocations.indexOf(a);
+    const indexB = customLocations.indexOf(b);
+
+    if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+    if (indexA !== -1) return -1;
+    if (indexB !== -1) return 1;
+
+    return a.localeCompare(b, undefined, { numeric: true });
+  });
+
+  const [newAP, setNewAP] = useState({ name: "", ip: "", location: LOCATIONS.length > 0 ? LOCATIONS[0] : "Térreo" });
 
   const sensors = useSensors(
     useSensor(PointerSensor, {
