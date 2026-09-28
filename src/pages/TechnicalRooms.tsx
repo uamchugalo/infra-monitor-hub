@@ -404,6 +404,7 @@ export default function TechnicalRooms() {
     deviceId?: string;
     deviceIp?: string;
   } | null>(null);
+  const [deviceSearchTerm, setDeviceSearchTerm] = useState("");
 
   const [isCreatingPP, setIsCreatingPP] = useState<string | null>(null); // Location string if creating
   const [isCreatingSwitch, setIsCreatingSwitch] = useState<string | null>(null); // Location string if creating Switch
@@ -1559,6 +1560,12 @@ export default function TechnicalRooms() {
               <p className="text-[11px] text-muted-foreground">
                 Selecione o dispositivo para vincular e monitorar o status.
               </p>
+              <Input
+                placeholder="Pesquisar dispositivo (Nome, IP, Local)..."
+                value={deviceSearchTerm}
+                onChange={(e) => setDeviceSearchTerm(e.target.value)}
+                className="h-8 text-xs mb-2"
+              />
               <select
                 className="w-full h-10 px-3 rounded-md border text-sm bg-background"
                 value={
@@ -1701,9 +1708,13 @@ export default function TechnicalRooms() {
                   {pcs
                     .filter(
                       (pc) =>
-                        !pc.switchId ||
-                        (editingSwitchPort?.deviceId &&
-                          String(pc.id) === String(editingSwitchPort.deviceId)),
+                        (!pc.switchId ||
+                          (editingSwitchPort?.deviceId &&
+                            String(pc.id) === String(editingSwitchPort.deviceId))) &&
+                        (deviceSearchTerm === "" ||
+                          pc.name?.toLowerCase().includes(deviceSearchTerm.toLowerCase()) ||
+                          pc.ip?.includes(deviceSearchTerm) ||
+                          pc.location?.toLowerCase().includes(deviceSearchTerm.toLowerCase()))
                     )
                     .sort((a, b) => (a.name || "").localeCompare(b.name || ""))
                     .map((pc) => (
@@ -1717,9 +1728,13 @@ export default function TechnicalRooms() {
                   {cameras
                     .filter(
                       (c) =>
-                        !c.switchId ||
-                        (editingSwitchPort?.deviceId &&
-                          String(c.id) === String(editingSwitchPort.deviceId)),
+                        (!c.switchId ||
+                          (editingSwitchPort?.deviceId &&
+                            String(c.id) === String(editingSwitchPort.deviceId))) &&
+                        (deviceSearchTerm === "" ||
+                          c.name?.toLowerCase().includes(deviceSearchTerm.toLowerCase()) ||
+                          c.ip?.includes(deviceSearchTerm) ||
+                          c.location?.toLowerCase().includes(deviceSearchTerm.toLowerCase()))
                     )
                     .sort((a, b) => a.name.localeCompare(b.name))
                     .map((c) => (
@@ -1733,9 +1748,13 @@ export default function TechnicalRooms() {
                   {aps
                     .filter(
                       (a) =>
-                        !a.switchId ||
-                        (editingSwitchPort?.deviceId &&
-                          String(a.id) === String(editingSwitchPort.deviceId)),
+                        (!a.switchId ||
+                          (editingSwitchPort?.deviceId &&
+                            String(a.id) === String(editingSwitchPort.deviceId))) &&
+                        (deviceSearchTerm === "" ||
+                          a.name?.toLowerCase().includes(deviceSearchTerm.toLowerCase()) ||
+                          a.ip?.includes(deviceSearchTerm) ||
+                          a.location?.toLowerCase().includes(deviceSearchTerm.toLowerCase()))
                     )
                     .sort((a, b) => a.name.localeCompare(b.name))
                     .map((a) => (
