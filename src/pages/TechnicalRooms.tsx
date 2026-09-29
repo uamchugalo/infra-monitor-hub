@@ -968,15 +968,7 @@ export default function TechnicalRooms() {
   const [newLocationName, setNewLocationName] = useState("");
 
   // Fix corrupted strings from LocalStorage automatically
-  useEffect(() => {
-    let changed = false;
-    const fixed = customLocations.map(loc => {
-      const newLoc = loc.replace("TǸrreo", "Térreo").replace("1 Andar", "1° Andar").replace("2 Andar", "2° Andar").replace("3 Andar", "3° Andar").replace("4 Andar", "4° Andar");
-      if (newLoc !== loc) changed = true;
-      return newLoc;
-    });
-    if (changed) setCustomLocations(fixed);
-  }, [customLocations, setCustomLocations]);
+  
 
   const dynamicLocations = Array.from(
     new Set([

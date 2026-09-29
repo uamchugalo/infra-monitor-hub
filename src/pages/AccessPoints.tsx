@@ -247,15 +247,7 @@ const AccessPoints = () => {
     ["Térreo", "1° Andar", "Gabinetes", "2° Andar", "3° Andar", "4° Andar"]
   );
 
-  useEffect(() => {
-    let changed = false;
-    const fixed = customLocations.map(loc => {
-      const newLoc = loc.replace("TǸrreo", "Térreo").replace("1 Andar", "1° Andar").replace("2 Andar", "2° Andar").replace("3 Andar", "3° Andar").replace("4 Andar", "4° Andar");
-      if (newLoc !== loc) changed = true;
-      return newLoc;
-    });
-    if (changed) setCustomLocations(fixed);
-  }, [customLocations, setCustomLocations]);
+  
 
   const [aps, setAps] = useState<(AccessPoint & { enabled?: boolean })[]>([]);
   const [pinging, setPinging] = useState<Record<string, boolean>>({});
