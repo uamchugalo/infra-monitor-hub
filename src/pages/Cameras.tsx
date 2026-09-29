@@ -234,7 +234,7 @@ const LocationGroup = ({
         {cameras.length === 0 && (
           <div className="col-span-full h-20 flex items-center justify-center border-2 border-dashed border-border rounded-lg">
             <span className="text-xs text-muted-foreground">
-              Arraste Câmeras para cá
+              Arraste CÃ¢meras para cÃ¡
             </span>
           </div>
         )}
@@ -245,10 +245,20 @@ const LocationGroup = ({
 
 const Cameras = () => {
   const navigate = useNavigate();
-  const [customLocations] = useLocalStorage<string[]>(
+  const [customLocations, setCustomLocations] = useLocalStorage<string[]>(
     "technical-rooms-list",
     ["Térreo", "1º Andar", "Gabinetes", "2º Andar", "3º Andar", "4º Andar"]
   );
+
+  useEffect(() => {
+    let changed = false;
+    const fixed = customLocations.map(loc => {
+      const newLoc = loc.replace("TǸrreo", "Térreo").replace("1 Andar", "1º Andar").replace("2 Andar", "2º Andar").replace("3 Andar", "3º Andar").replace("4 Andar", "4º Andar");
+      if (newLoc !== loc) changed = true;
+      return newLoc;
+    });
+    if (changed) setCustomLocations(fixed);
+  }, [customLocations, setCustomLocations]);
 
   const [cameras, setCameras] = useState<(Camera & { enabled?: boolean })[]>(
     CAMERAS || [],
@@ -267,7 +277,6 @@ const Cameras = () => {
   const [isCreating, setIsCreating] = useState(false);
   const [switches, setSwitches] = useState<any[]>([]);
 
-  // Compute LOCATIONS
   const LOCATIONS = [...customLocations].sort((a, b) => {
     const indexA = customLocations.indexOf(a);
     const indexB = customLocations.indexOf(b);
@@ -282,7 +291,7 @@ const Cameras = () => {
   const [newCam, setNewCam] = useState({
     name: "",
     ip: "",
-    location: LOCATIONS.length > 0 ? LOCATIONS[0] : "Térreo",
+    location: LOCATIONS.length > 0 ? LOCATIONS[0] : "TÃ©rreo",
   });
 
   const sensors = useSensors(
@@ -347,7 +356,7 @@ const Cameras = () => {
         [cam.id]: isAlive ? "online" : "offline",
       }));
       if (isAlive) toast.success(`${cam.name}: Online`);
-      else toast.error(`${cam.name}: Inacessível`);
+      else toast.error(`${cam.name}: InacessÃ­vel`);
       return isAlive;
     } catch (error) {
       setStatus((prev) => ({ ...prev, [cam.id]: "offline" }));
@@ -358,7 +367,7 @@ const Cameras = () => {
   };
 
   const handlePingAll = async () => {
-    toast.info("Verificando todas Câmeras...");
+    toast.info("Verificando todas CÃ¢meras...");
     cameras.filter((c) => c.enabled !== false).forEach((c) => handlePing(c));
   };
 
@@ -386,7 +395,7 @@ const Cameras = () => {
           body: JSON.stringify({ cameras: updatedCams }),
         }).catch(console.error);
 
-        toast.success(`Câmera movida para ${newLocation}`);
+        toast.success(`CÃ¢mera movida para ${newLocation}`);
       }
     }
   };
@@ -414,12 +423,12 @@ const Cameras = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ cameras: updatedCams }),
     })
-      .then(() => toast.success("Alterações salvas"))
+      .then(() => toast.success("AlteraÃ§Ãµes salvas"))
       .catch(console.error);
   };
 
   const handleDeleteCamera = async (id: string) => {
-    if (!confirm("Tem certeza que deseja remover esta câmera?")) return;
+    if (!confirm("Tem certeza que deseja remover esta cÃ¢mera?")) return;
     const newCams = cameras.filter((c) => c.id !== id);
     setCameras(newCams);
     try {
@@ -428,10 +437,10 @@ const Cameras = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ cameras: newCams }),
       });
-      toast.success("Câmera removida com sucesso");
+      toast.success("CÃ¢mera removida com sucesso");
     } catch (error) {
       console.error(error);
-      toast.error("Erro ao remover câmera");
+      toast.error("Erro ao remover cÃ¢mera");
     }
     setSelectedDevice(null);
   };
@@ -467,7 +476,7 @@ const Cameras = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ cameras: newCams }),
       });
-      toast.success("Itens excluídos com sucesso");
+      toast.success("Itens excluÃ­dos com sucesso");
     } catch (error) {
       console.error(error);
       toast.error("Erro ao excluir itens");
@@ -481,7 +490,7 @@ const Cameras = () => {
     const updated = [...cameras, created];
     setCameras(updated);
     setIsCreating(false);
-    setNewCam({ name: "", ip: "", location: "Térreo" });
+    setNewCam({ name: "", ip: "", location: "TÃ©rreo" });
 
     try {
       await fetch("/api/sync-cameras", {
@@ -489,9 +498,9 @@ const Cameras = () => {
         body: JSON.stringify({ cameras: updated }),
         headers: { "Content-Type": "application/json" },
       });
-      toast.success("Câmera Criada!");
+      toast.success("CÃ¢mera Criada!");
     } catch (e) {
-      toast.error("Erro ao salvar criação");
+      toast.error("Erro ao salvar criaÃ§Ã£o");
     }
   };
 
@@ -511,8 +520,8 @@ const Cameras = () => {
     let targetLocation = c.location;
 
     if (sw && sw.location) {
-      // Normalize location strings (e.g., 1º vs 1°)
-      const normalizedSwLoc = sw.location.replace("º", "°");
+      // Normalize location strings (e.g., 1Âº vs 1Â°)
+      const normalizedSwLoc = sw.location.replace("Âº", "Â°");
       if (LOCATIONS.includes(normalizedSwLoc)) {
         targetLocation = normalizedSwLoc;
       }
@@ -538,7 +547,7 @@ const Cameras = () => {
           size="sm"
           className="bg-green-600 hover:bg-green-700"
         >
-          <Plus className="w-4 h-4 mr-2" /> Nova Câmera
+          <Plus className="w-4 h-4 mr-2" /> Nova CÃ¢mera
         </Button>
         <ReportsModal />
         {selectedIds.length > 0 && (
@@ -584,7 +593,7 @@ const Cameras = () => {
               <div className="opacity-80 rotate-3 cursor-grabbing w-[200px]">
                 <Button variant="secondary" className="w-full justify-start">
                   <Video className="w-4 h-4 mr-2" />
-                  Movendo Câmera...
+                  Movendo CÃ¢mera...
                 </Button>
               </div>
             ) : null}
@@ -613,7 +622,7 @@ const Cameras = () => {
       <Dialog open={isCreating} onOpenChange={setIsCreating}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Nova Câmera</DialogTitle>
+            <DialogTitle>Nova CÃ¢mera</DialogTitle>
           </DialogHeader>
           <div className="space-y-4 py-4">
             <div className="space-y-2">
@@ -633,7 +642,7 @@ const Cameras = () => {
               />
             </div>
             <div className="space-y-2">
-              <Label>Localização</Label>
+              <Label>LocalizaÃ§Ã£o</Label>
               <select
                 className="w-full h-10 px-3 rounded-md border bg-background"
                 value={newCam.location}
@@ -650,7 +659,7 @@ const Cameras = () => {
             </div>
           </div>
           <DialogFooter>
-            <Button onClick={handleCreateCam}>Criar Câmera</Button>
+            <Button onClick={handleCreateCam}>Criar CÃ¢mera</Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>

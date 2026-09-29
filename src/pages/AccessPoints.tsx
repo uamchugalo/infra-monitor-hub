@@ -242,10 +242,20 @@ const LocationGroup = ({
 
 const AccessPoints = () => {
   const navigate = useNavigate();
-  const [customLocations] = useLocalStorage<string[]>(
+  const [customLocations, setCustomLocations] = useLocalStorage<string[]>(
     "technical-rooms-list",
     ["Térreo", "1º Andar", "Gabinetes", "2º Andar", "3º Andar", "4º Andar"]
   );
+
+  useEffect(() => {
+    let changed = false;
+    const fixed = customLocations.map(loc => {
+      const newLoc = loc.replace("TǸrreo", "Térreo").replace("1 Andar", "1º Andar").replace("2 Andar", "2º Andar").replace("3 Andar", "3º Andar").replace("4 Andar", "4º Andar");
+      if (newLoc !== loc) changed = true;
+      return newLoc;
+    });
+    if (changed) setCustomLocations(fixed);
+  }, [customLocations, setCustomLocations]);
 
   const [aps, setAps] = useState<(AccessPoint & { enabled?: boolean })[]>([]);
   const [pinging, setPinging] = useState<Record<string, boolean>>({});

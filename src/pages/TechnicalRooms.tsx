@@ -106,7 +106,7 @@ const SwitchPort = ({
   const portData = sw.ports?.find((p) => p.port === portNum);
   const isConnected = !!portData;
 
-  // Visualização baseada no tipo de conexão e STATUS REAL
+  // VisualizaÃ§Ã£o baseada no tipo de conexÃ£o e STATUS REAL
   let statusColor = "bg-[#1a1b1e] border-[#2c2e33]"; // Default/Empty Look
   let statusDotColor = "bg-gray-500"; // Default dot
 
@@ -157,13 +157,13 @@ const SwitchPort = ({
           <div className="flex items-center gap-1.5 text-zinc-400 text-[9px] uppercase">
             {portData.type}
             {portData.deviceIp && statuses[portData.deviceIp] === "online" && (
-              <span className="text-green-400 font-bold">• ONLINE</span>
+              <span className="text-green-400 font-bold">â€¢ ONLINE</span>
             )}
             {portData.deviceIp && statuses[portData.deviceIp] === "offline" && (
-              <span className="text-red-500 font-bold">• OFFLINE</span>
+              <span className="text-red-500 font-bold">â€¢ OFFLINE</span>
             )}
             {portData.deviceIp && !statuses[portData.deviceIp] && (
-              <span className="text-yellow-500">• {portData.deviceIp}</span>
+              <span className="text-yellow-500">â€¢ {portData.deviceIp}</span>
             )}
           </div>
           <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-black rotate-45 border-r border-b border-zinc-800" />
@@ -747,7 +747,7 @@ export default function TechnicalRooms() {
   const handleDeleteSwitch = async (id: string) => {
     if (
       !confirm(
-        "Tem certeza que deseja excluir este Switch? Isso removerá os vínculos dos dispositivos conectados.",
+        "Tem certeza que deseja excluir este Switch? Isso removerÃ¡ os vÃ­nculos dos dispositivos conectados.",
       )
     )
       return;
@@ -798,7 +798,7 @@ export default function TechnicalRooms() {
       body: JSON.stringify({ switches: newSwitches }),
     });
 
-    toast.success("Switch excluído e processado!");
+    toast.success("Switch excluÃ­do e processado!");
     setEditingDevice(null);
   };
 
@@ -917,6 +917,10 @@ export default function TechnicalRooms() {
         ok: false,
         json: () => [],
       }));
+      const invRes = await fetch("/api/inventory").catch(() => ({
+        ok: false,
+        json: () => [],
+      }));
 
       const statusRes = await fetch("/api/last-status").catch(() => ({
         ok: false,
@@ -927,6 +931,7 @@ export default function TechnicalRooms() {
       if (pcRes.ok) setPcs(await pcRes.json());
       if (camRes.ok) setCameras(await camRes.json());
       if (apRes.ok) setAps(await apRes.json());
+      if (invRes.ok) setInventoryItems(await invRes.json());
 
       if (swRes.ok) {
         const loaded = await swRes.json();
@@ -957,10 +962,21 @@ export default function TechnicalRooms() {
   // Locations Management (User Defined + Dynamic from equipment)
   const [customLocations, setCustomLocations] = useLocalStorage<string[]>(
     "technical-rooms-list",
-    ["Térreo", "1° Andar", "Gabinetes", "2° Andar", "3° Andar", "4° Andar"],
+    ["Térreo", "1º Andar", "Gabinetes", "2º Andar", "3º Andar", "4º Andar"],
   );
   const [isManagingLocations, setIsManagingLocations] = useState(false);
   const [newLocationName, setNewLocationName] = useState("");
+
+  // Fix corrupted strings from LocalStorage automatically
+  useEffect(() => {
+    let changed = false;
+    const fixed = customLocations.map(loc => {
+      const newLoc = loc.replace("TǸrreo", "Térreo").replace("1 Andar", "1º Andar").replace("2 Andar", "2º Andar").replace("3 Andar", "3º Andar").replace("4 Andar", "4º Andar");
+      if (newLoc !== loc) changed = true;
+      return newLoc;
+    });
+    if (changed) setCustomLocations(fixed);
+  }, [customLocations, setCustomLocations]);
 
   const dynamicLocations = Array.from(
     new Set([
@@ -971,7 +987,7 @@ export default function TechnicalRooms() {
 
   // Merge custom and dynamic, ensuring unique values
   const uniqueLocations = Array.from(
-    new Set([...customLocations, ...dynamicLocations]),
+    new Set([...customLocations, ...dynamicLocations])
   );
 
   // Sort logic: Custom items respected order first, then others alphabetically
@@ -989,28 +1005,28 @@ export default function TechnicalRooms() {
   const handleAddLocation = () => {
     if (!newLocationName.trim()) return;
     if (customLocations.includes(newLocationName.trim())) {
-      toast.error("Essa sala técnica já existe!");
+      toast.error("Essa sala tÃ©cnica jÃ¡ existe!");
       return;
     }
     setCustomLocations([...customLocations, newLocationName.trim()]);
     setNewLocationName("");
-    toast.success("Sala Técnica adicionada!");
+    toast.success("Sala TÃ©cnica adicionada!");
   };
 
   const handleRemoveLocation = (loc: string) => {
     if (dynamicLocations.includes(loc)) {
       toast.warning(
-        "Esta sala possui equipamentos e não pode ser removida até estar vazia.",
+        "Esta sala possui equipamentos e nÃ£o pode ser removida atÃ© estar vazia.",
       ); // Or just allow removing from custom list but it stays visible? Let's warn.
       // Actually, allow removing from "Saved List", but it stays visible if used.
-      // toast.info("Removido da lista personalizada (mas visível pois contém itens).");
+      // toast.info("Removido da lista personalizada (mas visÃ­vel pois contÃ©m itens).");
     }
     setCustomLocations(customLocations.filter((l) => l !== loc));
   };
 
   const handleRenameLocation = async (oldName: string, newName: string) => {
     if (!newName.trim() || customLocations.includes(newName)) {
-      toast.error("Nome inválido ou já existente!");
+      toast.error("Nome invÃ¡lido ou jÃ¡ existente!");
       return;
     }
 
@@ -1090,7 +1106,7 @@ export default function TechnicalRooms() {
       <Dialog open={isManagingLocations} onOpenChange={setIsManagingLocations}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Gerenciar Salas Técnicas</DialogTitle>
+            <DialogTitle>Gerenciar Salas TÃ©cnicas</DialogTitle>
           </DialogHeader>
           <div className="space-y-4">
             <div className="flex gap-2">
@@ -1148,7 +1164,7 @@ export default function TechnicalRooms() {
                       variant="ghost"
                       size="sm"
                       className="h-8 w-8 text-muted-foreground"
-                      title="Adicionar à lista fixa"
+                      title="Adicionar Ã  lista fixa"
                       onClick={() => {
                         setCustomLocations([...customLocations, loc]);
                       }}
@@ -1172,7 +1188,7 @@ export default function TechnicalRooms() {
           </div>
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 bg-amber-600 border border-amber-400 rounded-[1px]"></div>{" "}
-            Câmera
+            CÃ¢mera
           </div>
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 bg-blue-600 border border-blue-400 rounded-[1px]"></div>{" "}
@@ -1278,7 +1294,7 @@ export default function TechnicalRooms() {
                                   {item.type === "switch"
                                     ? item.ip
                                     : "Cabeamento Estruturado"}{" "}
-                                  • {item.totalPorts} Portas
+                                  â€¢ {item.totalPorts} Portas
                                 </p>
                               </div>
                             </div>
@@ -1480,7 +1496,7 @@ export default function TechnicalRooms() {
           {/* ... (Create Switch Form) ... */}
           <div className="space-y-4 py-4">
             <div className="space-y-2">
-              <Label>Nome ou Equipamento do Inventário</Label>
+              <Label>Nome ou Equipamento do InventÃ¡rio</Label>
               <select
                 className="w-full h-10 px-3 rounded-md border text-sm"
                 value={newSwitch.name}
@@ -1498,7 +1514,7 @@ export default function TechnicalRooms() {
                 {newSwitch.name && !inventoryItems.some(i => i.name === newSwitch.name) && (
                   <option value={newSwitch.name}>{newSwitch.name}</option>
                 )}
-                <optgroup label="Disponíveis no Inventário">
+                <optgroup label="DisponÃ­veis no InventÃ¡rio">
                   {inventoryItems
                     .filter(i => (i.name?.startsWith('SW') || i.model?.toLowerCase().includes('switch')) && !switches.some(s => s.name === i.name))
                     .sort((a,b) => (a.name||"").localeCompare(b.name||""))
@@ -1553,7 +1569,7 @@ export default function TechnicalRooms() {
           </DialogHeader>
           <div className="space-y-4 py-4">
             <div className="space-y-2">
-              <Label>O que está conectado aqui?</Label>
+              <Label>O que estÃ¡ conectado aqui?</Label>
               <Input
                 placeholder="Ex: Sala 102 - Ponto Rede"
                 value={editingPort?.description || ""}
@@ -1722,15 +1738,15 @@ export default function TechnicalRooms() {
 
                 <optgroup label="Infraestrutura Geral">
                   <option value="manual_pc">
-                    💻 Computador (Sem cadastro)
+                    ðŸ’» Computador (Sem cadastro)
                   </option>
                   <option value="manual_uplink">
-                    🔗 Uplink (Link entre Switches)
+                    ðŸ”— Uplink (Link entre Switches)
                   </option>
                   <option value="manual_printer">
-                    🖨️ Impressora (Genérica)
+                    ðŸ–¨ï¸ Impressora (GenÃ©rica)
                   </option>
-                  <option value="manual_other">🔌 Outro Dispositivo</option>
+                  <option value="manual_other">ðŸ”Œ Outro Dispositivo</option>
                 </optgroup>
 
                 <optgroup label={`Computadores (${pcs.length})`}>
@@ -1748,12 +1764,12 @@ export default function TechnicalRooms() {
                     .sort((a, b) => (a.name || "").localeCompare(b.name || ""))
                     .map((pc) => (
                       <option key={pc.id} value={pc.id}>
-                        💻 {pc.name || ""} ({pc.ip})
+                        ðŸ’» {pc.name || ""} ({pc.ip})
                       </option>
                     ))}
                 </optgroup>
 
-                <optgroup label={`Câmeras (${cameras.length})`}>
+                <optgroup label={`CÃ¢meras (${cameras.length})`}>
                   {cameras
                     .filter(
                       (c) =>
@@ -1768,7 +1784,7 @@ export default function TechnicalRooms() {
                     .sort((a, b) => a.name.localeCompare(b.name))
                     .map((c) => (
                       <option key={c.id} value={c.id}>
-                        📷 {c.name} ({c.ip})
+                        ðŸ“· {c.name} ({c.ip})
                       </option>
                     ))}
                 </optgroup>
@@ -1788,7 +1804,7 @@ export default function TechnicalRooms() {
                     .sort((a, b) => a.name.localeCompare(b.name))
                     .map((a) => (
                       <option key={a.id} value={a.id}>
-                        📡 {a.name} ({a.ip})
+                        ðŸ“¡ {a.name} ({a.ip})
                       </option>
                     ))}
                 </optgroup>
@@ -2019,8 +2035,8 @@ export default function TechnicalRooms() {
                   </div>
                   <p className="text-[10px] text-muted-foreground">
                     {(editingDevice.data.enabled ?? true)
-                      ? "O switch é monitorado e visível na topologia."
-                      : "O switch e seus dispositivos estão desconectados."}
+                      ? "O switch Ã© monitorado e visÃ­vel na topologia."
+                      : "O switch e seus dispositivos estÃ£o desconectados."}
                   </p>
                 </div>
                 <Switch
