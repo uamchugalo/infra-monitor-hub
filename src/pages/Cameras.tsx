@@ -507,39 +507,41 @@ const Cameras = () => {
     // Normalize a string for comparison: lowercase, strip accents, remove special chars
   const normalize = (s: string) => s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9 ]/g, "").trim();
 
-  const camsByLocation = LOCATIONS.reduce(
-    (acc, loc) => {
-      acc[loc] = [];
-      return acc;
-    },
-    {} as Record<string, Camera[]>,
-  );
+  // Build location buckets from LOCATIONS
+  const camsByLocation: Record<string, (Camera & { enabled?: boolean })[]> = {};
+  LOCATIONS.forEach(loc => { camsByLocation[loc] = []; });
 
-  const unmapped: Camera[] = [];
+  const unmapped: (Camera & { enabled?: boolean })[] = [];
 
   // Pre-compute normalized LOCATIONS for fuzzy matching
   const normalizedLocMap = LOCATIONS.map(loc => ({ original: loc, norm: normalize(loc) }));
 
   const findLocation = (raw: string): string | null => {
+    if (!raw) return null;
     const norm = normalize(raw);
+    // First try exact normalized match
     const match = normalizedLocMap.find(l => l.norm === norm);
-    return match ? match.original : null;
+    if (match) return match.original;
+    // Then try if any LOCATION norm is contained in the raw norm or vice-versa
+    const partialMatch = normalizedLocMap.find(l => norm.includes(l.norm) || l.norm.includes(norm));
+    return partialMatch ? partialMatch.original : null;
   };
 
   cameras.forEach((c) => {
-    // If the camera is linked to a switch, try to use the switch's location
-    const sw = switches.find((s) => s.id === c.switchId);
+    const sw = switches.find((s: any) => s.id === c.switchId);
     let targetLocation: string | null = null;
 
+    // Priority 1: Use switch location if camera is linked to a switch
     if (sw && sw.location) {
       targetLocation = findLocation(sw.location);
     }
 
-    if (!targetLocation) {
+    // Priority 2: Try camera's own location field
+    if (!targetLocation && c.location) {
       targetLocation = findLocation(c.location);
     }
 
-    if (targetLocation) {
+    if (targetLocation && camsByLocation[targetLocation]) {
       camsByLocation[targetLocation].push(c);
     } else {
       unmapped.push(c);

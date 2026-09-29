@@ -490,42 +490,39 @@ const AccessPoints = () => {
   };
 
   // Normalize a string for comparison: lowercase, strip accents, remove special chars
-  const normalize = (s) => s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9 ]/g, "").trim();
+  const normalize = (s: string) => s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9 ]/g, "").trim();
 
-  const apsByLocation = LOCATIONS.reduce(
-    (acc, loc) => {
-      acc[loc] = [];
-      return acc;
-    },
-    {},
-  );
+  // Build location buckets from LOCATIONS
+  const apsByLocation: Record<string, AccessPoint[]> = {};
+  LOCATIONS.forEach(loc => { apsByLocation[loc] = []; });
 
-  const unmapped = [];
+  const unmapped: AccessPoint[] = [];
 
   // Pre-compute normalized LOCATIONS for fuzzy matching
   const normalizedLocMap = LOCATIONS.map(loc => ({ original: loc, norm: normalize(loc) }));
 
-  const findLocation = (raw) => {
+  const findLocation = (raw: string): string | null => {
     if (!raw) return null;
     const norm = normalize(raw);
     const match = normalizedLocMap.find(l => l.norm === norm);
-    return match ? match.original : null;
+    if (match) return match.original;
+    const partialMatch = normalizedLocMap.find(l => norm.includes(l.norm) || l.norm.includes(norm));
+    return partialMatch ? partialMatch.original : null;
   };
 
   aps.forEach((a) => {
-    // If the AP is linked to a switch, try to use the switch's location
-    const sw = switches.find((s) => s.id === a.switchId);
-    let targetLocation = null;
+    const sw = switches.find((s: any) => s.id === a.switchId);
+    let targetLocation: string | null = null;
 
     if (sw && sw.location) {
       targetLocation = findLocation(sw.location);
     }
 
-    if (!targetLocation) {
+    if (!targetLocation && a.location) {
       targetLocation = findLocation(a.location);
     }
 
-    if (targetLocation) {
+    if (targetLocation && apsByLocation[targetLocation]) {
       apsByLocation[targetLocation].push(a);
     } else {
       unmapped.push(a);
