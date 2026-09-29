@@ -962,7 +962,7 @@ export default function TechnicalRooms() {
   // Locations Management (User Defined + Dynamic from equipment)
   const [customLocations, setCustomLocations] = useLocalStorage<string[]>(
     "technical-rooms-list",
-    ["Térreo", "1° Andar", "Gabinetes", "2° Andar", "3° Andar", "4° Andar"],
+    ["Térreo", "1° Andar", "2° Andar", "3° Andar", "4° Andar"],
   );
   const [isManagingLocations, setIsManagingLocations] = useState(false);
   const [newLocationName, setNewLocationName] = useState("");

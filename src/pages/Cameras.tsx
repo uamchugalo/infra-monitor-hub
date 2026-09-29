@@ -247,7 +247,7 @@ const Cameras = () => {
   const navigate = useNavigate();
   const [customLocations, setCustomLocations] = useLocalStorage<string[]>(
     "technical-rooms-list",
-    ["Térreo", "1° Andar", "Gabinetes", "2° Andar", "3° Andar", "4° Andar"]
+    ["Térreo", "1° Andar", "2° Andar", "3° Andar", "4° Andar"]
   );
 
   
