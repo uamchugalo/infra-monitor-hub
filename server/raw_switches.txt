@@ -1,0 +1,34 @@
+SW02	10.70.20.02	ST-T0	224991	22510E5000088	TP-LINK	TP-Link JetStream	"	98:ba:5f:84:8b:db"	SX3016F 1.20	None	16 x 10GBase-X SFP+ 		
+SW04	10.70.20.04	ST-T0		S148FNTF23001143	Fortinet	FortiSwitch FS-148F 48 ports 	80-80-2c-e8-12-5c	FS-148F	Console Port	4 x 10GBase-X SFP+ 	-	
+SW101	10.70.20.101	ST-T0		22321C1000099	TP-LINK	JetStream 24-Port Gigabit	48-22-54-8E-E1-6C	TL-SG3428XMP	USB-A e Console Port	4 x 10GBase-X SFP+ 	-	EM 04.02.2025
+SW102	10.70.20.102	ST-T0	4071	TW97FP463W	Aruba HP	Aruba Switch 2530 	90-20-C2-CA-B5-40	J9773A	USB-A e Console Port	4 Ports de 1 GE SFP	24 portas PoE	
+SW103	10.70.20.103											
+SW104	10.70.20.104											
+SW105	10.70.20.105	Biblioteca	9759	"	EC1818001188"	Edge-Core	Ecs2100-28t Web Smart	3C-2C-99-A9-13-40	ECS2100-28T	Only Console Port	4 Ports de 1 GE SFP	  24 x GE ports +	
+SW106	10.70.20.106	Laboratório T10	9762	EC1818001247	Edge-Core	Ecs2100-28t Web Smart	3C-2C-99-A9-13-58	ECS2100-28T	Only Console Port	4 Ports de 1 GE SFP	  24 x GE ports +	
+SW107	10.70.20.107	Diretoria de Ensino - T13	163973	22254Y1000175	TP-LINK	JetStream 48-Port Gigabit	34-60-F9-AA-E6-5E	TL--SG3452	USB-C e Console Port	4 Ports de 1 GE SFP	48 portas Gigabit RJ45 	
+SW108	10.70.20.108	Laboratório T07/08										
+SW11	10.70.20.11	ST-01		22321C1000220	TP-LINK	JetStream 24-Port Gigabit	48-22-54-8E-E1-E5	TL-SG3428XMP 	USB-A e Console Port 	4 x 10GBase-X SFP+ 	 24-Port PoE+	
+SW12	10.70.20.12	ST-01		22254Y1000173	TP-LINK	JetStream 48-Port Gigabit	34-60-F9-AA-E6-5C	TL--SG3452	USB-C e Console Port	4 Ports de 1 GE SFP	48 portas Gigabit RJ45 	
+SW13	10.70.20.13	ST-01		22254Y1000057	TP-LINK	JetStream 48-Port Gigabit  L2	34:60:f9:aa:e5:e8	TL-SG3452	USB-C e Console Port	4 SFP Spots	-	em 08.03.2025
+SW14	10.70.20.14	Laboratório 109	163969	22254Y1000141	TP-LINK	JetStream 48-Port Gigabit	34-60-F9-AA-E6-3C	TL--SG3452	USB-C e Console Port	4 Ports de 1 GE SFP	48 portas Gigabit RJ45 	em 08.03.2025
+SW15	10.70.20.15	Laboratório 110	163970	22254Y1000174	TP-LINK	JetStream 48-Port Gigabit	34-60-F9-AA-E6-5D	TL--SG3453	USB-C e Console Port	4 Ports de 1 GE SFP	48 portas Gigabit RJ45 	
+SW17	10.70.20.17	ST-01		S148FNTF23002002	Fortinet	FortiSwitch FS-148F 48 ports 	80-80-2c-e8-c7-8e	FS-148F		4 x 10GBase-X SFP+ 	-	
+SW21	10.70.20.21	ST-02		22321C1000048	TP-LINK	JetStream 24-Port Gigabit	48-22-54-8E-E1-39	TL-SG3428XMP	USB-A e Console Port	4 x 10GBase-X SFP+ 	-	
+SW22	10.70.20.22	ST-02	9765	EC1818001146	Edge-Core	Ecs2100-28t Web Smart	3c:2c:99:a9:19:40	ECS2100-28T	Only Console Port	4 Ports de 1 GE SFP	1 Gigabit Ethernet 24 Ports	
+SW23	10.70.20.23	209 - DAP	9761	"	EC1818001262"	Edge-Core	Ecs2100-28t Web Smart	3c:2c:99:a9:1e:c0	ECS2100-28T	Only Console Port	4 Ports de 1 GE SFP	1 Gigabit Ethernet 24 Ports	4 Ports de 1 GE SFP
+SW31	10.70.20.31	ST-03	1639	22321C1000277	TP-LINK	JetStream 24-Port Gigabit	48-22-54-8E-E2-1E	TL-SG3428XMP	USB-A e Console Port	4 x 10GBase-X SFP+ 	1 Gigabit Ethernet 24 Ports	
+SW32	10.70.20.32	ST-03		221C310000126	TP-LINK	JetStream 28-Port Gigabit SMART 	B4-B0-24-CA-84-B8	TL-SG2824P	None	4-Port Gigabit  SFP 	1 Gigabit Ethernet 24 Ports	em 08.03.2025
+SW33	10.70.20.33	Laboratório 308		22254Y1000060	TP-LINK	JetStream 48-Port Gigabit	34-60-F9-AA-E5-EB	TL-SG3452	USB-C e Console Port	4 Ports de 1 GE SFP	48 portas Gigabit RJ45	em 08.03.2025
+SW34	10.70.20.34	Laboratório 309	163972	22254Y1000142	TP-LINK	JetStream 48-Port Gigabit	34-60-F9-AA-E6-3D	TL-SG3452	USB-C e Console Port	4 Ports de 1 GE SFP	48 portas Gigabit RJ45	
+SW35	10.70.20.35	ST-03	9763	EC1818001243	Edge-Core	Ecs2100-28t Web Smart	"	3c:2c:99:a9:1e:40"	ECS2100-28T	Only Console Port	4 Ports de 1 GE SFP	1 Gigabit Ethernet 24 Ports	
+SW36	10.70.20.36	SALA 306	163973	221C310000125	TP-LINK	JetStream 28-Port Gigabit SMART 	B4-B0-24-CA-84-B8	TL-SG2824P	None	4-Port Gigabit SFP		
+SW41	10.70.20.41	ST-04		22321C1000625	TP-LINK	JetStream 24-Port Gigabit		TL-SG3428XMP	USB-A e Console Port	4 x 10GBase-X SFP+ 	-	
+SW42	10.70.20.42	ST-04	9764	EC1818001142	Edge-Core	Ecs2100-28t Web Smart	3C-2C-99-A9-1F-E0	ECS2100-28T	Only Console Port	4 Ports de 1 GE SFP	1 Gigabit Ethernet 24 Ports	
+SW43	10.70.20.43	SALA 406	9760	EC1818001225	Edge-Core	Ecs2100-28t Web Smart	3c:2c:99:a9:1a:e0	ECS2100-28T	Only Console Port	4 Ports de 1 GE SFP	1 Gigabit Ethernet 24 Ports	
+SW51	10.70.20.51	SALA 306	163965	2225130000127	TP-LINK	Smart Switch with 8 Port PoE+	34-60-F9-24-73-D8	TL-SG2210MP 	Não possui 	2 Ports de 1 GE SFP 	JetStream 10-Port Gigabit 	
+SW71	10.70.20.71	Portaria		CN31L3L0G9	Aruba HP	Aruba 6000 	ec-50-aa-72-68-40	R8N87A	Only USB-C	Only USB-C	Sim	4 Ports de 1 GE SFP
+SW72	10.70.20.72	Refeitório										
+SW81	10.70.20.81	Subestação	4051	CN31L3L1ZG	Aruba HP	Aruba 6000 	EC-50-AA-73-02-80	R8N87A	Only USB-C	Only USB-C	Sim	4 Ports de 1 GE SFP
+SW82	10.70.20.82	Laboratório de Mecanica	163964	2225130000125	TP-LINK	Smart Switch with 8 Port PoE+	34-60-F9-24-73-D8	TL-SG2210MP 	Não possui 	2 Ports de 1 GE SFP 	JetStream 10-Port Gigabit 	
+SW91	10.70.20.91	Ginásio	4072	CN31L3L1VJ	Aruba HP	Aruba 6000	EC-50-AA-73-86-80	R8N87A	Only USB-C	Only USB-C	Sim	4 Ports de 1 GE SFP

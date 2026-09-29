@@ -1,0 +1,7 @@
+Reserva T		Sala 306 - STI		TW98FP40YF	Aruba HP	Aruba Switch 2530 	F8-60-F0-10-3D-E0	J9773A	USB-A e Console Port	4 Ports de 1 GE SFP	  24 Gigabit Ethernet ports 
+Reserva 1		Sala 306 - STI		TW98FP41C9	Aruba HP	Aruba Switch 2530 	F8-60-F0-10-DF-00	J9773A	USB-A e Console Port	4 Ports de 1 GE SFP	  24 Gigabit Ethernet ports 
+Refeitório		Sala 306 - STI		CN31L3L284	Aruba HP	Aruba 6000	EC-50-AA-73-A2-00	R8N87A	Only USB-C	4 Ports de 1 GE SFP	
+SW14		Sala 306 - STI	T08	2Q8K0102638R1	Intelbras	Switch Rack Intelbras 		SG 2400 QR + 	None	Sem 	-
+LAB 1		Sala 306 - STI		FKLL15000549G	Intelbras	Switch 48 portas 		SG 5204 MR L2+	Only Console Port	4 Portas Mini-GBIC	-
+LAB 1		Sala 306 - STI		FKLL150006BUN	Intelbras	Switch Gerenciável 48P 	D8-36-5F-BA-FC-52	SG 2400 QR + 	Only Console Port	4 Ports de 1 GE SFP	1 Gigabit Ethernet 24 Ports
+Administrativo		Sala 306 - STI		22254Y1000176	TP-LINK	JetStream 48-Port Gigabit	34-60-F9-AA-E6-5F	TL--SG3452	USB-C e Console Port	4 Ports de 1 GE SFP	48 portas Gigabit RJ45

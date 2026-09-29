@@ -962,7 +962,7 @@ export default function TechnicalRooms() {
   // Locations Management (User Defined + Dynamic from equipment)
   const [customLocations, setCustomLocations] = useLocalStorage<string[]>(
     "technical-rooms-list",
-    ["Térreo", "1º Andar", "Gabinetes", "2º Andar", "3º Andar", "4º Andar"],
+    ["Térreo", "1° Andar", "Gabinetes", "2° Andar", "3° Andar", "4° Andar"],
   );
   const [isManagingLocations, setIsManagingLocations] = useState(false);
   const [newLocationName, setNewLocationName] = useState("");
@@ -971,7 +971,7 @@ export default function TechnicalRooms() {
   useEffect(() => {
     let changed = false;
     const fixed = customLocations.map(loc => {
-      const newLoc = loc.replace("TǸrreo", "Térreo").replace("1 Andar", "1º Andar").replace("2 Andar", "2º Andar").replace("3 Andar", "3º Andar").replace("4 Andar", "4º Andar");
+      const newLoc = loc.replace("TǸrreo", "Térreo").replace("1 Andar", "1° Andar").replace("2 Andar", "2° Andar").replace("3 Andar", "3° Andar").replace("4 Andar", "4° Andar");
       if (newLoc !== loc) changed = true;
       return newLoc;
     });
