@@ -504,6 +504,9 @@ const Cameras = () => {
     }
   };
 
+    // Normalize a string for comparison: lowercase, strip accents, remove special chars
+  const normalize = (s: string) => s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9 ]/g, "").trim();
+
   const camsByLocation = LOCATIONS.reduce(
     (acc, loc) => {
       acc[loc] = [];
@@ -514,27 +517,36 @@ const Cameras = () => {
 
   const unmapped: Camera[] = [];
 
+  // Pre-compute normalized LOCATIONS for fuzzy matching
+  const normalizedLocMap = LOCATIONS.map(loc => ({ original: loc, norm: normalize(loc) }));
+
+  const findLocation = (raw: string): string | null => {
+    const norm = normalize(raw);
+    const match = normalizedLocMap.find(l => l.norm === norm);
+    return match ? match.original : null;
+  };
+
   cameras.forEach((c) => {
     // If the camera is linked to a switch, try to use the switch's location
     const sw = switches.find((s) => s.id === c.switchId);
-    let targetLocation = c.location;
+    let targetLocation: string | null = null;
 
     if (sw && sw.location) {
-      // Normalize location strings (e.g., 1Âº vs 1Â°)
-      const normalizedSwLoc = sw.location.replace("Âº", "Â°");
-      if (LOCATIONS.includes(normalizedSwLoc)) {
-        targetLocation = normalizedSwLoc;
-      }
+      targetLocation = findLocation(sw.location);
     }
 
-    if (LOCATIONS.includes(targetLocation)) {
+    if (!targetLocation) {
+      targetLocation = findLocation(c.location);
+    }
+
+    if (targetLocation) {
       camsByLocation[targetLocation].push(c);
     } else {
       unmapped.push(c);
     }
   });
 
-  if (unmapped.length > 0) camsByLocation["Outros"] = unmapped;
+  
 
   const displayLocations =
     unmapped.length > 0 ? [...LOCATIONS, "Outros"] : LOCATIONS;

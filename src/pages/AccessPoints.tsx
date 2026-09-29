@@ -489,37 +489,50 @@ const AccessPoints = () => {
     }
   };
 
+  // Normalize a string for comparison: lowercase, strip accents, remove special chars
+  const normalize = (s) => s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9 ]/g, "").trim();
+
   const apsByLocation = LOCATIONS.reduce(
     (acc, loc) => {
       acc[loc] = [];
       return acc;
     },
-    {} as Record<string, AccessPoint[]>,
+    {},
   );
 
-  const unmapped: AccessPoint[] = [];
+  const unmapped = [];
+
+  // Pre-compute normalized LOCATIONS for fuzzy matching
+  const normalizedLocMap = LOCATIONS.map(loc => ({ original: loc, norm: normalize(loc) }));
+
+  const findLocation = (raw) => {
+    if (!raw) return null;
+    const norm = normalize(raw);
+    const match = normalizedLocMap.find(l => l.norm === norm);
+    return match ? match.original : null;
+  };
 
   aps.forEach((a) => {
     // If the AP is linked to a switch, try to use the switch's location
     const sw = switches.find((s) => s.id === a.switchId);
-    let targetLocation = a.location;
+    let targetLocation = null;
 
     if (sw && sw.location) {
-      // Normalize location strings (e.g., 1º vs 1°)
-      const normalizedSwLoc = sw.location.replace("º", "°");
-      if (LOCATIONS.includes(normalizedSwLoc)) {
-        targetLocation = normalizedSwLoc;
-      }
+      targetLocation = findLocation(sw.location);
     }
 
-    if (LOCATIONS.includes(targetLocation)) {
+    if (!targetLocation) {
+      targetLocation = findLocation(a.location);
+    }
+
+    if (targetLocation) {
       apsByLocation[targetLocation].push(a);
     } else {
       unmapped.push(a);
     }
   });
 
-  if (unmapped.length > 0) apsByLocation["Outros"] = unmapped;
+  
 
   const displayLocations =
     unmapped.length > 0 ? [...LOCATIONS, "Outros"] : LOCATIONS;
