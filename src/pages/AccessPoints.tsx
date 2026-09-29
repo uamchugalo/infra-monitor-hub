@@ -532,7 +532,7 @@ const AccessPoints = () => {
     }
   });
 
-  
+  if (unmapped.length > 0) apsByLocation["Outros"] = unmapped;
 
   const displayLocations =
     unmapped.length > 0 ? [...LOCATIONS, "Outros"] : LOCATIONS;

@@ -546,7 +546,7 @@ const Cameras = () => {
     }
   });
 
-  
+  if (unmapped.length > 0) camsByLocation["Outros"] = unmapped;
 
   const displayLocations =
     unmapped.length > 0 ? [...LOCATIONS, "Outros"] : LOCATIONS;
