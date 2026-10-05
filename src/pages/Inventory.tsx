@@ -360,49 +360,49 @@ const Inventory = () => {
             <Table>
               <TableHeader className="bg-zinc-50">
                 <TableRow>
-                  <TableHead className="whitespace-nowrap font-bold">
+                  <TableHead className="whitespace-nowrap font-bold min-w-[180px]">
                     Nome
                   </TableHead>
-                  <TableHead className="whitespace-nowrap font-bold">
+                  <TableHead className="whitespace-nowrap font-bold min-w-[120px]">
                     IP
                   </TableHead>
-                  <TableHead className="whitespace-nowrap font-bold">
+                  <TableHead className="whitespace-nowrap font-bold min-w-[110px]">
                     Status (Ping)
                   </TableHead>
-                  <TableHead className="whitespace-nowrap font-bold">
+                  <TableHead className="whitespace-nowrap font-bold min-w-[100px] hidden md:table-cell">
                     Switch
                   </TableHead>
-                  <TableHead className="whitespace-nowrap font-bold">
-                    Porta (SW)
+                  <TableHead className="whitespace-nowrap font-bold min-w-[90px] hidden md:table-cell">
+                    Porta
                   </TableHead>
-                  <TableHead className="whitespace-nowrap font-bold">
+                  <TableHead className="whitespace-nowrap font-bold min-w-[140px]">
                     Localização
                   </TableHead>
-                  <TableHead className="whitespace-nowrap font-bold">
+                  <TableHead className="whitespace-nowrap font-bold min-w-[130px] hidden lg:table-cell">
                     Patrimônio
                   </TableHead>
-                  <TableHead className="whitespace-nowrap font-bold">
+                  <TableHead className="whitespace-nowrap font-bold min-w-[140px] hidden lg:table-cell">
                     Nº Série
                   </TableHead>
-                  <TableHead className="whitespace-nowrap font-bold">
+                  <TableHead className="whitespace-nowrap font-bold min-w-[120px] hidden xl:table-cell">
                     Fabricante
                   </TableHead>
-                  <TableHead className="whitespace-nowrap font-bold">
+                  <TableHead className="whitespace-nowrap font-bold min-w-[120px] hidden xl:table-cell">
                     Modelo
                   </TableHead>
-                  <TableHead className="whitespace-nowrap font-bold">
+                  <TableHead className="whitespace-nowrap font-bold min-w-[140px] hidden 2xl:table-cell">
                     MAC
                   </TableHead>
-                  <TableHead className="whitespace-nowrap font-bold">
+                  <TableHead className="whitespace-nowrap font-bold min-w-[110px] hidden 2xl:table-cell">
                     Porta Console
                   </TableHead>
-                  <TableHead className="whitespace-nowrap font-bold">
+                  <TableHead className="whitespace-nowrap font-bold min-w-[90px] hidden 2xl:table-cell">
                     SFP
                   </TableHead>
-                  <TableHead className="whitespace-nowrap font-bold">
+                  <TableHead className="whitespace-nowrap font-bold min-w-[150px] hidden xl:table-cell">
                     Geral
                   </TableHead>
-                  <TableHead className="whitespace-nowrap font-bold text-center">
+                  <TableHead className="whitespace-nowrap font-bold text-center min-w-[100px] sticky right-0 bg-zinc-50 shadow-[-4px_0_10px_-4px_rgba(0,0,0,0.1)]">
                     Ações
                   </TableHead>
                 </TableRow>
@@ -450,43 +450,43 @@ const Inventory = () => {
                           <span className="text-zinc-400">-</span>
                         )}
                       </TableCell>
-                      <TableCell className="text-zinc-500 whitespace-nowrap">
+                      <TableCell className="text-zinc-500 whitespace-nowrap hidden md:table-cell">
                         {item.connectedSwitch || "-"}
                       </TableCell>
-                      <TableCell className="text-zinc-500 whitespace-nowrap">
+                      <TableCell className="text-zinc-500 whitespace-nowrap hidden md:table-cell">
                         {item.connectedPort || "-"}
                       </TableCell>
                       <TableCell className="whitespace-nowrap">
                         {item.location || "-"}
                       </TableCell>
-                      <TableCell className="text-zinc-500 whitespace-nowrap">
+                      <TableCell className="text-zinc-500 whitespace-nowrap hidden lg:table-cell">
                         {item.patrimony || "-"}
                       </TableCell>
-                      <TableCell className="text-zinc-500 whitespace-nowrap">
+                      <TableCell className="text-zinc-500 whitespace-nowrap hidden lg:table-cell">
                         {item.serialNumber || "-"}
                       </TableCell>
-                      <TableCell className="whitespace-nowrap">
+                      <TableCell className="whitespace-nowrap hidden xl:table-cell">
                         {item.manufacturer || "-"}
                       </TableCell>
-                      <TableCell className="whitespace-nowrap">
+                      <TableCell className="whitespace-nowrap hidden xl:table-cell">
                         {item.model || "-"}
                       </TableCell>
-                      <TableCell className="font-mono text-xs text-zinc-500 whitespace-nowrap">
+                      <TableCell className="font-mono text-xs text-zinc-500 whitespace-nowrap hidden 2xl:table-cell">
                         {item.macAddress || "-"}
                       </TableCell>
-                      <TableCell className="text-zinc-500 whitespace-nowrap">
+                      <TableCell className="text-zinc-500 whitespace-nowrap hidden 2xl:table-cell">
                         {item.consolePort || "-"}
                       </TableCell>
-                      <TableCell className="text-zinc-500 whitespace-nowrap">
+                      <TableCell className="text-zinc-500 whitespace-nowrap hidden 2xl:table-cell">
                         {item.sfp || "-"}
                       </TableCell>
                       <TableCell
-                        className="text-zinc-500 max-w-xs truncate"
+                        className="text-zinc-500 max-w-xs truncate hidden xl:table-cell"
                         title={item.general || ""}
                       >
                         {item.general || "-"}
                       </TableCell>
-                      <TableCell className="text-center">
+                      <TableCell className="text-center sticky right-0 bg-white/95 backdrop-blur-sm shadow-[-4px_0_10px_-4px_rgba(0,0,0,0.05)] group-hover:bg-zinc-50">
                         <div className="flex items-center justify-center gap-2">
                           <Button 
                             variant="ghost" 
