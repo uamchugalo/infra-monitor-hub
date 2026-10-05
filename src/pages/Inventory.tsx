@@ -278,6 +278,17 @@ const Inventory = () => {
               )}
               <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
+                <label className="text-sm font-medium">Status</label>
+                <select 
+                    className="w-full h-9 rounded-md border text-sm px-3 bg-white"
+                    value={formData.status || "Em Estoque"}
+                    onChange={(e) => setFormData({...formData, status: e.target.value})}
+                  >
+                    <option value="Em Estoque">Em Estoque / Não Uso</option>
+                    <option value="Em Uso">Em Uso</option>
+                  </select>
+              </div>
+              <div className="space-y-2">
                 <label className="text-sm font-medium">Nome / Hostname</label>
                 <Input value={formData.name || ""} onChange={(e) => setFormData({...formData, name: e.target.value})} />
               </div>
